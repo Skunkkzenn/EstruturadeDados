@@ -134,4 +134,37 @@ Veiculo* VerificaVeiculoDuplicado(int cod, char* tipo, Veiculo* inicio) {
 	return aux;
 }
 
+// Altera Dados do Veiculo
+Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, char* local, Veiculo* novo, Veiculo* inicio) {
+	// Verifica se a lista está vazia
+	if (inicio == NULL)
+	{
+		inicio = novo;
+	}
+
+	// Cria um ponteiro auxiliar para percorrer a lista
+	Veiculo* aux = inicio;
+
+	// Percorre a lista até encontrar o veículo com o código e tipo informado
+	while ((aux != NULL) && (aux->cod != cod) && (strcmp(aux->tipo, tipo) != 0)) { // Percorre a lista encadeada, enquanto não chegar ao final da lista (aux != NULL) e não encontrar um veículo com o mesmo código e tipo (aux->cod != cod) && (strcmp(aux->tipo, tipo) != 0). Se encontrar um veículo com o mesmo código e tipo, retorna um ponteiro para esse veículo (aux).
+		aux = aux->next;
+	}
+
+	// Se não encontrou o veículo com o código informado, retorna a lista original
+	if ((aux == NULL) || aux->cod != cod)
+		return inicio;
+
+	// Altera os campos do veículo encontrado com as informações fornecidas
+	aux->cod = novo->cod;
+	strcpy(aux->tipo, novo->tipo);
+	aux->bateria = novo->bateria;
+	aux->custo = novo->custo;
+	strcpy(aux->local, novo->local);
+	// Libera a memória alocada para o veículo novo
+	free(novo);
+	// Retorna a lista atualizada
+	return inicio;
+}
+
+
 #pragma endregion
