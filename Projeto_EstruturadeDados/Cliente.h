@@ -14,3 +14,5 @@ typedef struct Cliente {
 	char morada[M];
 	struct Cliente* next;
 }Cliente;
+
+
