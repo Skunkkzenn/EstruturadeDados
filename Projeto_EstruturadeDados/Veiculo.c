@@ -166,5 +166,42 @@ Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, cha
 	return inicio;
 }
 
+// Remove Veiculo da Lista
+Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio) {
+	// Verifica se o início é nulo (lista vazia)
+	if (inicio == NULL) {
+		return NULL; // Não há nenhum veículo para ser removido
+	}
+
+	// Inicializa ponteiros auxiliares
+	Veiculo* auxAnt = inicio;
+	Veiculo* auxProx = inicio;
+
+	// Verifica se o nó a ser removido é a cabeça da lista
+	if ((inicio != NULL) && (inicio->cod == cod)) { // O veículo a ser removido é o primeiro da lista (inicio)
+		auxAnt = auxAnt->next; // Atualiza a lista para começar do segundo elemento
+		free(inicio); // Libera a memória ocupada pelo veículo removido
+		inicio = auxAnt;  // atualiza o início da lista
+	}
+	else
+	{   // Percorre a lista até encontrar o nó a ser removido
+		while ((auxProx != NULL) && (auxProx->cod != cod) && (strcmp(auxProx->tipo, tipo) != 0)) { // percorre array enquanto...
+			{
+				// Procura pelo veículo a ser removido
+				auxAnt = auxProx; // avança o ponteiro auxAnt para o próximo nó
+				auxProx = auxProx->next; // avança o ponteiro auxProx para o próximo nó
+			}
+			if ((auxProx == NULL) || (auxAnt->next == NULL) || (auxAnt->cod != cod)) {
+				// Não foi encontrado nenhum veículo com o código e tipo especificados
+				return inicio; // nao existe a maquina, retorna início
+			}
+		}
+		// Remove o veículo encontrado
+		auxAnt->next = auxProx->next; // auxAnt campo next passa a conter o valor de auxProx campo next!
+		free(auxProx); // liberta a memória que é removida
+	}
+	return inicio; // Retorna head
+}
+
 
 #pragma endregion
