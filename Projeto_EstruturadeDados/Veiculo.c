@@ -22,7 +22,7 @@ Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* loca
 
 	// Aloca memória para o novo veículo
 	novoVeiculo = (Veiculo*)malloc(sizeof(Veiculo));
-
+	// Verifica se a alocação de memória foi bem sucedida
 	if (novoVeiculo == NULL)
 	{   //printf("Erro ao alocar memória para novo veículo\n");
 		return NULL;
@@ -46,6 +46,14 @@ Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio) {
 		* No inicio da função verifica-se se sup é nulo
 		* Se for nulo, é definido como o novo veículo e é retornado.
 	*/
+
+ 	if (novo == NULL) { /* Se o ponteiro "novo" apontar para NULL, a função terá um erro e
+						   retornará o ponteiro "inicio" original sem modificar a lista.
+						   Caso contrário, a função prossegue com a inserção do novo cliente na lista.
+						*/
+						//printf("Erro: novo cliente e nulo\n");
+ 		return inicio;
+	}
 	if (inicio == NULL)
 	{
 		inicio = novo;
