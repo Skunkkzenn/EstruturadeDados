@@ -34,5 +34,18 @@ typedef struct Veiculo {
 }Veiculo;
 
 #pragma endregion
+
+
+#pragma region Funcoes que Tratam dos Veiculos
+
+Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* local);
+Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* sup);
+Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio);
+Veiculo* VerificaVeiculoDuplicado(int cod, char* tipo, Veiculo* inicio);
+Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, char* local, Veiculo* novo, Veiculo* inicio);
+
+#pragma endregion
+
+
 #endif //; !
 
