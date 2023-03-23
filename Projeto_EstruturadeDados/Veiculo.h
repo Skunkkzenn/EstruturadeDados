@@ -16,7 +16,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #pragma warning( disable : 4996 ) //evita MSG ERROS: _CRT_SECURE_NO_WARNINGS
-#define N 50
+#define N 200
 
 #define MAX 40 // Maximo de Veiculos, utilizar mais a frente*
 
