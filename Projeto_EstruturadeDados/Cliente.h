@@ -20,3 +20,5 @@ Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio);
 Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char* morada, Cliente* novo, Cliente* inicio);
 Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio);
 Cliente* InsertClienteInicio(Cliente* novo, Cliente* inicio);
+Cliente* InsertClienteFim(Cliente* novo, Cliente* inicio);
+Cliente* VerificaClienteDuplicado(int cod, int long nif, Cliente* inicio);
