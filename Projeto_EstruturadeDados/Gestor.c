@@ -171,29 +171,29 @@ Gestor* RemoveGestor(int cod, long int nif, Gestor* inicio) {
 	}
 
 	// Inicializa ponteiros auxiliares
-	Gestor* auxAnt = inicio;
-	Gestor* auxProx = inicio;
+	Gestor*	noAnterior = inicio;
+	Gestor* noAtual = inicio;
 
 	// Verifica se o nó a ser removido é a cabeça da lista
 	if ((inicio != NULL) && (inicio->cod == cod)) {
-		auxAnt = auxAnt->next;
+		noAnterior = noAnterior->next;
 		free(inicio);
-		inicio = auxAnt;
+		inicio = noAnterior;
 	}
 	else
 	{
-		while ((auxProx != NULL) && (auxProx->cod != cod) && (auxProx->nif != nif)) {
-			auxAnt = auxProx;
-			auxProx = auxProx->next;
+		while ((noAtual != NULL) && (noAtual->cod != cod) && (noAtual->nif != nif)) {
+			noAnterior = noAtual;
+			noAtual = noAtual->next;
 		}
-		if ((auxProx != NULL) && (auxProx->cod != cod) && (auxProx->nif != nif)) {
+		if ((noAtual != NULL) && (noAtual->cod != cod) && (noAtual->nif != nif)) {
 			// Não foi encontrado nenhum gestor com o código e nif especificados;
 			return NULL; // nao existe gestor, retorna início;
 		}
-		if (auxProx != NULL) {
-			// Remove o veículo encontrado
-			auxAnt->next = auxProx->next; // auxAnt campo next passa a conter o valor de auxProx campo next;
-			free(auxProx);	// liberta a memória que é removida;
+		if (noAtual != NULL) {
+			// Remove o gestor encontrado
+			noAnterior->next = noAtual->next; // noAnterior campo next passa a conter o valor de noAtual campo next;
+			free(noAtual);	// liberta a memória que é removida;
 		}
 	}
 	return inicio;	// Retorna o cabeçalho
