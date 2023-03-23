@@ -82,9 +82,9 @@ Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio) {
 		Cliente* atual = inicio;
 		Cliente* anterior = NULL;
 
-		//Verificar se já existe repetido
-		if (VerificaClienteDuplicado(novo->cod, novo->nif, inicio) == inicio)
-			return inicio;
+		// Verifica se já existe cliente com mesmo código e nif
+		if (VerificaClienteDuplicado(novo->cod, novo->nif, inicio) != NULL)
+			return inicio; // Cliente já existe, retorna a lista original
 
 		//procurar a posicao correta, e ordena pelo cod!!!!
 		while (atual && atual->cod < novo->cod) {
@@ -92,16 +92,19 @@ Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio) {
 			atual = atual->next;
 		}
 
+		// Insere no início
 		if (anterior == NULL && novo->cod < inicio->cod) { //Insere no início
 			novo->next = inicio;
 			inicio = novo;
 		}
+		//Insere no meio
 		else if (anterior == NULL)
-		{ //Insere no meio
+		{ 
 			novo->next = atual;
 			inicio = novo;
 		}
-		else //Insere no fim
+		//Insere no fim
+		else 
 		{
 			anterior->next = novo;
 			novo->next = atual;
