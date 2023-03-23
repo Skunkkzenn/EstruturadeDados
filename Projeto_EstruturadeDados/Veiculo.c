@@ -62,7 +62,7 @@ Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio) {
 		novo->next = inicio;
 		inicio = novo;
 	}
-	return inicio;
+	return inicio; //É necessário que ela retorne o ponteiro para o início da lista atualizado após a inserção do novo veículo.
 }
 
 // Inserir Maquina Fim da Lista
