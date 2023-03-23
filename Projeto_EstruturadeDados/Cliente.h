@@ -6,6 +6,7 @@
  * \date   March 2023
  *********************************************************************/
 
+#pragma once
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -24,7 +25,7 @@ typedef struct Cliente {
 }Cliente;
 #pragma endregion
 
-#pragma region Funções para Tratar Clientes
+#pragma region Funï¿½ï¿½es para Tratar Clientes
 Cliente* CriaCliente(int cod, char* nome, float saldo, long int nif, char* morada);
 Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio);
 Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char* morada, Cliente* novo, Cliente* inicio);
