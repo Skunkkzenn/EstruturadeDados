@@ -49,4 +49,78 @@ Gestor* InsertGestorInicio(Gestor* novo, Gestor* inicio) {
 	}
 	return inicio; // retorna o ponteiro para o início da lista atualizada.
 }
+
+Gestor* InsertGestorFim(Gestor* novo, Gestor* inicio) {
+	if (inicio == NULL)
+	{
+		inicio = novo;
+	}
+	else
+	{
+		Gestor* aux = inicio;
+		while (aux->next != NULL)
+		{
+			aux = aux->next;
+		}
+		aux->next = novo;
+	}
+	novo->next = NULL;
+	return inicio;
+}
+
+Gestor* VerificaGestorDuplicado(int cod, int long nif, Gestor* inicio) {
+
+	if (inicio == NULL) // Verifica se a lista encadeada está vazia (inicio == NULL), caso esteja retorna NULL, indicando que não há clientes duplicados.
+	{
+		return NULL; // Caso não encontre nenhum gestor com o mesmo código e nif, retorna NULL.
+	}
+
+	Gestor* aux = inicio;
+	while ((aux != NULL) && (aux->cod != cod) && (aux->nif != nif)) // percorre a lista para verificar os campos cod e nif e enquanto ele nao encontrar aux toma valor de aux campo next
+	{
+		aux = aux->next;
+	}
+	return aux; // Ao fim retorna o valor de aux
+}
+
+Gestor* InsertGestorLista(Gestor* novo, Gestor* inicio) {
+	if (inicio == NULL)
+	{
+		inicio = novo;
+	}
+	else
+	{
+		Gestor* atual = inicio;
+		Gestor* anterior = NULL;
+
+		// Verifica se já existe gestor com mesmo código e nif
+		if (VerificaGestorDuplicado(novo->cod, novo->nif, inicio) != NULL)
+			return inicio; // Cliente já existe, retorna a lista original
+
+		//procurar a posicao correta, e ordena pelo cod!!!!
+		while (atual && atual->cod < novo->cod) {
+			anterior = atual;
+			atual = atual->next;
+		}
+
+		// Insere no início
+		if (anterior == NULL && novo->cod < inicio->cod) { //Insere no início
+			novo->next = inicio;
+			inicio = novo;
+		}
+		//Insere no meio
+		else if (anterior == NULL)
+		{
+			novo->next = atual;
+			inicio = novo;
+		}
+		//Insere no fim
+		else
+		{
+			anterior->next = novo;
+			novo->next = atual;
+		}
+		return inicio;
+	}
+
 }
