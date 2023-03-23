@@ -129,3 +129,19 @@ Na linha problemática, adicionando o if antes da atribuição de auxAnt->next reso
 
 Dito isso, a função RemoveCliente parece estar funcionando corretamente e não vejo nenhuma melhoria adicional a ser feita.*/
 
+Cliente* InsertClienteInicio(Cliente* novo, Cliente* inicio) {
+	if (novo == NULL) // Verifica se ponteiro para o novo cliente é nulo, logo como não há nada para ser inserido, retorna o ponteiro para o inicio da lista original
+	{
+		return inicio;
+	}
+	if (inicio == NULL) // Verifica se a lista está vazia, se estiver, o novo cliente se torna o primeiro nó da lista
+	{
+		inicio = novo;
+	}
+	else // Só será executado se a lista estiver vazia. O campo next do novo cliente esta configurado apra apontar para o início da lista atual, de seguida o ponteiro para o início da lista é atualizado para apontar para o novo nó.
+	{
+		novo->next = inicio;
+		inicio = novo;
+	}
+	return inicio; // retorna o ponteiro para o início da lista atualizada.
+}

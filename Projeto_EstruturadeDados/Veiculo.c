@@ -62,6 +62,7 @@ Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio) {
 		novo->next = inicio;
 		inicio = novo;
 	}
+	return inicio;
 }
 
 // Inserir Maquina Fim da Lista
