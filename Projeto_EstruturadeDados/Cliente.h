@@ -15,4 +15,7 @@ typedef struct Cliente {
 	struct Cliente* next;
 }Cliente;
 
-
+Cliente* CriaCliente(int cod, char* nome, float saldo, long int nif, char* morada);
+Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio);
+Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char* morada, Cliente* novo, Cliente* inicio);
+Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio);

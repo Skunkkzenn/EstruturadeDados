@@ -30,19 +30,19 @@ Cliente* CriaCliente(int cod, char* nome, float saldo, long int nif, char* morad
 	strcpy(novoCliente->morada, morada);
 	novoCliente->next = NULL;
 	return novoCliente;
-	
+
 }
 
 Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio) {
 	if (novo == NULL) { /* Se o ponteiro "novo" apontar para NULL, a função terá um erro e
-						   retornará o ponteiro "inicio" original sem modificar a lista. 
-						   Caso contrário, a função prossegue com a inserção do novo cliente na lista. 
-					    */
-		//printf("Erro: novo cliente e nulo\n");
-		return inicio; 
+						   retornará o ponteiro "inicio" original sem modificar a lista.
+						   Caso contrário, a função prossegue com a inserção do novo cliente na lista.
+						*/
+						//printf("Erro: novo cliente e nulo\n");
+		return inicio;
 	}
-		
-	if (inicio == NULL) { /* Se o ponteiro "inicio" da lista estiver apontando para NULL, 
+
+	if (inicio == NULL) { /* Se o ponteiro "inicio" da lista estiver apontando para NULL,
 							 o novo cliente será o primeiro da lista, portanto o ponteiro
 							 "inicio" será atualizado para apontar para o novo cliente. */
 		inicio = novo;
@@ -69,25 +69,24 @@ Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char
 	{
 		aux = aux->next;
 	}
-	
+
 	// Se não encontrou o cliente com o código informado, retorna a lista original
 	if ((aux == NULL) || (aux->nif != nif)) {
 		return inicio;
 	}
 
 	// Altera os campos do veículo encontrado com as informações fornecidas
- 	aux->cod = novo->cod;
+	aux->cod = novo->cod;
 	strcpy(aux->nome, novo->nome);
-  	aux->saldo = novo->saldo;
- 	aux->nif = novo->nif;
+	aux->saldo = novo->saldo;
+	aux->nif = novo->nif;
 	strcpy(aux->morada, novo->morada);
 
 	// Libera a memória alocada para o cliente novo
 	free(novo);
 	// Retorna a lista atualizada
-		return inicio;
+	return inicio;
 }
-	
 
 Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio) {
 	// Verifica se o início é nulo (lista vazia)
@@ -115,12 +114,18 @@ Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio) {
 			// Não foi encontrado nenhum cliente com o código e nif especificados;
 			return NULL; // nao existe cliente, retorna início;
 		}
-		if(auxProx != NULL) {
-		// Remove o veículo encontrado
-		auxAnt->next = auxProx->next; // auxAnt campo next passa a conter o valor de auxProx campo next;
-		free(auxProx);	// liberta a memória que é removida;
+		if (auxProx != NULL) {
+			// Remove o veículo encontrado
+			auxAnt->next = auxProx->next; // auxAnt campo next passa a conter o valor de auxProx campo next;
+			free(auxProx);	// liberta a memória que é removida;
 		}
 	}
 	return inicio;	// Retorna o cabeçalho
-}
+} /* Na minha avaliação, a função RemoveCliente parece estar correta agora. A verificação inicial de inicio ser nulo para garantir que a lista não é vazia e as variáveis auxiliares auxAnt e auxProx estão sendo corretamente inicializadas. A condição para remover o nó da cabeça da lista também parece estar correta.
+
+No loop while, a função verifica se auxProx é nulo antes de acessá-lo e também verifica se o cod e nif correspondem ao nó atual. Além disso, o if que verifica se o nó a ser removido foi encontrado parece estar correto agora.
+
+Na linha problemática, adicionando o if antes da atribuição de auxAnt->next resolve o problema de desreferenciar um ponteiro nulo.
+
+Dito isso, a função RemoveCliente parece estar funcionando corretamente e não vejo nenhuma melhoria adicional a ser feita.*/
 
