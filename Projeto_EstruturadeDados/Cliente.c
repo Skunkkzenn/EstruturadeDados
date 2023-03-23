@@ -56,33 +56,69 @@ Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio) {
 }
 
 Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char* morada, Cliente* novo, Cliente* inicio) {
-		// Verifica se a lista está vazia
-		if (inicio == NULL)
+	// Verifica se a lista está vazia
+	if (inicio == NULL)
+	{   // printf("Erro: lista vazia\n");
+		return NULL;
+	}
+	// Cria um ponteiro auxiliar para percorrer a lista
+	Cliente* aux = inicio;
+
+	// Percorre a lista até encontrar o veículo com o código e tipo informado
+	while ((aux != NULL) && (aux->cod != cod) && (aux->nif != nif))
 	{
-		inicio = novo;
+		aux = aux->next;
 	}
-		// Cria um ponteiro auxiliar para percorrer a lista
-		Cliente* aux = inicio;
-
-		// Percorre a lista até encontrar o veículo com o código e tipo informado
-		while ((aux != NULL) && (aux->cod != cod) && (strcmp(aux->nif, nif) != 0)) {
-
-	}
-
-		// Se não encontrou o cliente com o código informado, retorna a lista original
-		if ((aux != NULL) || (aux->nif != nif)) {
+	
+	// Se não encontrou o cliente com o código informado, retorna a lista original
+	if ((aux == NULL) || (aux->nif != nif)) {
 		return inicio;
 	}
 
-		// Altera os campos do veículo encontrado com as informações fornecidas
-	 	aux->cod = novo->cod;
-	 	strcpy(aux->nome, novo->nome);
-	 	aux->saldo = novo->saldo;
-	 	aux->nif = novo->nif;
-		strcpy(aux->morada, novo->morada);
-		// Libera a memória alocada para o cliente novo
-		free(novo);
-		// Retorna a lista atualizada
-		return inicio;
+	// Altera os campos do veículo encontrado com as informações fornecidas
+ 	aux->cod = novo->cod;
+	strcpy(aux->nome, novo->nome);
+  	aux->saldo = novo->saldo;
+ 	aux->nif = novo->nif;
+	strcpy(aux->morada, novo->morada);
 
+	// Libera a memória alocada para o cliente novo
+	free(novo);
+	// Retorna a lista atualizada
+		return inicio;
 }
+	
+
+Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio) {
+	// Verifica se o início é nulo (lista vazia)
+	if (inicio == NULL) {
+		return NULL; // Não há nenhum veículo para ser removido
+	}
+
+	// Inicializa ponteiros auxiliares
+	Cliente* auxAnt = inicio;
+	Cliente* auxProx = inicio;
+
+	// Verifica se o nó a ser removido é a cabeça da lista
+	if ((inicio != NULL) && (inicio->cod == cod)) {
+		auxAnt = auxAnt->next;
+		free(inicio);
+		inicio = auxAnt;
+	}
+	else
+	{
+		while ((auxProx != NULL) && (auxProx->cod != cod) && (auxProx->nif != nif)) {
+			auxAnt = auxProx;
+			auxProx = auxProx->next;
+		}
+		if ((auxProx != NULL) && (auxProx->cod != cod) && (auxProx->nif != nif)) {
+			// Não foi encontrado nenhum cliente com o código e nif especificados;
+			return inicio; // nao existe cliente, retorna início;
+		}
+		// Remove o veículo encontrado
+		auxAnt->next = auxProx->next; // auxAnt campo next passa a conter o valor de auxProx campo next;
+		free(auxProx);	// liberta a memória que é removida;
+	}
+	return inicio;	// Retorna o cabeçalho
+}
+
