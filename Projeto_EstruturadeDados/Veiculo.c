@@ -22,7 +22,7 @@ Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* loca
 
 	// Aloca memória para o novo veículo
 	novoVeiculo = (Veiculo*)malloc(sizeof(Veiculo));
-
+	// Verifica se a alocação de memória foi bem sucedida
 	if (novoVeiculo == NULL)
 	{   //printf("Erro ao alocar memória para novo veículo\n");
 		return NULL;
@@ -46,6 +46,14 @@ Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio) {
 		* No inicio da função verifica-se se sup é nulo
 		* Se for nulo, é definido como o novo veículo e é retornado.
 	*/
+
+ 	if (novo == NULL) { /* Se o ponteiro "novo" apontar para NULL, a função terá um erro e
+						   retornará o ponteiro "inicio" original sem modificar a lista.
+						   Caso contrário, a função prossegue com a inserção do novo cliente na lista.
+						*/
+						//printf("Erro: novo cliente e nulo\n");
+ 		return inicio;
+	}
 	if (inicio == NULL)
 	{
 		inicio = novo;
@@ -54,27 +62,28 @@ Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio) {
 		novo->next = inicio;
 		inicio = novo;
 	}
+	return inicio; //É necessário que ela retorne o ponteiro para o início da lista atualizado após a inserção do novo veículo.
 }
 
 // Inserir Maquina Fim da Lista
 /* Esse metodo recebe uma maquina nova para
    inserir e recebe o incio da lista onde se vai inserir */
 Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio) {
-	if (inicio == NULL) //se inicio é igual a NULL, a variavel inicio vai ser igual a novo;
+	if (inicio == NULL) // Se a lista estiver vazia, o novo nó será a cabeça da lista
 	{
 		inicio = novo;
 	}
-	else // se não, vamos procurar o fim
+	else  // Se a lista não estiver vazia, insere o novo nó no final
 	{
 		Veiculo* aux = inicio; // Usa-se uma variável auxiliar que fica a apontar para o inicio, pois nao podemos alterar o inicio
-		while (aux->next != NULL)  /* Enquanto o aux campo next nao for nulo
+		while (aux->next != NULL) {  /* Enquanto o aux campo next nao for nulo
 									  ou
 									  Enquanto ele estiver a apontar para alguma coisa seguira sempre. */
-
 			aux = aux->next; // aux toma o valor de aux campo next, dessa forma avançamos na lista e quando acabar o fim do ciclo estamos no fim da lista
+		}
 		aux->next = novo;
-		inicio = novo;
 	}
+	novo->next = NULL; // O campo next do novo nó deve ser nulo
 	return inicio;
 }
 
@@ -91,7 +100,7 @@ Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio) {
 		Veiculo* auxSup = NULL;
 
 		//Verificar se já existe repetido
-		if (VerificaVeiculoDuplicado(novo->bateria, novo->tipo, inicio) == inicio)
+		if (VerificaVeiculoDuplicado(novo->cod, novo->tipo, inicio) == inicio)
 			return inicio;
 
 		//procurar a posicao correta, e ordena pelo cod!!!!
