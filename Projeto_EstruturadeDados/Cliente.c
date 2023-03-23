@@ -113,11 +113,13 @@ Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio) {
 		}
 		if ((auxProx != NULL) && (auxProx->cod != cod) && (auxProx->nif != nif)) {
 			// Não foi encontrado nenhum cliente com o código e nif especificados;
-			return inicio; // nao existe cliente, retorna início;
+			return NULL; // nao existe cliente, retorna início;
 		}
+		if(auxProx != NULL) {
 		// Remove o veículo encontrado
 		auxAnt->next = auxProx->next; // auxAnt campo next passa a conter o valor de auxProx campo next;
 		free(auxProx);	// liberta a memória que é removida;
+		}
 	}
 	return inicio;	// Retorna o cabeçalho
 }
