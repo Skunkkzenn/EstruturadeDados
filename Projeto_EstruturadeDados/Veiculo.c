@@ -212,4 +212,18 @@ Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio) {
 	return inicio; // Retorna head
 }
 
+// Recebe dois ponteiros para um arquivo binário e um arquivo de texto
+// Lê as informações do arquivo binário e exibe o resultado no terminal.
+int exibe_conteudo_arquivo(FILE* arquivo_binario, FILE* arquivo_texto) {
+	Veiculo veiculo;
+	int linhas_lidas = 0; // armazena o número de veículos lidos no arquivo.
+
+	// Lê as informações do arquivo binário e exibe na tela
+	while (fread(&veiculo, sizeof(Veiculo), 1, arquivo_binario) == 1) {
+		printf("%d, %s, %.2f, %.2f, %s\n", veiculo.cod, veiculo.tipo, veiculo.bateria, veiculo.custo, veiculo.local);
+		linhas_lidas++;
+	}
+
+	return linhas_lidas;
+}
 #pragma endregion
