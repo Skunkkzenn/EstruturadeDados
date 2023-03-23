@@ -48,7 +48,8 @@ Gestor* InsertGestorInicio(Gestor* novo, Gestor* inicio) {
 		inicio = novo;
 	}
 	return inicio; // retorna o ponteiro para o início da lista atualizada.
-} /* Sim, o código parece estar correto.
+} 
+/* Sim, o código parece estar correto.
   A função "InsertGestorInicio" parece ser responsável por inserir um novo nó (representado pela estrutura "Gestor") no início de uma lista encadeada. O primeiro argumento "novo" é o ponteiro para o novo nó a ser inserido e o segundo argumento "inicio" é o ponteiro para o primeiro nó da lista atual.
   O primeiro "if" verifica se o ponteiro "novo" é nulo, o que indica que não há nada para ser inserido na lista. Nesse caso, a função simplesmente retorna o ponteiro para o início da lista original.
   O segundo "if" verifica se a lista está vazia (ou seja, se o ponteiro "inicio" é nulo). Se estiver vazia, o novo nó é definido como o primeiro nó da lista, e a função retorna o ponteiro para o novo início da lista.
@@ -163,7 +164,7 @@ Gestor* AlteraCampoGestor(int cod, char* nome, float saldo, long int nif, char* 
 	return inicio;
 }
 
-Gestor* RemoveCliente(int cod, long int nif, Gestor* inicio) {
+Gestor* RemoveGestor(int cod, long int nif, Gestor* inicio) {
 	// Verifica se o início é nulo (lista vazia)
 	if (inicio == NULL) {
 		return NULL; // Não há nenhum veículo para ser removido
