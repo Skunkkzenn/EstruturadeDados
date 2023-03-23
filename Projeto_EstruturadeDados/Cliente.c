@@ -13,6 +13,7 @@
 #include "Cliente.h"
 #pragma warning( disable : 4996 )
 
+//Cria cliente
 Cliente* CriaCliente(int cod, char* nome, float saldo, long int nif, char* morada) {
 	Cliente* novoCliente;
 	//Cria espaço de memória
@@ -33,28 +34,100 @@ Cliente* CriaCliente(int cod, char* nome, float saldo, long int nif, char* morad
 
 }
 
-Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio) {
-	if (novo == NULL) { /* Se o ponteiro "novo" apontar para NULL, a função terá um erro e
-						   retornará o ponteiro "inicio" original sem modificar a lista.
-						   Caso contrário, a função prossegue com a inserção do novo cliente na lista.
-						*/
-						//printf("Erro: novo cliente e nulo\n");
+//Insere Cliente Inicio
+Cliente* InsertClienteInicio(Cliente* novo, Cliente* inicio) {
+	if (novo == NULL) // Verifica se ponteiro para o novo cliente é nulo, logo como não há nada para ser inserido, retorna o ponteiro para o inicio da lista original
+	{
 		return inicio;
 	}
-
-	if (inicio == NULL) { /* Se o ponteiro "inicio" da lista estiver apontando para NULL,
-							 o novo cliente será o primeiro da lista, portanto o ponteiro
-							 "inicio" será atualizado para apontar para o novo cliente. */
+	if (inicio == NULL) // Verifica se a lista está vazia, se estiver, o novo cliente se torna o primeiro nó da lista
+	{
 		inicio = novo;
 	}
-	else // Se o ponteiro "inicio" da lista não estiver apontando para NULL, o novo cliente será adicionado ao início da lista e o ponteiro "next" do novo cliente será atualizado para apontar para o antigo primeiro cliente da lista. Em seguida, o ponteiro "inicio" da lista será atualizado para apontar para o novo cliente.
+	else // Só será executado se a lista estiver vazia. O campo next do novo cliente esta configurado apra apontar para o início da lista atual, de seguida o ponteiro para o início da lista é atualizado para apontar para o novo nó.
 	{
 		novo->next = inicio;
 		inicio = novo;
 	}
+	return inicio; // retorna o ponteiro para o início da lista atualizada.
+}
+
+//Insere Cliente fim
+Cliente* InsertClienteFim(Cliente* novo, Cliente* inicio) {
+	if (inicio == NULL)
+	{
+		inicio = novo;
+	}
+	else
+	{
+		Cliente* aux = inicio;
+		while (aux->next != NULL)
+		{
+			aux = aux->next;
+		}
+		aux->next = novo;
+	}
+	novo->next = NULL;
 	return inicio;
 }
 
+//Insere Cliente na Lista
+Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio) {
+	if (inicio == NULL)
+	{
+		inicio = novo;
+	}
+	else
+	{
+		Cliente* aux = inicio;
+		Cliente* auxSup = NULL;
+
+		//Verificar se já existe repetido
+		if (VerificaClienteDuplicado(novo->cod, novo->nif, inicio) == inicio)
+			return inicio;
+
+		//procurar a posicao correta, e ordena pelo cod!!!!
+		while (aux && aux->cod < novo->cod) {
+			auxSup = aux;
+			aux = aux->next;
+		}
+
+		if (auxSup == NULL && novo->cod < inicio->cod) { //Insere no início
+			novo->next = inicio;
+			inicio = novo;
+		}
+		else if (auxSup == NULL)
+		{ //Insere no meio
+			novo->next = aux;
+			inicio = novo;
+		}
+		else //Insere no fim
+		{
+			auxSup->next = novo;
+			novo->next = aux;
+		}
+		return inicio;
+	}
+
+}
+
+//Verifica Cliente Duplicado
+Cliente* VerificaClienteDuplicado(int cod, int long nif, Cliente* inicio){
+
+	if (inicio == NULL) // Verifica se a lista encadeada está vazia (inicio == NULL), caso esteja retorna NULL, indicando que não há clientes duplicados.
+{
+	return NULL; // Caso não encontre nenhum cliente com o mesmo código e nif, retorna NULL.
+}
+
+	Cliente* aux = inicio;
+	while ((aux != NULL) && (aux->cod != cod) && (aux->nif != nif)) // percorre a lista para verificar os campos cod e nif e enquanto ele nao encontrar aux toma valor de aux campo next
+{
+	aux = aux->next;
+}
+	return aux; // Ao fim retorna o valor de aux
+}
+
+//Altera dados Cliente
 Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char* morada, Cliente* novo, Cliente* inicio) {
 	// Verifica se a lista está vazia
 	if (inicio == NULL)
@@ -88,6 +161,7 @@ Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char
 	return inicio;
 }
 
+//Remove Cliente
 Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio) {
 	// Verifica se o início é nulo (lista vazia)
 	if (inicio == NULL) {
@@ -121,7 +195,8 @@ Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio) {
 		}
 	}
 	return inicio;	// Retorna o cabeçalho
-} /* Na minha avaliação, a função RemoveCliente parece estar correta agora. A verificação inicial de inicio ser nulo para garantir que a lista não é vazia e as variáveis auxiliares auxAnt e auxProx estão sendo corretamente inicializadas. A condição para remover o nó da cabeça da lista também parece estar correta.
+}
+/* Na minha avaliação, a função RemoveCliente parece estar correta agora. A verificação inicial de inicio ser nulo para garantir que a lista não é vazia e as variáveis auxiliares auxAnt e auxProx estão sendo corretamente inicializadas. A condição para remover o nó da cabeça da lista também parece estar correta.
 
 No loop while, a função verifica se auxProx é nulo antes de acessá-lo e também verifica se o cod e nif correspondem ao nó atual. Além disso, o if que verifica se o nó a ser removido foi encontrado parece estar correto agora.
 
@@ -129,19 +204,3 @@ Na linha problemática, adicionando o if antes da atribuição de auxAnt->next reso
 
 Dito isso, a função RemoveCliente parece estar funcionando corretamente e não vejo nenhuma melhoria adicional a ser feita.*/
 
-Cliente* InsertClienteInicio(Cliente* novo, Cliente* inicio) {
-	if (novo == NULL) // Verifica se ponteiro para o novo cliente é nulo, logo como não há nada para ser inserido, retorna o ponteiro para o inicio da lista original
-	{
-		return inicio;
-	}
-	if (inicio == NULL) // Verifica se a lista está vazia, se estiver, o novo cliente se torna o primeiro nó da lista
-	{
-		inicio = novo;
-	}
-	else // Só será executado se a lista estiver vazia. O campo next do novo cliente esta configurado apra apontar para o início da lista atual, de seguida o ponteiro para o início da lista é atualizado para apontar para o novo nó.
-	{
-		novo->next = inicio;
-		inicio = novo;
-	}
-	return inicio; // retorna o ponteiro para o início da lista atualizada.
-}
