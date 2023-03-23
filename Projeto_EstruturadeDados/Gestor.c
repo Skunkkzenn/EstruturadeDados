@@ -13,6 +13,9 @@
 #include "Gestor.h"
 #pragma warning( disable : 4996 )
 
+#pragma region Métodos Gestores
+
+	//Criar e inicializar um novo gestor com as informações fornecidas
 Gestor* CriaGestor(int cod, char* nome, float saldo, long int nif, char* morada) {
 	Gestor* novoGestor;
 	//Cria espaço de memória
@@ -33,6 +36,7 @@ Gestor* CriaGestor(int cod, char* nome, float saldo, long int nif, char* morada)
 
 }
 
+	//Insere Gestor no Inicio
 Gestor* InsertGestorInicio(Gestor* novo, Gestor* inicio) {
 	if (novo == NULL) // Verifica se ponteiro para o novo gestor é nulo, logo como não há nada para ser inserido, retorna o ponteiro para o inicio da lista original
 	{
@@ -49,13 +53,8 @@ Gestor* InsertGestorInicio(Gestor* novo, Gestor* inicio) {
 	}
 	return inicio; // retorna o ponteiro para o início da lista atualizada.
 } 
-/* Sim, o código parece estar correto.
-  A função "InsertGestorInicio" parece ser responsável por inserir um novo nó (representado pela estrutura "Gestor") no início de uma lista encadeada. O primeiro argumento "novo" é o ponteiro para o novo nó a ser inserido e o segundo argumento "inicio" é o ponteiro para o primeiro nó da lista atual.
-  O primeiro "if" verifica se o ponteiro "novo" é nulo, o que indica que não há nada para ser inserido na lista. Nesse caso, a função simplesmente retorna o ponteiro para o início da lista original.
-  O segundo "if" verifica se a lista está vazia (ou seja, se o ponteiro "inicio" é nulo). Se estiver vazia, o novo nó é definido como o primeiro nó da lista, e a função retorna o ponteiro para o novo início da lista.
-  Se a lista não estiver vazia, o novo nó é inserido no início da lista. Primeiro, o campo "next" do novo nó é definido como o ponteiro para o nó anteriormente no início da lista (ou seja, o "inicio" atual). Em seguida, o ponteiro "inicio" é atualizado para apontar para o novo nó, tornando-o o novo início da lista. A função retorna o ponteiro para o novo início da lista atualizada.
-  Tenha em mente que, assim como qualquer função que manipula ponteiros em uma lista encadeada, é importante garantir que os ponteiros estejam configurados corretamente e que não haja vazamentos de memória ao inserir ou excluir nós da lista.*/
 
+	//Insere Gestor no fim
 Gestor* InsertGestorFim(Gestor* novo, Gestor* inicio) {
 	if (inicio == NULL)
 	{
@@ -74,6 +73,7 @@ Gestor* InsertGestorFim(Gestor* novo, Gestor* inicio) {
 	return inicio;
 }
 
+	//Verifica Gestor duplicado
 Gestor* VerificaGestorDuplicado(int cod, int long nif, Gestor* inicio) {
 
 	if (inicio == NULL) // Verifica se a lista encadeada está vazia (inicio == NULL), caso esteja retorna NULL, indicando que não há clientes duplicados.
@@ -88,7 +88,8 @@ Gestor* VerificaGestorDuplicado(int cod, int long nif, Gestor* inicio) {
 	}
 	return aux; // Ao fim retorna o valor de aux
 }
-
+	
+	//Insere Gestor na Lista
 Gestor* InsertGestorLista(Gestor* novo, Gestor* inicio) {
 	if (inicio == NULL)
 	{
@@ -131,6 +132,7 @@ Gestor* InsertGestorLista(Gestor* novo, Gestor* inicio) {
 
 }
 
+	//Altera dados do Gestor
 Gestor* AlteraCampoGestor(int cod, char* nome, float saldo, long int nif, char* morada, Gestor* novo, Gestor* inicio) {
 	// Verifica se a lista está vazia
 	if (inicio == NULL)
@@ -164,6 +166,7 @@ Gestor* AlteraCampoGestor(int cod, char* nome, float saldo, long int nif, char* 
 	return inicio;
 }
 
+	//Remove Gestor
 Gestor* RemoveGestor(int cod, long int nif, Gestor* inicio) {
 	// Verifica se o início é nulo (lista vazia)
 	if (inicio == NULL) {
@@ -198,3 +201,5 @@ Gestor* RemoveGestor(int cod, long int nif, Gestor* inicio) {
 	}
 	return inicio;	// Retorna o cabeçalho
 }
+
+#pragma endregion
