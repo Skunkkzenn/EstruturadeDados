@@ -14,6 +14,7 @@
 #include "Cliente.h"
 #pragma warning( disable : 4996 )
 
+#pragma region Métodos Clientes
 //Cria cliente
 Cliente* CriaCliente(int cod, char* nome, float saldo, long int nif, char* morada) {
 	Cliente* novoCliente;
@@ -208,3 +209,4 @@ Na linha problemática, adicionando o if antes da atribuição de auxAnt->next reso
 
 Dito isso, a função RemoveCliente parece estar funcionando corretamente e não vejo nenhuma melhoria adicional a ser feita.*/
 
+#pragma endregion

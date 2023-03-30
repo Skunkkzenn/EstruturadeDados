@@ -28,6 +28,8 @@ typedef struct Gestor {
 
 #pragma endregion
 
+#pragma region Funcoes que Tratam dos Gestores
+
 Gestor* CriaGestor(int cod, char* nome, float saldo, long int nif, char* morada);
 Gestor* InsertGestorInicio(Gestor* novo, Gestor* inicio);
 Gestor* InsertGestorFim(Gestor* novo, Gestor* inicio);
@@ -35,3 +37,5 @@ Gestor* VerificaGestorDuplicado(int cod, int long nif, Gestor* inicio);
 Gestor* InsertGestorLista(Gestor* novo, Gestor* inicio);
 Gestor* AlteraCampoGestor(int cod, char* nome, float saldo, long int nif, char* morada, Gestor* novo, Gestor* inicio);
 Gestor* RemoveGestor(int cod, long int nif, Gestor* inicio);
+
+#pragma endregion

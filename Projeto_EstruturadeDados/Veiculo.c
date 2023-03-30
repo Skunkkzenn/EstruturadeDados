@@ -13,7 +13,7 @@
 #include "Veiculo.h"
 #pragma warning( disable : 4996 )
 
-#pragma region Funções para trabalhar sobre veículos.
+#pragma region Métodos Veículos.
 
 //Criar e inicializar um novo veículo com as informações fornecidas
 Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* local) {
@@ -96,32 +96,32 @@ Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio) {
 	}
 	else
 	{
-		Veiculo* aux = inicio;
-		Veiculo* auxSup = NULL;
+		Veiculo* atual = inicio;
+		Veiculo* anterior = NULL;
 
 		//Verificar se já existe repetido
 		if (VerificaVeiculoDuplicado(novo->cod, novo->tipo, inicio) == inicio)
 			return inicio;
 
 		//procurar a posicao correta, e ordena pelo cod!!!!
-		while (aux && aux->cod < novo->cod) {
-			auxSup = aux;
-			aux = aux->next;
+		while (atual && atual->cod < novo->cod) {
+			anterior = atual;
+			atual = atual->next;
 		}
 
-		if (auxSup == NULL && novo->cod < inicio->cod) { //Insere no início
+		if (anterior == NULL && novo->cod < inicio->cod) { //Insere no início
 			novo->next = inicio;
 			inicio = novo;
 		}
-		else if (auxSup == NULL)
+		else if (anterior == NULL)
 		{ //Insere no meio
-			novo->next = aux;
+			novo->next = atual;
 			inicio = novo;
 		}
 		else //Insere no fim
 		{
-			auxSup->next = novo;
-			novo->next = aux;
+			anterior->next = novo;
+			novo->next = atual;
 		}
 		return inicio;
 	}
@@ -211,6 +211,5 @@ Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio) {
 	}
 	return inicio; // Retorna head
 }
-
 
 #pragma endregion
