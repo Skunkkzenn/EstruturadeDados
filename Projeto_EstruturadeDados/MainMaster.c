@@ -16,8 +16,11 @@
 #pragma warning( disable : 4996 )
 
 
-int main(){
-	
+int main()  {
+    /* Veiculos */
+    char fileName[] = "veiculos.txt";
+    bool sucesso = LerDadosVeiculo(fileName);
+   
 
 	return 0;
 }

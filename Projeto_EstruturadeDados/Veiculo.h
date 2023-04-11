@@ -43,8 +43,7 @@ Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* sup);
 Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio);
 Veiculo* VerificaVeiculoDuplicado(int cod, char* tipo, Veiculo* inicio);
 Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, char* local, Veiculo* novo, Veiculo* inicio);
-bool exibe_conteudo_arquivo(FILE* arquivo_binario, FILE* arquivo_texto);
-bool atualiza_arquivo_binario(FILE* arquivo_binario, FILE* arquivo_texto);
+bool LerDadosVeiculo(char fileName[]);
 #pragma endregion
 
 

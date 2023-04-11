@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include "Veiculo.h"
 #pragma warning( disable : 4996 )
+#define MAXCHAR 500
 
 #pragma region Métodos Veículos.
 
@@ -51,7 +52,7 @@ Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio) {
 						   retornará o ponteiro "inicio" original sem modificar a lista.
 						   Caso contrário, a função prossegue com a inserção do novo cliente na lista.
 						*/
-						//printf("Erro: novo cliente e nulo\n");
+						printf("Erro: novo cliente e nulo\n");
  		return inicio;
 	}
 	if (inicio == NULL)
@@ -212,5 +213,22 @@ Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio) {
 	return inicio; // Retorna head
 }
 
+bool LerDadosVeiculo(char fileName[])
+{
+	char row[MAXCHAR];
+	FILE* fp = fopen(fileName, "r");
+	if (fp == NULL) {
+		perror("Problemas na leitura do ficheiro.\n");
+		return false;
+	}
+
+	while (feof(fp) != true)
+	{
+		fgets(row, MAXCHAR, fp);
+		printf("Veiculos: %s", row);
+	}
+	fclose(fp);
+	return true;
+}
 
 #pragma endregion
