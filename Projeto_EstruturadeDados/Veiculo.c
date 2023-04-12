@@ -110,7 +110,7 @@ Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio) {
 			atual = atual->next;
 		}
 
-		if (anterior == NULL && novo->cod < inicio->cod) { //Insere no início
+		if (anterior == NULL && novo->  cod < inicio->cod) { //Insere no início
 			novo->next = inicio;
 			inicio = novo;
 		}
@@ -226,6 +226,29 @@ bool LerDadosVeiculo(char fileName[])
 	{
 		fgets(row, MAXCHAR, fp);
 		printf("Veiculos: %s", row);
+	}
+	fclose(fp);
+	return true;
+}
+
+bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
+	FILE* fp;
+
+	if (inicio == NULL) {
+		return false;
+	}
+
+	if ((fp = fopen(nomeFicheiro, "wb")) == NULL) {
+		return false;
+	}	
+
+	//grava 1 registo de cada vez no ficheiro
+	Veiculo* aux = inicio;
+	VeiculosLista* auxVeiculo;	
+	while (aux) {		//while(aux!=NULL)
+		auxVeiculo = aux->veiculo; 
+		fwrite(&auxVeiculo, sizeof(Veiculo), 1, fp);
+		aux = aux->next;
 	}
 	fclose(fp);
 	return true;
