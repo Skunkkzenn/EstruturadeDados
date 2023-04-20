@@ -1,0 +1,4 @@
+cod;tipo;bateria;custo;local
+01;bicicleta;75.80;1.55;maps.geolocation
+02;carro;99.25;5.36;maps.geolocation
+03;trotinete;26.23;0.69;maps.geolocation
