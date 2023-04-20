@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include "Veiculo.h"
 #pragma warning( disable : 4996 )
+#define MAXCHAR 500
 
 #pragma region Métodos Veículos.
 
@@ -51,7 +52,7 @@ Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio) {
 						   retornará o ponteiro "inicio" original sem modificar a lista.
 						   Caso contrário, a função prossegue com a inserção do novo cliente na lista.
 						*/
-						//printf("Erro: novo cliente e nulo\n");
+						printf("Erro: novo cliente e nulo\n");
  		return inicio;
 	}
 	if (inicio == NULL)
@@ -109,7 +110,7 @@ Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio) {
 			atual = atual->next;
 		}
 
-		if (anterior == NULL && novo->cod < inicio->cod) { //Insere no início
+		if (anterior == NULL && novo->  cod < inicio->cod) { //Insere no início
 			novo->next = inicio;
 			inicio = novo;
 		}
@@ -212,42 +213,45 @@ Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio) {
 	return inicio; // Retorna head
 }
 
-// Recebe dois ponteiros para um arquivo binário e um arquivo de texto
-// Lê as informações do arquivo binário e exibe o resultado no terminal.
-bool exibe_conteudo_arquivo(FILE* arquivo_binario, FILE* arquivo_texto) {
-	Veiculo veiculo;
-	int linhas_lidas = 0; // armazena o número de veículos lidos no arquivo.
-
-	// Lê as informações do arquivo binário e exibe na tela
-	while (fread(&veiculo, sizeof(Veiculo), 1, arquivo_binario) == 1) {
-		printf("%d;%s;%f;%f;%s\n", veiculo.cod, veiculo.tipo, veiculo.bateria, veiculo.custo, veiculo.local);
-		linhas_lidas++;
-		// Escreve as informações do veículo no arquivo de texto
-		fprintf(arquivo_texto, "%d;%s;%f;%f;%s\n", veiculo.cod, veiculo.tipo, veiculo.bateria, veiculo.custo, veiculo.local);
-	}
-	// Verifica se ocorreu algum erro durante a gravação do arquivo de texto
-	if (ferror(arquivo_texto)) {
+bool LerDadosVeiculo(char fileName[])
+{
+	char row[MAXCHAR];
+	FILE* fp = fopen(fileName, "r");
+	if (fp == NULL) {
+		perror("Problemas na leitura do ficheiro.\n");
 		return false;
 	}
 
+	while (feof(fp) != true)
+	{
+		fgets(row, MAXCHAR, fp);
+		printf("Veiculos: %s", row);
+	}
+	fclose(fp);
 	return true;
 }
 
-// Também recebe dois ponteiros para um arquivo binário e um arquivo de texto
-// Lê as informações do arquivo de texto e as escreve no binário "cod;tipo;bateria;custo;local". 
+bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
+	FILE* fp;
 
-bool atualiza_arquivo_binario(FILE* arquivo_binario, FILE* arquivo_texto) {
-	Veiculo veiculo;
-	int linhas_lidas = 0; // armazena o número de linhas(veículos) lidas no arquivo de texto e escritas no arquivo binário.
-
-	memset(&veiculo, 0, sizeof(Veiculo)); // inicialização com valores zerados
-
-	fscanf(arquivo_texto, "%*[^\n]"); // Descarta a primeira linha do arquivo de texto
-
-	while (fscanf(arquivo_texto, "%d;%[^;];%f;%f;%[^\n]\n", &veiculo.cod, veiculo.tipo, &veiculo.bateria, &veiculo.custo, veiculo.local) != EOF) {
-		fwrite(&veiculo, sizeof(Veiculo), 1, arquivo_binario);
-		linhas_lidas++;
+	if (inicio == NULL) {
+		return false;
 	}
-	return linhas_lidas;
+
+	if ((fp = fopen(nomeFicheiro, "wb")) == NULL) {
+		return false;
+	}	
+
+	//grava 1 registo de cada vez no ficheiro
+	Veiculo* aux = inicio;
+	VeiculosLista* auxVeiculo;	
+	while (aux) {		//while(aux!=NULL)
+		auxVeiculo = aux->veiculo; 
+		fwrite(&auxVeiculo, sizeof(Veiculo), 1, fp);
+		aux = aux->next;
+	}
+	fclose(fp);
+	return true;
 }
+
 #pragma endregion
