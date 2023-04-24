@@ -253,4 +253,22 @@ bool GravarVeiculoBin(char* nomeFicheiro, VeiculosLista* inicio) {
 	fclose(fp);
 	return true;
 }
+
+VeiculosLista* LerVeiculosBin(char* nomeFicheiro) {
+	FILE* fp;
+	VeiculosLista* inicio = NULL;
+	Veiculo* aux;
+
+	if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
+
+	//Vai ler o numero de registro no ficheiro
+	aux = (Veiculo*)malloc(sizeof(Veiculo));
+	while (fread(aux, sizeof(Veiculo), 1, fp)) {
+		inicio = InsertVeiculoInicio(inicio, aux);
+		aux = (Veiculo*)malloc(sizeof(Veiculo));
+	}
+	fclose(fp);
+	return inicio;
+}
+
 #pragma endregion

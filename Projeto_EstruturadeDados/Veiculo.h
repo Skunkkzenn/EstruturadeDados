@@ -51,8 +51,13 @@ Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* sup);
 Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio);
 Veiculo* VerificaVeiculoDuplicado(int cod, char* tipo, Veiculo* inicio);
 Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, char* local, Veiculo* novo, Veiculo* inicio);
+
 bool LerDadosVeiculo(char fileName[]);
 bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio);
+VeiculosLista* lerVeiculosBinario(char* nomeFicheiro);
+
+
+
 #pragma endregion
 
 
