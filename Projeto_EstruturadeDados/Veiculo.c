@@ -16,6 +16,7 @@
 
 #pragma region Métodos Veículos.
 
+
 //Criar e inicializar um novo veículo com as informações fornecidas
 Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* local) {
 	// Cria uma variável para armazenar o ponteiro para o novo veículo
@@ -39,6 +40,7 @@ Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* loca
 
 	return novoVeiculo; //Retorna o o ponteiro para o novo veiculo criado
 }
+
 
 // Insere veiculo no inicio
 Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio) {
