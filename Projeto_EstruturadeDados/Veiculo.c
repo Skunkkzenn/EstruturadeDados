@@ -16,6 +16,7 @@
 
 #pragma region Métodos Veículos.
 
+
 //Criar e inicializar um novo veículo com as informações fornecidas
 Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* local) {
 	// Cria uma variável para armazenar o ponteiro para o novo veículo
@@ -39,6 +40,7 @@ Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* loca
 
 	return novoVeiculo; //Retorna o o ponteiro para o novo veiculo criado
 }
+
 
 // Insere veiculo no inicio
 Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio) {
@@ -231,7 +233,7 @@ bool LerDadosVeiculo(char fileName[])
 	return true;
 }
 
-bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
+bool GravarVeiculoBin(char* nomeFicheiro, VeiculosLista* inicio) {
 	FILE* fp;
 
 	if (inicio == NULL) {
@@ -243,8 +245,8 @@ bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	}	
 
 	//grava 1 registo de cada vez no ficheiro
-	Veiculo* aux = inicio;
-	VeiculosLista* auxVeiculo;	
+	VeiculosLista* aux = inicio;
+	Veiculo* auxVeiculo;	
 	while (aux) {		//while(aux!=NULL)
 		auxVeiculo = aux->veiculo; 
 		fwrite(&auxVeiculo, sizeof(Veiculo), 1, fp);
@@ -252,6 +254,23 @@ bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	}
 	fclose(fp);
 	return true;
+}
+
+VeiculosLista* LerVeiculosBin(char* nomeFicheiro) {
+	FILE* fp;
+	VeiculosLista* inicio = NULL;
+	Veiculo* aux;
+
+	if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
+
+	//Vai ler o numero de registro no ficheiro
+	aux = (Veiculo*)malloc(sizeof(Veiculo));
+	while (fread(aux, sizeof(Veiculo), 1, fp)) {
+		inicio = InsertVeiculoInicio(inicio, aux);
+		aux = (Veiculo*)malloc(sizeof(Veiculo));
+	}
+	fclose(fp);
+	return inicio;
 }
 
 #pragma endregion

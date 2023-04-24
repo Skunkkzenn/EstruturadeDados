@@ -27,7 +27,7 @@ typedef struct Cliente {
 }Cliente;
 #pragma endregion
 
-#pragma region Fun��es para Tratar Clientes
+#pragma region Funções para Tratar Clientes
 Cliente* CriaCliente(int cod, char* nome, float saldo, long int nif, char* morada);
 Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio);
 Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char* morada, Cliente* novo, Cliente* inicio);
