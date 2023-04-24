@@ -28,10 +28,12 @@ typedef struct Veiculo {
 	float bateria;
 	float custo;
 	char local[N];
-	/*struct Veiculo* next; /* Campo seguinte do veiculo;
+	struct Veiculo* next; /* Campo seguinte do veiculo;
 						   guarda a variável no endereço de memoria do proximo veiculo;
 						   temos um apontador na memoria para ir para o próximo veículo; */
 }Veiculo;
+
+
 
 typedef struct VeiculosLista {
 	Veiculo* veiculo;

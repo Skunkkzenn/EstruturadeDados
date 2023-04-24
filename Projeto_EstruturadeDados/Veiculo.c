@@ -231,7 +231,7 @@ bool LerDadosVeiculo(char fileName[])
 	return true;
 }
 
-bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
+bool GravarVeiculoBin(char* nomeFicheiro, VeiculosLista* inicio) {
 	FILE* fp;
 
 	if (inicio == NULL) {
@@ -243,8 +243,8 @@ bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	}	
 
 	//grava 1 registo de cada vez no ficheiro
-	Veiculo* aux = inicio;
-	VeiculosLista* auxVeiculo;	
+	VeiculosLista* aux = inicio;
+	Veiculo* auxVeiculo;	
 	while (aux) {		//while(aux!=NULL)
 		auxVeiculo = aux->veiculo; 
 		fwrite(&auxVeiculo, sizeof(Veiculo), 1, fp);
@@ -253,5 +253,4 @@ bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	fclose(fp);
 	return true;
 }
-
 #pragma endregion
