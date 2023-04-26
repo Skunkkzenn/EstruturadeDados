@@ -10,3 +10,10 @@
 #include <stdbool.h>
 #define MAX 10
 #define N 20
+
+typedef struct Vertice {
+	int valor;
+	char nome[N];
+}Vertice;
+
+

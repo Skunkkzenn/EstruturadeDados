@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Cliente.c" />
     <ClCompile Include="Gestor.c" />
+    <ClCompile Include="Grafo.c" />
     <ClCompile Include="MainMaster.c" />
     <ClCompile Include="Veiculo.c" />
   </ItemGroup>
