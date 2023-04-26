@@ -13,8 +13,10 @@
 #include "Veiculo.h"
 #include "Cliente.h"
 #include "Gestor.h"
+#include "Grafo.h"
 #pragma warning( disable : 4996 )
 
+#define VERT 15
 
 int main()  {
     /* Veiculos */
@@ -22,5 +24,25 @@ int main()  {
     bool sucesso = LerDadosVeiculo(fileName);
    
 
-	return 0;
+
+    /* Vertices */
+    //Conjunto de Vertices
+    Vertice vertices[MAX];
+
+    //Matriz de Adjacência
+    float ma[MAX][MAX];
+
+    bool aux = CriaGrafo(VERT, ma);
+
+    //numero da corrente de vertices
+    int totVertices = 0;
+
+    aux = InsereVertice(vertices, &totVertices, "Sao Vitor");
+    aux = InsereVertice(vertices, &totVertices, "Lamacaes");
+    aux = InsereVertice(vertices, &totVertices, "Santa Tecla");
+    
+    //Criar o grafo
+    aux = InsereAresta(ma, VERT, vertices, totVertices, "Sao Victor", "Lamacaes", 15);
+    aux = InsereAresta(ma, 5, vertices, totVertices, "Lamacaes", "Santa Tecla", 20);
+    aux = InsereAresta(ma, 5, vertices, totVertices, "Santa Tecla", "Sao Victor", 35);
 }
