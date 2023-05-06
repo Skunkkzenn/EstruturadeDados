@@ -131,6 +131,7 @@
     <ClCompile Include="Gestor.c" />
     <ClCompile Include="Grafo.c" />
     <ClCompile Include="MainMaster.c" />
+    <ClCompile Include="MasterMA.c" />
     <ClCompile Include="Veiculo.c" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +139,7 @@
     <ClInclude Include="Gestor.h" />
     <ClInclude Include="Grafo.h" />
     <ClInclude Include="Veiculo.h" />
+    <ClInclude Include="Vertice.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
