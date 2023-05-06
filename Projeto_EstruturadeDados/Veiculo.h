@@ -28,7 +28,7 @@ typedef struct Veiculo {
 	float bateria;
 	float custo;
 	char local[N];
-	/*struct Veiculo* next; /* Campo seguinte do veiculo;
+	struct Veiculo* next; /* Campo seguinte do veiculo;
 						   guarda a variável no endereço de memoria do proximo veiculo;
 						   temos um apontador na memoria para ir para o próximo veículo; */
 }Veiculo;
@@ -51,6 +51,7 @@ Veiculo* VerificaVeiculoDuplicado(int cod, char* tipo, Veiculo* inicio);
 Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, char* local, Veiculo* novo, Veiculo* inicio);
 bool LerDadosVeiculo(char fileName[]);
 bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio);
+void DestroiVeiculo(Veiculo* veiculo);
 #pragma endregion
 
 

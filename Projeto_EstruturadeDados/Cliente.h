@@ -24,6 +24,12 @@ typedef struct Cliente {
 	char morada[N];
 	struct Cliente* next;
 }Cliente;
+
+typedef struct ClientesLista {
+	Cliente* cliente;
+	struct ClientesLista* next;
+}ClientesLista;
+
 #pragma endregion
 
 #pragma region Funções para Tratar Clientes

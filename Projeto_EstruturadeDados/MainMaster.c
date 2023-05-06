@@ -22,4 +22,7 @@ int main()  {
     /* Veiculos */
     char fileName[] = "veiculos.txt";
     bool sucesso = LerDadosVeiculo(fileName);
+
+    Veiculo* novoVeiculo = CriaVeiculo(140, "carro", 70.5, 30.0, "SaoVitor");
+    
 }

@@ -30,5 +30,6 @@ Vertice* InserePontoRecolha(Vertice* g, Vertice* novo, bool* res);
 void ExibeGrafo(Vertice* g);
 int ProcuraCodPontoRecolha(Vertice* g, char* cidade);
 Vertice* ProcuraPontoRecolha(Vertice* g, char* cidade);
+Vertice* InsLigPontoRecolha(Vertice* g, char* origem, char* dest, float peso, bool* res);
 
 #pragma endregion
