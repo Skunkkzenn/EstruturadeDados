@@ -19,3 +19,8 @@ typedef struct Adj {
 	float peso; /* Peso */
 	struct Adj* next;
 }Adj;
+
+Adj* CriaLigacao(int cod, float peso);
+bool ExisteLigacao(Adj* head, int cod);
+Adj* InsereLigacao(Adj* head, Adj* novo, bool* res);
+void MostraLigacoes(Adj* head);
