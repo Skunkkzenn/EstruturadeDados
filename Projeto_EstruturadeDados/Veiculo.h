@@ -45,10 +45,12 @@ typedef struct VeiculosLista {
 #pragma region Funcoes que Tratam dos Veiculos
 
 Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* local);
-Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* sup);
-Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio);
-Veiculo* VerificaVeiculoDuplicado(int cod, char* tipo, Veiculo* inicio);
-Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, char* local, Veiculo* novo, Veiculo* inicio);
+Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio, bool* res);
+Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio, bool* res);
+Veiculo* VerificaVeiculoDuplicado(int cod, char* tipo, Veiculo* inicio, bool* duplicado);
+Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio, bool* res);
+Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio, bool* res);
+Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, char* local, Veiculo* novo, Veiculo* inicio, bool* res);
 bool LerDadosVeiculo(char fileName[]);
 bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio);
 void DestroiVeiculo(Veiculo* veiculo);

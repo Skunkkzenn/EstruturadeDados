@@ -43,13 +43,13 @@ Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* loca
 
 
 // Insere veiculo no inicio
-Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio) {
+Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio, bool* res) {
 	/*
 		* Se a lista for vazia, vai alocar o veiculo criado e o retorna;
 		* No inicio da função verifica-se se sup é nulo
 		* Se for nulo, é definido como o novo veículo e é retornado.
 	*/
-
+	*res = false;
 	if (novo == NULL) { /* Se o ponteiro "novo" apontar para NULL, a função terá um erro e
 						   retornará o ponteiro "inicio" original sem modificar a lista.
 						   Caso contrário, a função prossegue com a inserção do novo cliente na lista.
@@ -64,6 +64,7 @@ Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio) {
 	else {
 		novo->next = inicio;
 		inicio = novo;
+		*res = true;
 	}
 	return inicio; //É necessário que ela retorne o ponteiro para o início da lista atualizado após a inserção do novo veículo.
 }
@@ -71,7 +72,8 @@ Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio) {
 // Inserir Maquina Fim da Lista
 /* Esse metodo recebe uma maquina nova para
    inserir e recebe o incio da lista onde se vai inserir */
-Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio) {
+Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio, bool* res) {
+	*res = false;
 	if (inicio == NULL) // Se a lista estiver vazia, o novo nó será a cabeça da lista
 	{
 		inicio = novo;
@@ -85,54 +87,68 @@ Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio) {
 			aux = aux->next; // aux toma o valor de aux campo next, dessa forma avançamos na lista e quando acabar o fim do ciclo estamos no fim da lista
 		}
 		aux->next = novo;
+		*res = true;
 	}
 	novo->next = NULL; // O campo next do novo nó deve ser nulo
 	return inicio;
 }
 
 // Insere Veiculo Lista
-Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio) {
-
+Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio, bool* res) {
+	bool veiculoDuplicado = false; // variável bool para armazenar se há veículo duplicado
+	*res = false;
+	
 	if (inicio == NULL)
 	{
 		inicio = novo;
-	}
-	else
-	{
-		Veiculo* atual = inicio;
-		Veiculo* anterior = NULL;
 
+	}
+	else {
 		//Verificar se já existe repetido
-		if (VerificaVeiculoDuplicado(novo->cod, novo->tipo, inicio) == inicio)
+		if (VerificaVeiculoDuplicado(novo->cod, novo->tipo, inicio, &veiculoDuplicado) != NULL) {
 			return inicio;
 
-		//procurar a posicao correta, e ordena pelo cod!!!!
-		while (atual && atual->cod < novo->cod) {
-			anterior = atual;
-			atual = atual->next;
 		}
 
-		if (anterior == NULL && novo->cod < inicio->cod) { //Insere no início
-			novo->next = inicio;
-			inicio = novo;
+		if (!veiculoDuplicado) {
+			if (inicio == NULL) {
+				inicio = novo;
+			}
+			else {
+				//procurar a posicao correta, e ordena pelo cod!!!!
+				Veiculo* atual = inicio;
+				Veiculo* anterior = NULL;
+
+				//procurar a posicao correta, e ordena pelo cod!!!!
+				while (atual != NULL && atual->cod < novo->cod) {
+					anterior = atual;
+					atual = atual->next;
+
+				}
+
+				if (anterior == NULL) { //Insere no início
+					novo->next = inicio;
+					inicio = novo;
+				}
+				else if (atual == NULL) { //Insere no fim
+					anterior->next = novo;
+					novo->next = NULL;
+				}
+				else { //Insere no meio
+					anterior->next = novo;
+					novo->next = atual;
+				}
+				
+			} 
 		}
-		else if (anterior == NULL)
-		{ //Insere no meio
-			novo->next = atual;
-			inicio = novo;
-		}
-		else //Insere no fim
-		{
-			anterior->next = novo;
-			novo->next = atual;
-		}
-		return inicio;
+		*res = true;
 	}
-
 }
 
 // Verifica Veiculo em duplicado
-Veiculo* VerificaVeiculoDuplicado(int cod, char* tipo, Veiculo* inicio) {
+Veiculo* VerificaVeiculoDuplicado(int cod,char* tipo , Veiculo* inicio, bool* duplicado) {
+	*duplicado = false;
+	
 	if (inicio == NULL) // Verifica se a lista encadeada está vazia (inicio == NULL), caso esteja retorna NULL, indicando que não há veículos duplicados.
 	{
 		return NULL; // Caso não encontre nenhum veículo com o mesmo código e tipo, retorna NULL.
@@ -143,11 +159,19 @@ Veiculo* VerificaVeiculoDuplicado(int cod, char* tipo, Veiculo* inicio) {
 	{
 		aux = aux->next;
 	}
+
+	// Verifica se foi encontrado um veículo duplicado
+	if (aux != NULL && aux->cod == cod && strcmp(aux->tipo, tipo) == 0) {
+	 	*duplicado = true; // Define a variável bool apontada por res como true
+	}
+
 	return aux;
 }
 
 // Altera Dados do Veiculo
-Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, char* local, Veiculo* novo, Veiculo* inicio) {
+Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, char* local, Veiculo* novo, Veiculo* inicio, bool* res) {
+	*res = false;
+	
 	// Verifica se a lista está vazia
 	if (inicio == NULL)
 	{
@@ -163,9 +187,10 @@ Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, cha
 	}
 
 	// Se não encontrou o veículo com o código informado, retorna a lista original
-	if ((aux == NULL) || aux->cod != cod)
+	if ((aux == NULL) || aux->cod != cod) {
+		*res = false;
 		return inicio;
-
+	}
 	// Altera os campos do veículo encontrado com as informações fornecidas
 	aux->cod = novo->cod;
 	strcpy(aux->tipo, novo->tipo);
@@ -174,12 +199,16 @@ Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, cha
 	strcpy(aux->local, novo->local);
 	// Libera a memória alocada para o veículo novo
 	free(novo);
+
+ 	*res = true;
 	// Retorna a lista atualizada
 	return inicio;
 }
 
 // Remove Veiculo da Lista
-Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio) {
+Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio, bool* res) {
+	*res = false;
+	
 	// Verifica se o início é nulo (lista vazia)
 	if (inicio == NULL) {
 		return NULL; // Não há nenhum veículo para ser removido
@@ -211,6 +240,7 @@ Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio) {
 		// Remove o veículo encontrado
 		noAnterior->next = noAtual->next; // auxAnt campo next passa a conter o valor de auxProx campo next!
 		free(noAtual); // liberta a memória que é removida
+		*res = true;
 	}
 	return inicio; // Retorna head
 }
@@ -233,17 +263,15 @@ bool LerDadosVeiculo(char fileName[])
 	return true;
 }
 
-bool GravarVeiculoBin(char* nomeFicheiro, VeiculosLista* inicio, bool* res) {
+bool GravarVeiculoBin(char* nomeFicheiro, VeiculosLista* inicio) {
 	FILE* fp;
 	
 	
 	if (inicio == NULL) {
-		*res = false;
 		return false;
 	}
 
 	if ((fp = fopen(nomeFicheiro, "wb")) == NULL) {
-		*res = false;
 		return false;
 	}
 
@@ -256,7 +284,6 @@ bool GravarVeiculoBin(char* nomeFicheiro, VeiculosLista* inicio, bool* res) {
 		aux = aux->next;
 	}
 	fclose(fp);
-	*res = true;
 	return true;
 }
 
