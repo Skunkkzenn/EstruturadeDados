@@ -263,7 +263,7 @@ bool LerDadosVeiculo(char fileName[])
 	return true;
 }
 
-bool GravarVeiculoBin(char* nomeFicheiro, VeiculosLista* inicio) {
+bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	FILE* fp;
 	
 	
@@ -280,33 +280,44 @@ bool GravarVeiculoBin(char* nomeFicheiro, VeiculosLista* inicio) {
 	Veiculo* auxVeiculo;
 	while (aux) {	
 		auxVeiculo = aux->veiculo;
-		fwrite(&auxVeiculo, sizeof(Veiculo), 1, fp);
+		fwrite(auxVeiculo, sizeof(Veiculo), 1, fp);
 		aux = aux->next;
 	}
 	fclose(fp);
 	return true;
 }
 
-VeiculosLista* LerVeiculosBin(char* nomeFicheiro) {
+VeiculosLista* LerVeiculosBin(char* nomeFicheiro, bool* res) {
 	FILE* fp;
 	VeiculosLista* inicio = NULL;
 	Veiculo* aux;
+	
+	*res = false;
 
 	if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
-
+	
 	//Vai ler o numero de registro no ficheiro
 	aux = (Veiculo*)malloc(sizeof(Veiculo));
 	while (fread(aux, sizeof(Veiculo), 1, fp)) {
-		inicio = InsertVeiculoInicio(inicio, aux);
-		aux = (Veiculo*)malloc(sizeof(Veiculo));
+		if (aux != NULL)
+		{
+			inicio = InsertVeiculoInicio(inicio, aux, res);
+		 	aux = (Veiculo*)malloc(sizeof(Veiculo));
+		 	*res = true;
+
+		}
+		else { 
+			*res = false; 
+		}
 	}
+	free(aux);
 	fclose(fp);
 	return inicio;
 }
 
 void DestroiVeiculo(Veiculo* veiculo) {
 	free(veiculo->tipo);
-	free(veiculo->local);
+	free(veiculo->cod);
 	free(veiculo);
 }
 #pragma endregion

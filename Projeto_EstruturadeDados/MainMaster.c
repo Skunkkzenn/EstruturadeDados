@@ -21,13 +21,15 @@
 int main()  {
 
 #pragma region Veiculos
+    //Inicia Lista vazia
+    Veiculo* inicio = NULL;
+   
     bool res = false;
 
     char fileName[] = "veiculos.txt";
     bool sucesso = LerDadosVeiculo(fileName);
     
-    //Inicia Lista vazia
-    VeiculosLista* inicio = NULL;
+
     //Cria um novo veiculo
     Veiculo* novoVeiculo = CriaVeiculo(140, "carro", 70.5, 30.0, "SaoVitor");
 
@@ -40,11 +42,19 @@ int main()  {
     // Insere o novo veículo na lista
     inicio = InsertVeiculoLista(novoVeiculo, inicio, &res);
 
+    //Grava Veiculo em arquivo binário
+    char* nomeFicheiro = "veiculos.bin";
+    bool gravouComSucesso = GravarVeiculoBin(nomeFicheiro, inicio);
+
+    VeiculosLista* lista = LerVeiculosBin("veiculos.bin", &res);
+
     // Chama a função para alterar o veículo com o código e tipo especificados
     inicio = AlteraCampoVeiculo(144, "carro", 80.5, 50.0, "Lamacaes", novoVeiculo, inicio, &res);
 
     // Remove o veículo com o código e tipo especificados
     inicio = RemoveVeiculo(144, "carro", inicio, &res);
 
+    //Destroi Veiculo
+    DestroiVeiculo(novoVeiculo);
 #pragma endregion
 }
