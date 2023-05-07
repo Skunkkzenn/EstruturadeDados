@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="GrafosMA">
-      <UniqueIdentifier>{bc550481-5855-4ae2-9caf-78471484efe9}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Veiculo.c">
@@ -30,11 +27,11 @@
     <ClCompile Include="MainMaster.c">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="Grafo.c">
-      <Filter>GrafosMA</Filter>
+    <ClCompile Include="Adjacencia.c">
+      <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="MasterMA.c">
-      <Filter>GrafosMA</Filter>
+    <ClCompile Include="Vertice.c">
+      <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -47,11 +44,14 @@
     <ClInclude Include="Gestor.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="Grafo.h">
-      <Filter>GrafosMA</Filter>
+    <ClInclude Include="Adjacencia.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="Vertice.h">
-      <Filter>Arquivos de Origem</Filter>
+      <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

@@ -10,6 +10,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+#pragma region
+
 /* Cria nodo de adjacencia */
 Adj* CriaLigacao(int cod, float peso) {
 	Adj* novo = (Adj*)calloc(1, sizeof(Adj));
@@ -69,3 +72,5 @@ void MostraLigacoes(Adj* head) { /* Verifica se o ponteiro para lista é diferent
 		MostraLigacoes(head->next);
 	}
 }
+
+#pragma endregion

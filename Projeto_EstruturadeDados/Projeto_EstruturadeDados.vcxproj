@@ -74,8 +74,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,18 +131,19 @@
     <ClCompile Include="Adjacencia.c" />
     <ClCompile Include="Cliente.c" />
     <ClCompile Include="Gestor.c" />
-    <ClCompile Include="Grafo.c" />
     <ClCompile Include="MainMaster.c" />
-    <ClCompile Include="MasterMA.c" />
     <ClCompile Include="Veiculo.c" />
+    <ClCompile Include="Vertice.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adjacencia.h" />
     <ClInclude Include="Cliente.h" />
     <ClInclude Include="Gestor.h" />
-    <ClInclude Include="Grafo.h" />
     <ClInclude Include="Veiculo.h" />
     <ClInclude Include="Vertice.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
