@@ -6,10 +6,10 @@
  * \date   March 2023
  *********************************************************************/
 /*
-* Mobilidade ElÈtrica - Estrutura Veiculos
+* Mobilidade El√©trica - Estrutura Veiculos
 */
 
-#ifndef Veiculos // Indica o nome do ficheio que ser· trabalhado
+#ifndef Veiculos // Indica o nome do ficheio que ser√° trabalhado
 #define Veiculos
 #include <stdio.h>
 #include <string.h> 
@@ -20,7 +20,7 @@
 
 #define MAX 40 // Maximo de Veiculos, utilizar mais a frente*
 
-#pragma region	Struct VeÌculo
+#pragma region	Struct Ve√≠culo
 
 typedef struct Veiculo {
 	int cod;
@@ -29,9 +29,11 @@ typedef struct Veiculo {
 	float custo;
 	char local[N];
 	struct Veiculo* next; /* Campo seguinte do veiculo;
-						   guarda a vari·vel no endereÁo de memoria do proximo veiculo;
-						   temos um apontador na memoria para ir para o prÛximo veÌculo; */
+						   guarda a vari√°vel no endere√ßo de memoria do proximo veiculo;
+						   temos um apontador na memoria para ir para o pr√≥ximo ve√≠culo; */
 }Veiculo;
+
+
 
 typedef struct VeiculosLista {
 	Veiculo* veiculo;
@@ -55,6 +57,15 @@ bool LerDadosVeiculo(char fileName[]);
 bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio);
 VeiculosLista* LerVeiculosBin(char* nomeFicheiro, bool* res);
 void DestroiVeiculo(Veiculo* veiculo);
+Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* sup);
+Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio);
+Veiculo* VerificaVeiculoDuplicado(int cod, char* tipo, Veiculo* inicio);
+Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, char* local, Veiculo* novo, Veiculo* inicio);
+
+bool LerDadosVeiculo(char fileName[]);
+bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio);
+VeiculosLista* lerVeiculosBinario(char* nomeFicheiro);
+
 #pragma endregion
 
 

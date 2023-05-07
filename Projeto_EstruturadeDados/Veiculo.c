@@ -14,23 +14,23 @@
 #pragma warning( disable : 4996 )
 #define MAXCHAR 500
 
-#pragma region Métodos Veículos.
+#pragma region MÃ©todos VeÃ­culos.
 
 
- //Criar e inicializar um novo veículo com as informações fornecidas
+//Criar e inicializar um novo veÃ­culo com as informaÃ§Ãµes fornecidas
 Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* local) {
-	// Cria uma variável para armazenar o ponteiro para o novo veículo
+	// Cria uma variÃ¡vel para armazenar o ponteiro para o novo veÃ­culo
 	Veiculo* novoVeiculo;
 
-	// Aloca memória para o novo veículo
+	// Aloca memÃ³ria para o novo veÃ­culo
 	novoVeiculo = (Veiculo*)malloc(sizeof(Veiculo));
-	// Verifica se a alocação de memória foi bem sucedida
+	// Verifica se a alocaÃ§Ã£o de memÃ³ria foi bem sucedida
 	if (novoVeiculo == NULL)
-	{   //printf("Erro ao alocar memória para novo veículo\n");
+	{   //printf("Erro ao alocar memÃ³ria para novo veÃ­culo\n");
 		return NULL;
 	}
 
-	// Inicializa os campos do novo veículo com as informações fornecidas
+	// Inicializa os campos do novo veÃ­culo com as informaÃ§Ãµes fornecidas
 	novoVeiculo->cod = cod;
 	strcpy(novoVeiculo->tipo, tipo);
 	novoVeiculo->bateria = bateria;
@@ -46,13 +46,13 @@ Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* loca
 Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio, bool* res) {
 	/*
 		* Se a lista for vazia, vai alocar o veiculo criado e o retorna;
-		* No inicio da função verifica-se se sup é nulo
-		* Se for nulo, é definido como o novo veículo e é retornado.
+		* No inicio da funÃ§Ã£o verifica-se se sup Ã© nulo
+		* Se for nulo, Ã© definido como o novo veÃ­culo e Ã© retornado.
 	*/
 	*res = false;
-	if (novo == NULL) { /* Se o ponteiro "novo" apontar para NULL, a função terá um erro e
-						   retornará o ponteiro "inicio" original sem modificar a lista.
-						   Caso contrário, a função prossegue com a inserção do novo cliente na lista.
+	if (novo == NULL) { /* Se o ponteiro "novo" apontar para NULL, a funÃ§Ã£o terÃ¡ um erro e
+						   retornarÃ¡ o ponteiro "inicio" original sem modificar a lista.
+						   Caso contrÃ¡rio, a funÃ§Ã£o prossegue com a inserÃ§Ã£o do novo cliente na lista.
 						*/
 		printf("Erro: novo cliente e nulo\n");
 		return inicio;
@@ -66,7 +66,7 @@ Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio, bool* res) {
 		inicio = novo;
 		*res = true;
 	}
-	return inicio; //É necessário que ela retorne o ponteiro para o início da lista atualizado após a inserção do novo veículo.
+	return inicio; //Ã‰ necessÃ¡rio que ela retorne o ponteiro para o inÃ­cio da lista atualizado apÃ³s a inserÃ§Ã£o do novo veÃ­culo.
 }
 
 // Inserir Maquina Fim da Lista
@@ -74,28 +74,28 @@ Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio, bool* res) {
    inserir e recebe o incio da lista onde se vai inserir */
 Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio, bool* res) {
 	*res = false;
-	if (inicio == NULL) // Se a lista estiver vazia, o novo nó será a cabeça da lista
+	if (inicio == NULL) // Se a lista estiver vazia, o novo nÃ³ serÃ¡ a cabeÃ§a da lista
 	{
 		inicio = novo;
 	}
-	else  // Se a lista não estiver vazia, insere o novo nó no final
+	else  // Se a lista nÃ£o estiver vazia, insere o novo nÃ³ no final
 	{
-		Veiculo* aux = inicio; // Usa-se uma variável auxiliar que fica a apontar para o inicio, pois nao podemos alterar o inicio
+		Veiculo* aux = inicio; // Usa-se uma variÃ¡vel auxiliar que fica a apontar para o inicio, pois nao podemos alterar o inicio
 		while (aux->next != NULL) {  /* Enquanto o aux campo next nao for nulo
 									  ou
 									  Enquanto ele estiver a apontar para alguma coisa seguira sempre. */
-			aux = aux->next; // aux toma o valor de aux campo next, dessa forma avançamos na lista e quando acabar o fim do ciclo estamos no fim da lista
+			aux = aux->next; // aux toma o valor de aux campo next, dessa forma avanÃ§amos na lista e quando acabar o fim do ciclo estamos no fim da lista
 		}
 		aux->next = novo;
 		*res = true;
 	}
-	novo->next = NULL; // O campo next do novo nó deve ser nulo
+	novo->next = NULL; // O campo next do novo nÃ³ deve ser nulo
 	return inicio;
 }
 
 // Insere Veiculo Lista
 Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio, bool* res) {
-	bool veiculoDuplicado = false; // variável bool para armazenar se há veículo duplicado
+	bool veiculoDuplicado = false; // variÃ¡vel bool para armazenar se hÃ¡ veÃ­culo duplicado
 	*res = false;
 	
 	if (inicio == NULL)
@@ -104,7 +104,7 @@ Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio, bool* res) {
 
 	}
 	else {
-		//Verificar se já existe repetido
+		//Verificar se jÃ¡ existe repetido
 		if (VerificaVeiculoDuplicado(novo->cod, novo->tipo, inicio, &veiculoDuplicado) != NULL) {
 			return inicio;
 
@@ -126,7 +126,7 @@ Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio, bool* res) {
 
 				}
 
-				if (anterior == NULL) { //Insere no início
+				if (anterior == NULL) { //Insere no inÃ­cio
 					novo->next = inicio;
 					inicio = novo;
 				}
@@ -149,20 +149,20 @@ Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio, bool* res) {
 Veiculo* VerificaVeiculoDuplicado(int cod,char* tipo , Veiculo* inicio, bool* duplicado) {
 	*duplicado = false;
 	
-	if (inicio == NULL) // Verifica se a lista encadeada está vazia (inicio == NULL), caso esteja retorna NULL, indicando que não há veículos duplicados.
+	if (inicio == NULL) // Verifica se a lista encadeada estÃ¡ vazia (inicio == NULL), caso esteja retorna NULL, indicando que nÃ£o hÃ¡ veÃ­culos duplicados.
 	{
-		return NULL; // Caso não encontre nenhum veículo com o mesmo código e tipo, retorna NULL.
+		return NULL; // Caso nÃ£o encontre nenhum veÃ­culo com o mesmo cÃ³digo e tipo, retorna NULL.
 	}
 
 	Veiculo* aux = inicio;
-	while ((aux != NULL) && (aux->cod != cod) && (strcmp(aux->tipo, tipo) != 0)) // Percorre a lista encadeada, enquanto não chegar ao final da lista (aux != NULL) e não encontrar um veículo com o mesmo código e tipo (aux->cod != cod) && (strcmp(aux->tipo, tipo) != 0). Se encontrar um veículo com o mesmo código e tipo, retorna um ponteiro para esse veículo (aux).
+	while ((aux != NULL) && (aux->cod != cod) && (strcmp(aux->tipo, tipo) != 0)) // Percorre a lista encadeada, enquanto nÃ£o chegar ao final da lista (aux != NULL) e nÃ£o encontrar um veÃ­culo com o mesmo cÃ³digo e tipo (aux->cod != cod) && (strcmp(aux->tipo, tipo) != 0). Se encontrar um veÃ­culo com o mesmo cÃ³digo e tipo, retorna um ponteiro para esse veÃ­culo (aux).
 	{
 		aux = aux->next;
 	}
 
-	// Verifica se foi encontrado um veículo duplicado
+	// Verifica se foi encontrado um veÃ­culo duplicado
 	if (aux != NULL && aux->cod == cod && strcmp(aux->tipo, tipo) == 0) {
-	 	*duplicado = true; // Define a variável bool apontada por res como true
+	 	*duplicado = true; // Define a variÃ¡vel bool apontada por res como true
 	}
 
 	return aux;
@@ -172,7 +172,7 @@ Veiculo* VerificaVeiculoDuplicado(int cod,char* tipo , Veiculo* inicio, bool* du
 Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, char* local, Veiculo* novo, Veiculo* inicio, bool* res) {
 	*res = false;
 	
-	// Verifica se a lista está vazia
+	// Verifica se a lista estÃ¡ vazia
 	if (inicio == NULL)
 	{
 		inicio = novo;
@@ -181,23 +181,23 @@ Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, cha
 	// Cria um ponteiro auxiliar para percorrer a lista
 	Veiculo* aux = inicio;
 
-	// Percorre a lista até encontrar o veículo com o código e tipo informado
-	while ((aux != NULL) && (aux->cod != cod) && (strcmp(aux->tipo, tipo) != 0)) { // Percorre a lista encadeada, enquanto não chegar ao final da lista (aux != NULL) e não encontrar um veículo com o mesmo código e tipo (aux->cod != cod) && (strcmp(aux->tipo, tipo) != 0). Se encontrar um veículo com o mesmo código e tipo, retorna um ponteiro para esse veículo (aux).
+	// Percorre a lista atÃ© encontrar o veÃ­culo com o cÃ³digo e tipo informado
+	while ((aux != NULL) && (aux->cod != cod) && (strcmp(aux->tipo, tipo) != 0)) { // Percorre a lista encadeada, enquanto nÃ£o chegar ao final da lista (aux != NULL) e nÃ£o encontrar um veÃ­culo com o mesmo cÃ³digo e tipo (aux->cod != cod) && (strcmp(aux->tipo, tipo) != 0). Se encontrar um veÃ­culo com o mesmo cÃ³digo e tipo, retorna um ponteiro para esse veÃ­culo (aux).
 		aux = aux->next;
 	}
 
-	// Se não encontrou o veículo com o código informado, retorna a lista original
+	// Se nÃ£o encontrou o veÃ­culo com o cÃ³digo informado, retorna a lista original
 	if ((aux == NULL) || aux->cod != cod) {
 		*res = false;
 		return inicio;
 	}
-	// Altera os campos do veículo encontrado com as informações fornecidas
+	// Altera os campos do veÃ­culo encontrado com as informaÃ§Ãµes fornecidas
 	aux->cod = novo->cod;
 	strcpy(aux->tipo, novo->tipo);
 	aux->bateria = novo->bateria;
 	aux->custo = novo->custo;
 	strcpy(aux->local, novo->local);
-	// Libera a memória alocada para o veículo novo
+	// Libera a memÃ³ria alocada para o veÃ­culo novo
 	free(novo);
 
  	*res = true;
@@ -209,37 +209,37 @@ Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, cha
 Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio, bool* res) {
 	*res = false;
 	
-	// Verifica se o início é nulo (lista vazia)
+	// Verifica se o inÃ­cio Ã© nulo (lista vazia)
 	if (inicio == NULL) {
-		return NULL; // Não há nenhum veículo para ser removido
+		return NULL; // NÃ£o hÃ¡ nenhum veÃ­culo para ser removido
 	}
 
 	// Inicializa ponteiros auxiliares
 	Veiculo* noAnterior = inicio;
 	Veiculo* noAtual = inicio;
 
-	// Verifica se o nó a ser removido é a cabeça da lista
-	if ((inicio != NULL) && (inicio->cod == cod)) { // O veículo a ser removido é o primeiro da lista (inicio)
-		noAnterior = noAnterior->next; // Atualiza a lista para começar do segundo elemento
-		free(inicio); // Libera a memória ocupada pelo veículo removido
-		inicio = noAnterior;  // atualiza o início da lista
+	// Verifica se o nÃ³ a ser removido Ã© a cabeÃ§a da lista
+	if ((inicio != NULL) && (inicio->cod == cod)) { // O veÃ­culo a ser removido Ã© o primeiro da lista (inicio)
+		noAnterior = noAnterior->next; // Atualiza a lista para comeÃ§ar do segundo elemento
+		free(inicio); // Libera a memÃ³ria ocupada pelo veÃ­culo removido
+		inicio = noAnterior;  // atualiza o inÃ­cio da lista
 	}
 	else
-	{   // Percorre a lista até encontrar o nó a ser removido
+	{   // Percorre a lista atÃ© encontrar o nÃ³ a ser removido
 		while ((noAtual != NULL) && (noAtual->cod != cod) && (strcmp(noAtual->tipo, tipo) != 0)) { // percorre array enquanto...
 			{
-				// Procura pelo veículo a ser removido
-				noAnterior = noAtual; // avança o ponteiro auxAnt para o próximo nó
-				noAtual = noAtual->next; // avança o ponteiro auxProx para o próximo nó
+				// Procura pelo veÃ­culo a ser removido
+				noAnterior = noAtual; // avanÃ§a o ponteiro auxAnt para o prÃ³ximo nÃ³
+				noAtual = noAtual->next; // avanÃ§a o ponteiro auxProx para o prÃ³ximo nÃ³
 			}
 			if ((noAtual == NULL) || (noAnterior->next == NULL) || (noAnterior->cod != cod)) {
-				// Não foi encontrado nenhum veículo com o código e tipo especificados
-				return inicio; // nao existe a maquina, retorna início
+				// NÃ£o foi encontrado nenhum veÃ­culo com o cÃ³digo e tipo especificados
+				return inicio; // nao existe a maquina, retorna inÃ­cio
 			}
 		}
-		// Remove o veículo encontrado
+		// Remove o veÃ­culo encontrado
 		noAnterior->next = noAtual->next; // auxAnt campo next passa a conter o valor de auxProx campo next!
-		free(noAtual); // liberta a memória que é removida
+		free(noAtual); // liberta a memÃ³ria que Ã© removida
 		*res = true;
 	}
 	return inicio; // Retorna head
@@ -263,7 +263,7 @@ bool LerDadosVeiculo(char fileName[])
 	return true;
 }
 
-bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
+bool GravarVeiculoBin(char* nomeFicheiro, VeiculosLista* inicio) {
 	FILE* fp;
 	
 	
@@ -281,6 +281,10 @@ bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	while (aux) {	
 		auxVeiculo = aux->veiculo;
 		fwrite(auxVeiculo, sizeof(Veiculo), 1, fp);
+	Veiculo* auxVeiculo;	
+	while (aux) {		//while(aux!=NULL)
+		auxVeiculo = aux->veiculo; 
+		fwrite(&auxVeiculo, sizeof(Veiculo), 1, fp);
 		aux = aux->next;
 	}
 	fclose(fp);
@@ -311,6 +315,20 @@ VeiculosLista* LerVeiculosBin(char* nomeFicheiro, bool* res) {
 		}
 	}
 	free(aux);
+
+VeiculosLista* LerVeiculosBin(char* nomeFicheiro) {
+	FILE* fp;
+	VeiculosLista* inicio = NULL;
+	Veiculo* aux;
+
+	if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
+
+	//Vai ler o numero de registro no ficheiro
+	aux = (Veiculo*)malloc(sizeof(Veiculo));
+	while (fread(aux, sizeof(Veiculo), 1, fp)) {
+		inicio = InsertVeiculoInicio(inicio, aux);
+		aux = (Veiculo*)malloc(sizeof(Veiculo));
+	}
 	fclose(fp);
 	return inicio;
 }
