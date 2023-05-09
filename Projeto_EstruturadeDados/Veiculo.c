@@ -334,10 +334,11 @@ bool LerDadosVeiculo(char fileName[])
  * @param inicio
  * @return 
  */
+
 bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	FILE* fp;
-	
-	
+
+
 	if (inicio == NULL) {
 		return false;
 	}
@@ -349,17 +350,18 @@ bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	//grava 1 registo de cada vez no ficheiro
 	VeiculosLista* aux = inicio;
 	Veiculo* auxVeiculo;
-	while (aux) {	
+	while (aux) {
 		auxVeiculo = aux->veiculo;
 		fwrite(auxVeiculo, sizeof(Veiculo), 1, fp);
-	Veiculo* auxVeiculo;	
-	while (aux) {		//while(aux!=NULL)
-		auxVeiculo = aux->veiculo; 
-		fwrite(&auxVeiculo, sizeof(Veiculo), 1, fp);
-		aux = aux->next;
+		Veiculo* auxVeiculo;
+		while (aux) {		//while(aux!=NULL)
+			auxVeiculo = aux->veiculo;
+			fwrite(&auxVeiculo, sizeof(Veiculo), 1, fp);
+			aux = aux->next;
+		}
+		fclose(fp);
+		return true;
 	}
-	fclose(fp);
-	return true;
 }
 
 /**
@@ -369,46 +371,33 @@ bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
  * @param 
  * @return 
  */
+
 VeiculosLista* LerVeiculosBin(char* nomeFicheiro, bool* res) {
-	FILE* fp;
-	VeiculosLista* inicio = NULL;
-	Veiculo* aux;
-	
-	*res = false;
+		FILE* fp;
+		VeiculosLista* inicio = NULL;
+		Veiculo* aux;
 
-	if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
-	
-	//Vai ler o numero de registro no ficheiro
-	aux = (Veiculo*)malloc(sizeof(Veiculo));
-	while (fread(aux, sizeof(Veiculo), 1, fp)) {
-		if (aux != NULL)
-		{
-			inicio = InsertVeiculoInicio(inicio, aux, res);
-		 	aux = (Veiculo*)malloc(sizeof(Veiculo));
-		 	*res = true;
+		*res = false;
 
-		}
-		else { 
-			*res = false; 
-		}
-	}
-	free(aux);
+		if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
 
-VeiculosLista* LerVeiculosBin(char* nomeFicheiro) {
-	FILE* fp;
-	VeiculosLista* inicio = NULL;
-	Veiculo* aux;
-
-	if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
-
-	//Vai ler o numero de registro no ficheiro
-	aux = (Veiculo*)malloc(sizeof(Veiculo));
-	while (fread(aux, sizeof(Veiculo), 1, fp)) {
-		inicio = InsertVeiculoInicio(inicio, aux);
+		//Vai ler o numero de registro no ficheiro
 		aux = (Veiculo*)malloc(sizeof(Veiculo));
-	}
-	fclose(fp);
-	return inicio;
-}
+		while (fread(aux, sizeof(Veiculo), 1, fp)) {
+			if (aux != NULL)
+			{
+				inicio = InsertVeiculoInicio(inicio, aux, res);
+				aux = (Veiculo*)malloc(sizeof(Veiculo));
+				*res = true;
 
+			}
+			else {
+				*res = false;
+			}
+		}
+		free(aux);
+		fclose(fp);
+
+		return inicio;
+}
 #pragma endregion
