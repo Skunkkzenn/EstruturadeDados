@@ -28,8 +28,8 @@
  * @param local
  * @return 
  */
-Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* local) {
-	
+Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* local, bool* res) {
+	*res = false;
 	// Cria uma variável para armazenar o ponteiro para o novo veículo
 	Veiculo* novoVeiculo;
 
@@ -49,6 +49,7 @@ Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* loca
 	strcpy(novoVeiculo->local, local);
 	novoVeiculo->next = NULL;
 
+	*res = true;
 	return novoVeiculo; //Retorna o o ponteiro para o novo veiculo criado
 }
 

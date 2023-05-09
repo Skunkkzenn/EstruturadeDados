@@ -31,7 +31,7 @@ int main()  {
     
 
     //Cria um novo veiculo
-    Veiculo* novoVeiculo = CriaVeiculo(140, "carro", 70.5, 30.0, "SaoVitor");
+    Veiculo* novoVeiculo = CriaVeiculo(140, "carro", 70.5, 30.0, "SaoVitor", &res);
 
     // Inserir o novo veículo no início da lista
     inicio = InsertVeiculoInicio(novoVeiculo, inicio, &res);
