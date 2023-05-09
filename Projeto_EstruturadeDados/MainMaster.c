@@ -3,7 +3,7 @@
  * \brief  TRABALHO EDA
  * \number 18586
  * \author Victor Destefani
- * \date   March 2023
+ * \date   May 2023
  *********************************************************************/
 
 #include <stdio.h>
@@ -27,7 +27,7 @@ int main()  {
     bool res = false;
 
     char fileName[] = "veiculos.txt";
-    bool sucesso = LerDadosVeiculo(fileName);
+            bool sucesso = LerDadosVeiculo(fileName);
     
 
     //Cria um novo veiculo
@@ -54,7 +54,5 @@ int main()  {
     // Remove o veículo com o código e tipo especificados
     inicio = RemoveVeiculo(144, "carro", inicio, &res);
 
-    //Destroi Veiculo
-    DestroiVeiculo(novoVeiculo);
 #pragma endregion
 }

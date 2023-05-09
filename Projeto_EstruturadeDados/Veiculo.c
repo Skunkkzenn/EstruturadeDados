@@ -17,8 +17,18 @@
 #pragma region Métodos Veículos.
 
 
- //Criar e inicializar um novo veículo com as informações fornecidas
+/**
+ * @brief Criar e inicializa veiculo com dados fornecidos.
+ * 
+ * @param cod
+ * @param tipo
+ * @param bateria
+ * @param custo
+ * @param local
+ * @return 
+ */
 Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* local) {
+	
 	// Cria uma variável para armazenar o ponteiro para o novo veículo
 	Veiculo* novoVeiculo;
 
@@ -42,7 +52,14 @@ Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* loca
 }
 
 
-// Insere veiculo no inicio
+/**
+ * @brief Insere Veiculo no Inicio
+ * 
+ * @param novo
+ * @param inicio
+ * @param 
+ * @return 
+ */
 Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio, bool* res) {
 	/*
 		* Se a lista for vazia, vai alocar o veiculo criado e o retorna;
@@ -66,12 +83,17 @@ Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio, bool* res) {
 		inicio = novo;
 		*res = true;
 	}
-	return inicio; //É necessário que ela retorne o ponteiro para o início da lista atualizado após a inserção do novo veículo.
+	return inicio; //Retorna o ponteiro para o início da lista atualizado após a inserção do novo veículo.
 }
 
-// Inserir Maquina Fim da Lista
-/* Esse metodo recebe uma maquina nova para
-   inserir e recebe o incio da lista onde se vai inserir */
+/**
+ * @brief Inserir Maquina Fim da Lista
+ * 
+ * @param novo
+ * @param inicio
+ * @param 
+ * @return 
+ */
 Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio, bool* res) {
 	*res = false;
 	if (inicio == NULL) // Se a lista estiver vazia, o novo nó será a cabeça da lista
@@ -93,7 +115,14 @@ Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio, bool* res) {
 	return inicio;
 }
 
-// Insere Veiculo Lista
+/**
+ * @brief Insere Veiculo Lista.
+ * 
+ * @param novo
+ * @param inicio
+ * @param 
+ * @return 
+ */
 Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio, bool* res) {
 	bool veiculoDuplicado = false; // variável bool para armazenar se há veículo duplicado
 	*res = false;
@@ -145,7 +174,15 @@ Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio, bool* res) {
 	}
 }
 
-// Verifica Veiculo em duplicado
+/**
+ * @brief Verifica Veiculo em duplicado.
+ * 
+ * @param cod
+ * @param tipo
+ * @param inicio
+ * @param 
+ * @return 
+ */
 Veiculo* VerificaVeiculoDuplicado(int cod,char* tipo , Veiculo* inicio, bool* duplicado) {
 	*duplicado = false;
 	
@@ -168,7 +205,19 @@ Veiculo* VerificaVeiculoDuplicado(int cod,char* tipo , Veiculo* inicio, bool* du
 	return aux;
 }
 
-// Altera Dados do Veiculo
+/**
+ * @brief Altera Dados do Veiculo.
+ * 
+ * @param cod
+ * @param tipo
+ * @param bateria
+ * @param custo
+ * @param local
+ * @param novo
+ * @param inicio
+ * @param 
+ * @return 
+ */
 Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, char* local, Veiculo* novo, Veiculo* inicio, bool* res) {
 	*res = false;
 	
@@ -205,7 +254,15 @@ Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, cha
 	return inicio;
 }
 
-// Remove Veiculo da Lista
+/**
+ * @brief Remove Veiculo da Lista.
+ * 
+ * @param cod
+ * @param tipo
+ * @param inicio
+ * @param 
+ * @return 
+ */
 Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio, bool* res) {
 	*res = false;
 	
@@ -245,6 +302,12 @@ Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio, bool* res) {
 	return inicio; // Retorna head
 }
 
+/**
+ * @brief Ler dados ficheiro veiculos.txt.
+ * 
+ * @param fileName
+ * @return 
+ */
 bool LerDadosVeiculo(char fileName[])
 {
 	char row[MAXCHAR];
@@ -263,6 +326,13 @@ bool LerDadosVeiculo(char fileName[])
 	return true;
 }
 
+/**
+ * @brief Grava dados do Veiculo em Binário.
+ * 
+ * @param nomeFicheiro
+ * @param inicio
+ * @return 
+ */
 bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	FILE* fp;
 	
@@ -287,6 +357,13 @@ bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	return true;
 }
 
+/**
+ * @brief Lê dados do ficheiro binário criado.
+ * 
+ * @param nomeFicheiro
+ * @param 
+ * @return 
+ */
 VeiculosLista* LerVeiculosBin(char* nomeFicheiro, bool* res) {
 	FILE* fp;
 	VeiculosLista* inicio = NULL;
@@ -315,9 +392,4 @@ VeiculosLista* LerVeiculosBin(char* nomeFicheiro, bool* res) {
 	return inicio;
 }
 
-void DestroiVeiculo(Veiculo* veiculo) {
-	free(veiculo->tipo);
-	free(veiculo->cod);
-	free(veiculo);
-}
 #pragma endregion
