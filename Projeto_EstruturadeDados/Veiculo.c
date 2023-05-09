@@ -14,10 +14,8 @@
 #pragma warning( disable : 4996 )
 #define MAXCHAR 500
 
-#pragma region Métodos Veículos.
+#pragma region Metodos Veículos.
 
-
-//Criar e inicializar um novo veículo com as informações fornecidas
 /**
  * @brief Criar e inicializa veiculo com dados fornecidos.
  * 
@@ -30,14 +28,13 @@
  */
 Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* local, bool* res) {
 	*res = false;
-	// Cria uma variável para armazenar o ponteiro para o novo veículo
-	Veiculo* novoVeiculo;
+	Veiculo* novoVeiculo; // Cria uma variável para armazenar o ponteiro para o novo veículo
 
-	// Aloca memória para o novo veículo
 	novoVeiculo = (Veiculo*)malloc(sizeof(Veiculo));
-	// Verifica se a alocação de memória foi bem sucedida
-	if (novoVeiculo == NULL)
-	{   //printf("Erro ao alocar memória para novo veículo\n");
+	
+	if (novoVeiculo == NULL) // Verifica se a alocação de memória foi bem sucedida
+	{   
+	 	printf("Erro ao alocar memória para novo veículo\n");
 		return NULL;
 	}
 
@@ -63,11 +60,6 @@ Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* loca
  * @return 
  */
 Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio, bool* res) {
-	/*
-		* Se a lista for vazia, vai alocar o veiculo criado e o retorna;
-		* No inicio da função verifica-se se sup é nulo
-		* Se for nulo, é definido como o novo veículo e é retornado.
-	*/
 	*res = false;
 	if (novo == NULL) { /* Se o ponteiro "novo" apontar para NULL, a função terá um erro e
 						   retornará o ponteiro "inicio" original sem modificar a lista.
@@ -85,11 +77,11 @@ Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio, bool* res) {
 		inicio = novo;
 		*res = true;
 	}
-	return inicio; //Retorna o ponteiro para o início da lista atualizado após a inserção do novo veículo.
+	return inicio; // Retorna o ponteiro para o início da lista atualizada após inserção.
 }
 
 /**
- * @brief Inserir Maquina Fim da Lista
+ * Insere Veiculo no Fim.
  * 
  * @param novo
  * @param inicio
@@ -199,9 +191,8 @@ Veiculo* VerificaVeiculoDuplicado(int cod,char* tipo , Veiculo* inicio, bool* du
 		aux = aux->next;
 	}
 
-	// Verifica se foi encontrado um veículo duplicado
-	if (aux != NULL && aux->cod == cod && strcmp(aux->tipo, tipo) == 0) {
-	 	*duplicado = true; // Define a variável bool apontada por res como true
+	if (aux != NULL && aux->cod == cod && strcmp(aux->tipo, tipo) == 0) { // Verifica se foi encontrado um veículo duplicado
+	 	*duplicado = true;
 	}
 
 	return aux;
@@ -226,7 +217,9 @@ Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, cha
 	// Verifica se a lista está vazia
 	if (inicio == NULL)
 	{
-		inicio = novo;
+		printf("Erro: lista vazia\n");
+		*res = false;
+		return NULL;
 	}
 
 	// Cria um ponteiro auxiliar para percorrer a lista
@@ -293,7 +286,7 @@ Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio, bool* res) {
 			}
 			if ((noAtual == NULL) || (noAnterior->next == NULL) || (noAnterior->cod != cod)) {
 				// Não foi encontrado nenhum veículo com o código e tipo especificados
-				return inicio; // nao existe a maquina, retorna início
+				return inicio; // nao existe a veiculo, retorna início
 			}
 		}
 		// Remove o veículo encontrado
