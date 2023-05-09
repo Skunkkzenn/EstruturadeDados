@@ -270,9 +270,9 @@ Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio, bool* res ) {
 		noAnterior = noAtual; // avança o ponteiro auxAnt para o próximo nó
 		noAtual = noAtual->next; // avança o ponteiro auxProx para o próximo nó
 	}
-		if ((noAtual == NULL) || (noAtual->cod != cod) || (noAtual->nif != nif)) { // Não foi encontrado nenhum veículo com o código e tipo especificados
+		if ((noAtual == NULL) || (noAnterior->next == NULL) || (noAnterior->cod != cod)) { // Não foi encontrado nenhum veículo com o código e tipo especificados
 		return inicio; 
-
+		}
 		// Remove o veículo encontrado
 	 	noAnterior->next = noAtual->next; // auxAnt campo next passa a conter o valor de auxProx campo next!
  		free(noAtual); // liberta a memória que é removida
