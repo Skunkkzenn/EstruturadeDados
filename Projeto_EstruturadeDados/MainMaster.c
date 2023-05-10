@@ -14,45 +14,71 @@
 #include "Cliente.h"
 #include "Gestor.h"
 #include "Grafo.h"
+#include "Adjacencia.h"
 #pragma warning( disable : 4996 )
-
-#define VERT 15
 
 int main()  {
 
-#pragma region Veiculos
     //Inicia Lista vazia
-    Veiculo* inicio = NULL;
+    Veiculo* inicioVeiculos = NULL;
+    Cliente* inicioClientes = NULL;
+    Gestor*  inicioGestores = NULL;
    
     bool res = false;
 
-    char fileName[] = "veiculos.txt";
-            bool sucesso = LerDadosVeiculo(fileName);
-    
+    char fileNameVeiculos[] = "veiculos.txt";
+    char fileNameClientes[] = "clientes.txt";
+    char fileNameGestores[] = "gestores.txt";
 
-    //Cria um novo veiculo
-    Veiculo* novoVeiculo = CriaVeiculo(140, "carro", 70.5, 30.0, "SaoVitor", &res);
+    bool sucessoV = LerDadosVeiculo(fileNameVeiculos);
+    bool sucessoC = LerDadosCliente(fileNameClientes);
+    bool sucessoG = LerDadosGestor(fileNameGestores);
 
-    // Inserir o novo veículo no início da lista
-    inicio = InsertVeiculoInicio(novoVeiculo, inicio, &res);
+    //Cria um novo Veiculo, Cliente e Gestor.
+    Veiculo* novoVeiculo = CriaVeiculo(140, "carro", 70.5, 30.0, "Sao Vitor", &res);
+    Cliente* novoCliente = CriaCliente(01, "Michael Jackson", 200.45, 284152362, "Rua de Lameichas", &res);
+    Gestor* novoGestor = CriaGestor(01, "Lebron James", 596.78, 299655456, "Rua Sebastiao", &res);
 
-    // Insere Veiculo no Fim
-    inicio = InsertVeiculoFim(novoVeiculo, inicio, &res);
+    // Inserir o novo Veiculo, Cliente e Gestor no início da lista
+    inicioVeiculos = InsertVeiculoInicio(novoVeiculo, inicioVeiculos, &res);
+    inicioClientes = InsertClienteInicio(novoCliente, inicioClientes, &res);
+    inicioGestores = InsertGestorInicio(novoGestor, inicioGestores, &res);
 
-    // Insere o novo veículo na lista
-    inicio = InsertVeiculoLista(novoVeiculo, inicio, &res);
+    // Insere Veiculo, Cliente e Gestor no Fim
+    inicioVeiculos = InsertVeiculoFim(novoVeiculo, inicioVeiculos, &res);
+    inicioClientes = InsertClienteFim(novoCliente, inicioClientes, &res);
+    inicioGestores = InsertGestorFim(novoGestor, inicioGestores, &res);
 
-    //Grava Veiculo em arquivo binário
-    char* nomeFicheiro = "veiculos.bin";
-    bool gravouComSucesso = GravarVeiculoBin(nomeFicheiro, inicio);
+    // Insere o novo Veiculo, Cliente e Gestor na lista
+    inicioVeiculos = InsertVeiculoLista(novoVeiculo, inicioVeiculos, &res);
+    inicioClientes = InsertClienteLista(novoCliente, inicioClientes, &res);
+    inicioGestores = InsertGestorLista(novoGestor, inicioGestores, &res);
 
-    VeiculosLista* lista = LerVeiculosBin("veiculos.bin", &res);
+    // Chama a função para alterar o veículo com o código e tipo especificados, cliente e gestor com cod e nif
+    inicioVeiculos = AlteraCampoVeiculo(144, "carro", 80.5, 50.0, "Lamacaes", novoVeiculo, inicioVeiculos, &res);
+    inicioClientes = AlteraCampoCliente(05, "Mohamedi Ali", 100.52, 322954125, "Rua de Marechal", novoCliente, inicioClientes, &res);
+    inicioGestores = AlteraCampoGestor(25, "Bob Marley", 400.20, 420240420, "Rua da Jamaica", novoGestor, inicioGestores, &res);
 
-    // Chama a função para alterar o veículo com o código e tipo especificados
-    inicio = AlteraCampoVeiculo(144, "carro", 80.5, 50.0, "Lamacaes", novoVeiculo, inicio, &res);
+    // Remove o Veiculo, Cliente e Gestor com o código e tipo especificados
+    inicioVeiculos = RemoveVeiculo(144, "carro", inicioVeiculos, &res);
+    inicioClientes = RemoveCliente(05, 322954125, inicioClientes, &res);
+    inicioGestores = RemoveGestor(25, 420240420, novoGestor, inicioGestores, &res);
 
-    // Remove o veículo com o código e tipo especificados
-    inicio = RemoveVeiculo(144, "carro", inicio, &res);
+    //Grava Veiculo, Cliente e Gestor em arquivo binário
+    char* fileVeiculo = "veiculos.bin";
+    bool  saveVeiculo = GravarVeiculoBin(fileVeiculo, inicioVeiculos, &res);
 
-#pragma endregion
+    char* fileCliente = "clientes.bin";
+    bool  saveCliente = GravarClienteBin(fileCliente, inicioClientes, &res);
+        
+    char* fileGestor = "gestor.bin";
+    bool  saveGestor = GravarGestorBin(fileGestor, inicioGestores, &res);
+
+    //Lê arquivo binario
+    VeiculosLista* listVeiculos = LerVeiculoBin("veiculos.bin", &res);
+    ClientesLista* listClientes = LerClienteBin("clientes.bin", &res);
+    GestoresLista* listGestores = LerGestorBin("gestores.bin", &res);
+
+    return true;
 }
+
