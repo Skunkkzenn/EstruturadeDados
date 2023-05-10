@@ -14,19 +14,27 @@
 #pragma warning( disable : 4996 )
 #define MAXCHAR 500
 
-#pragma region Métodos Veículos.
+#pragma region Metodos Veículos.
 
+/**
+ * @brief Criar e inicializa veiculo com dados fornecidos.
+ * 
+ * @param cod
+ * @param tipo
+ * @param bateria
+ * @param custo
+ * @param local
+ * @return 
+ */
+Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* local, bool* res) {
+	*res = false;
+	Veiculo* novoVeiculo; // Cria uma variável para armazenar o ponteiro para o novo veículo
 
-//Criar e inicializar um novo veículo com as informações fornecidas
-Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* local) {
-	// Cria uma variável para armazenar o ponteiro para o novo veículo
-	Veiculo* novoVeiculo;
-
-	// Aloca memória para o novo veículo
 	novoVeiculo = (Veiculo*)malloc(sizeof(Veiculo));
-	// Verifica se a alocação de memória foi bem sucedida
-	if (novoVeiculo == NULL)
-	{   //printf("Erro ao alocar memória para novo veículo\n");
+	
+	if (novoVeiculo == NULL) // Verifica se a alocação de memória foi bem sucedida
+	{   
+	 	printf("Erro ao alocar memória para novo veículo\n");
 		return NULL;
 	}
 
@@ -38,17 +46,20 @@ Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* loca
 	strcpy(novoVeiculo->local, local);
 	novoVeiculo->next = NULL;
 
+	*res = true;
 	return novoVeiculo; //Retorna o o ponteiro para o novo veiculo criado
 }
 
 
-// Insere veiculo no inicio
+/**
+ * @brief Insere Veiculo no Inicio
+ * 
+ * @param novo
+ * @param inicio
+ * @param 
+ * @return 
+ */
 Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio, bool* res) {
-	/*
-		* Se a lista for vazia, vai alocar o veiculo criado e o retorna;
-		* No inicio da função verifica-se se sup é nulo
-		* Se for nulo, é definido como o novo veículo e é retornado.
-	*/
 	*res = false;
 	if (novo == NULL) { /* Se o ponteiro "novo" apontar para NULL, a função terá um erro e
 						   retornará o ponteiro "inicio" original sem modificar a lista.
@@ -66,12 +77,17 @@ Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio, bool* res) {
 		inicio = novo;
 		*res = true;
 	}
-	return inicio; //É necessário que ela retorne o ponteiro para o início da lista atualizado após a inserção do novo veículo.
+	return inicio; // Retorna o ponteiro para o início da lista atualizada após inserção.
 }
 
-// Inserir Maquina Fim da Lista
-/* Esse metodo recebe uma maquina nova para
-   inserir e recebe o incio da lista onde se vai inserir */
+/**
+ * Insere Veiculo no Fim.
+ * 
+ * @param novo
+ * @param inicio
+ * @param 
+ * @return 
+ */
 Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio, bool* res) {
 	*res = false;
 	if (inicio == NULL) // Se a lista estiver vazia, o novo nó será a cabeça da lista
@@ -93,7 +109,14 @@ Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio, bool* res) {
 	return inicio;
 }
 
-// Insere Veiculo Lista
+/**
+ * @brief Insere Veiculo Lista.
+ * 
+ * @param novo
+ * @param inicio
+ * @param 
+ * @return 
+ */
 Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio, bool* res) {
 	bool veiculoDuplicado = false; // variável bool para armazenar se há veículo duplicado
 	*res = false;
@@ -145,7 +168,15 @@ Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio, bool* res) {
 	}
 }
 
-// Verifica Veiculo em duplicado
+/**
+ * @brief Verifica Veiculo em duplicado.
+ * 
+ * @param cod
+ * @param tipo
+ * @param inicio
+ * @param 
+ * @return 
+ */
 Veiculo* VerificaVeiculoDuplicado(int cod,char* tipo , Veiculo* inicio, bool* duplicado) {
 	*duplicado = false;
 	
@@ -160,22 +191,35 @@ Veiculo* VerificaVeiculoDuplicado(int cod,char* tipo , Veiculo* inicio, bool* du
 		aux = aux->next;
 	}
 
-	// Verifica se foi encontrado um veículo duplicado
-	if (aux != NULL && aux->cod == cod && strcmp(aux->tipo, tipo) == 0) {
-	 	*duplicado = true; // Define a variável bool apontada por res como true
+	if (aux != NULL && aux->cod == cod && strcmp(aux->tipo, tipo) == 0) { // Verifica se foi encontrado um veículo duplicado
+	 	*duplicado = true;
 	}
 
 	return aux;
 }
 
-// Altera Dados do Veiculo
+/**
+ * @brief Altera Dados do Veiculo.
+ * 
+ * @param cod
+ * @param tipo
+ * @param bateria
+ * @param custo
+ * @param local
+ * @param novo
+ * @param inicio
+ * @param 
+ * @return 
+ */
 Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, char* local, Veiculo* novo, Veiculo* inicio, bool* res) {
 	*res = false;
 	
 	// Verifica se a lista está vazia
 	if (inicio == NULL)
 	{
-		inicio = novo;
+		printf("Erro: lista vazia\n");
+		*res = false;
+		return NULL;
 	}
 
 	// Cria um ponteiro auxiliar para percorrer a lista
@@ -205,7 +249,15 @@ Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, cha
 	return inicio;
 }
 
-// Remove Veiculo da Lista
+/**
+ * @brief Remove Veiculo da Lista.
+ * 
+ * @param cod
+ * @param tipo
+ * @param inicio
+ * @param 
+ * @return 
+ */
 Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio, bool* res) {
 	*res = false;
 	
@@ -234,7 +286,7 @@ Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio, bool* res) {
 			}
 			if ((noAtual == NULL) || (noAnterior->next == NULL) || (noAnterior->cod != cod)) {
 				// Não foi encontrado nenhum veículo com o código e tipo especificados
-				return inicio; // nao existe a maquina, retorna início
+				return inicio; // nao existe a veiculo, retorna início
 			}
 		}
 		// Remove o veículo encontrado
@@ -245,6 +297,12 @@ Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio, bool* res) {
 	return inicio; // Retorna head
 }
 
+/**
+ * @brief Ler dados ficheiro veiculos.txt.
+ * 
+ * @param fileName
+ * @return 
+ */
 bool LerDadosVeiculo(char fileName[])
 {
 	char row[MAXCHAR];
@@ -263,10 +321,18 @@ bool LerDadosVeiculo(char fileName[])
 	return true;
 }
 
-bool GravarVeiculoBin(char* nomeFicheiro, VeiculosLista* inicio) {
+/**
+ * @brief Grava dados do Veiculo em Binário.
+ * 
+ * @param nomeFicheiro
+ * @param inicio
+ * @return 
+ */
+
+bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	FILE* fp;
-	
-	
+
+
 	if (inicio == NULL) {
 		return false;
 	}
@@ -278,64 +344,54 @@ bool GravarVeiculoBin(char* nomeFicheiro, VeiculosLista* inicio) {
 	//grava 1 registo de cada vez no ficheiro
 	VeiculosLista* aux = inicio;
 	Veiculo* auxVeiculo;
-	while (aux) {	
+	while (aux) {
 		auxVeiculo = aux->veiculo;
 		fwrite(auxVeiculo, sizeof(Veiculo), 1, fp);
-	Veiculo* auxVeiculo;	
-	while (aux) {		//while(aux!=NULL)
-		auxVeiculo = aux->veiculo; 
-		fwrite(&auxVeiculo, sizeof(Veiculo), 1, fp);
-		aux = aux->next;
+		Veiculo* auxVeiculo;
+		while (aux) {		//while(aux!=NULL)
+			auxVeiculo = aux->veiculo;
+			fwrite(&auxVeiculo, sizeof(Veiculo), 1, fp);
+			aux = aux->next;
+		}
+		fclose(fp);
+		return true;
 	}
-	fclose(fp);
-	return true;
 }
+
+/**
+ * @brief Lê dados do ficheiro binário criado.
+ * 
+ * @param nomeFicheiro
+ * @param 
+ * @return 
+ */
 
 VeiculosLista* LerVeiculosBin(char* nomeFicheiro, bool* res) {
-	FILE* fp;
-	VeiculosLista* inicio = NULL;
-	Veiculo* aux;
-	
-	*res = false;
+		FILE* fp;
+		VeiculosLista* inicio = NULL;
+		Veiculo* aux;
 
-	if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
-	
-	//Vai ler o numero de registro no ficheiro
-	aux = (Veiculo*)malloc(sizeof(Veiculo));
-	while (fread(aux, sizeof(Veiculo), 1, fp)) {
-		if (aux != NULL)
-		{
-			inicio = InsertVeiculoInicio(inicio, aux, res);
-		 	aux = (Veiculo*)malloc(sizeof(Veiculo));
-		 	*res = true;
+		*res = false;
 
-		}
-		else { 
-			*res = false; 
-		}
-	}
-	free(aux);
+		if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
 
-VeiculosLista* LerVeiculosBin(char* nomeFicheiro) {
-	FILE* fp;
-	VeiculosLista* inicio = NULL;
-	Veiculo* aux;
-
-	if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
-
-	//Vai ler o numero de registro no ficheiro
-	aux = (Veiculo*)malloc(sizeof(Veiculo));
-	while (fread(aux, sizeof(Veiculo), 1, fp)) {
-		inicio = InsertVeiculoInicio(inicio, aux);
+		//Vai ler o numero de registro no ficheiro
 		aux = (Veiculo*)malloc(sizeof(Veiculo));
-	}
-	fclose(fp);
-	return inicio;
-}
+		while (fread(aux, sizeof(Veiculo), 1, fp)) {
+			if (aux != NULL)
+			{
+				inicio = InsertVeiculoInicio(inicio, aux, res);
+				aux = (Veiculo*)malloc(sizeof(Veiculo));
+				*res = true;
 
-void DestroiVeiculo(Veiculo* veiculo) {
-	free(veiculo->tipo);
-	free(veiculo->cod);
-	free(veiculo);
+			}
+			else {
+				*res = false;
+			}
+		}
+		free(aux);
+		fclose(fp);
+
+		return inicio;
 }
 #pragma endregion

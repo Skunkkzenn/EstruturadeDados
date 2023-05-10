@@ -15,15 +15,24 @@
 #pragma warning( disable : 4996 )
 
 #pragma region Métodos Clientes
-//Cria cliente
-Cliente* CriaCliente(int cod, char* nome, float saldo, long int nif, char* morada) {
+/**
+ * @brief Cria Cliente.
+ * 
+ * @param cod
+ * @param nome
+ * @param saldo
+ * @param nif
+ * @param morada
+ * @return 
+ */
+Cliente* CriaCliente(int cod, char* nome, float saldo, long int nif, char* morada, bool* res){
+	*res = false;
+	
 	Cliente* novoCliente;
-	//Cria espaço de memória
-	novoCliente = (Cliente*)malloc(sizeof(Cliente));
+	novoCliente = (Cliente*)malloc(sizeof(Cliente)); //Cria espaço de memória
 
-	//Verifica se a alocação de memória foi bem sucedida 
-	if (novoCliente == NULL) {
-		//printf("Erro ao alocar memoria para novo cliente\n");
+	if (novoCliente == NULL) { //Verifica se a alocação de memória foi bem sucedida 
+		printf("Erro ao alocar memoria para novo cliente\n");
 		return NULL;
 	}
 	novoCliente->cod = cod;
@@ -32,14 +41,22 @@ Cliente* CriaCliente(int cod, char* nome, float saldo, long int nif, char* morad
 	novoCliente->nif = nif;
 	strcpy(novoCliente->morada, morada);
 	novoCliente->next = NULL;
+	*res = true;
 	return novoCliente;
-
 }
 
-//Insere Cliente Inicio
-Cliente* InsertClienteInicio(Cliente* novo, Cliente* inicio) {
+/**
+ * @brief Insere Cliente Inicio.
+ * 
+ * @param novo
+ * @param inicio
+ * @return 
+ */
+Cliente* InsertClienteInicio(Cliente* novo, Cliente* inicio, bool* res) {
+	*res = false;
 	if (novo == NULL) // Verifica se ponteiro para o novo cliente é nulo, logo como não há nada para ser inserido, retorna o ponteiro para o inicio da lista original
 	{
+		printf("Erro: novo cliente e nulo\n");
 		return inicio;
 	}
 	if (inicio == NULL) // Verifica se a lista está vazia, se estiver, o novo cliente se torna o primeiro nó da lista
@@ -50,12 +67,21 @@ Cliente* InsertClienteInicio(Cliente* novo, Cliente* inicio) {
 	{
 		novo->next = inicio;
 		inicio = novo;
+		*res = true;
 	}
-	return inicio; // retorna o ponteiro para o início da lista atualizada.
+	return inicio; // Retorna o ponteiro para o início da lista atualizada após inserção.
 }
 
-//Insere Cliente fim
-Cliente* InsertClienteFim(Cliente* novo, Cliente* inicio) {
+/**
+ * @brief Insere Cliente fim.
+ * 
+ * @param novo
+ * @param inicio
+ * @param 
+ * @return 
+ */
+Cliente* InsertClienteFim(Cliente* novo, Cliente* inicio, bool* res) {
+	*res = false;
 	if (inicio == NULL)
 	{
 		inicio = novo;
@@ -68,75 +94,119 @@ Cliente* InsertClienteFim(Cliente* novo, Cliente* inicio) {
 			aux = aux->next;
 		}
 		aux->next = novo;
+		*res = true;
 	}
 	novo->next = NULL;
 	return inicio;
 }
 
-//Insere Cliente na Lista
-Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio) {
+/**
+ * @brief Insere Cliente na Lista.
+ * 
+ * @param novo
+ * @param inicio
+ * @return 
+ */
+Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio, bool* res) {
+	bool clienteDuplicado = false; // variável bool para armazenar se há cliente duplicado
+	*res = false;
 	if (inicio == NULL)
 	{
 		inicio = novo;
+
 	}
-	else
-	{
-		Cliente* atual = inicio;
-		Cliente* anterior = NULL;
+	else {
+		//Verificar se já existe repetido
+	 	if (VerificaClienteDuplicado(novo->cod, novo->nif, inicio, &clienteDuplicado) != NULL) {
+			return inicio;
 
-		// Verifica se já existe cliente com mesmo código e nif
-		if (VerificaClienteDuplicado(novo->cod, novo->nif, inicio) != NULL)
-			return inicio; // Cliente já existe, retorna a lista original
-
-		//procurar a posicao correta, e ordena pelo cod!!!!
-		while (atual && atual->cod < novo->cod) {
-			anterior = atual;
-			atual = atual->next;
 		}
 
-		// Insere no início
-		if (anterior == NULL && novo->cod < inicio->cod) { //Insere no início
-			novo->next = inicio;
-			inicio = novo;
+		if (!clienteDuplicado) {
+			if (inicio == NULL) {
+				inicio = novo;
+			}
+			else {
+				//procurar a posicao correta, e ordena pelo cod!!!!
+				Cliente* atual = inicio;
+				Cliente* anterior = NULL;
+
+				//procurar a posicao correta, e ordena pelo cod!!!!
+				while (atual != NULL && atual->cod < novo->cod) {
+					anterior = atual;
+					atual = atual->next;
+
+				}
+
+				if (anterior == NULL) { //Insere no início
+					novo->next = inicio;
+					inicio = novo;
+				}
+				else if (atual == NULL) { //Insere no fim
+					anterior->next = novo;
+					novo->next = NULL;
+				}
+				else { //Insere no meio
+					anterior->next = novo;
+					novo->next = atual;
+				}
+				*res = true;
+			}
 		}
-		//Insere no meio
-		else if (anterior == NULL)
-		{ 
-			novo->next = atual;
-			inicio = novo;
-		}
-		//Insere no fim
-		else 
-		{
-			anterior->next = novo;
-			novo->next = atual;
-		}
-		return inicio;
+		return inicio; // Retorna o ponteiro de início atualizado
 	}
-
 }
 
-//Verifica Cliente Duplicado
-Cliente* VerificaClienteDuplicado(int cod, int long nif, Cliente* inicio){
-
+/**
+ * @brief Verifica Cliente Duplicado.
+ * 
+ * @param cod
+ * @param nif
+ * @param inicio
+ * @param 
+ * @return 
+ */
+Cliente* VerificaClienteDuplicado(int cod, long int nif, Cliente* inicio, bool* duplicado){
+	*duplicado = false;
+	
 	if (inicio == NULL) // Verifica se a lista encadeada está vazia (inicio == NULL), caso esteja retorna NULL, indicando que não há clientes duplicados.
-{
+	{
 	return NULL; // Caso não encontre nenhum cliente com o mesmo código e nif, retorna NULL.
-}
+	}
 
 	Cliente* aux = inicio;
 	while ((aux != NULL) && (aux->cod != cod) && (aux->nif != nif)) // percorre a lista para verificar os campos cod e nif e enquanto ele nao encontrar aux toma valor de aux campo next
-{
+	{
 	aux = aux->next;
-}
-	return aux; // Ao fim retorna o valor de aux
+	}
+	
+	if ((aux != NULL) && (aux->cod == cod) && (aux->nif == nif)) {
+	 	*duplicado = true;
+	}
+	return aux;
 }
 
-//Altera dados Cliente
-Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char* morada, Cliente* novo, Cliente* inicio) {
+/**
+ * @brief Altera dados Cliente.
+ * 
+ * @param cod
+ * @param nome
+ * @param saldo
+ * @param nif
+ * @param morada
+ * @param novo
+ * @param inicio
+ * @param 
+ * @return 
+ */
+Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char* morada, Cliente* novo, Cliente* inicio, bool* res) {
+	*res = false;
+
 	// Verifica se a lista está vazia
 	if (inicio == NULL)
-	{   // printf("Erro: lista vazia\n");
+	{   
+		printf("Erro: lista vazia\n");
+		*res = false;
 		return NULL;
 	}
 	// Cria um ponteiro auxiliar para percorrer a lista
@@ -150,6 +220,7 @@ Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char
 
 	// Se não encontrou o cliente com o código informado, retorna a lista original
 	if ((aux == NULL) || (aux->nif != nif)) {
+		*res = false;
 		return inicio;
 	}
 
@@ -162,19 +233,29 @@ Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char
 
 	// Libera a memória alocada para o cliente novo
 	free(novo);
+
+	*res = true;
 	// Retorna a lista atualizada
 	return inicio;
 }
 
-//Remove Cliente
-Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio) {
+/**
+ * @brief Remove Cliente.
+ * 
+ * @param cod
+ * @param nif
+ * @param inicio
+ * @return 
+ */
+Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio, bool* res ) {
+	*res = false;
 	// Verifica se o início é nulo (lista vazia)
 	if (inicio == NULL) {
 		return NULL; // Não há nenhum veículo para ser removido
 	}
 
 	// Inicializa ponteiros auxiliares
-	Cliente* noAnterior = inicio;
+ 	Cliente* noAnterior = inicio;
 	Cliente* noAtual = inicio;
 
 	// Verifica se o nó a ser removido é a cabeça da lista
@@ -185,28 +266,19 @@ Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio) {
 	}
 	else
 	{
-		while ((noAtual != NULL) && (noAtual->cod != cod) && (noAtual->nif != nif)) {
-			noAnterior = noAtual;
-			noAtual = noAtual->next;
-		}
-		if ((noAtual != NULL) && (noAtual->cod != cod) && (noAtual->nif != nif)) {
-			// Não foi encontrado nenhum cliente com o código e nif especificados;
-			return NULL; // nao existe cliente, retorna início;
-		}
-		if (noAtual != NULL) {
-			// Remove o veículo encontrado
-			noAnterior->next = noAtual->next; // auxAnt campo next passa a conter o valor de auxProx campo next;
-			free(noAtual);	// liberta a memória que é removida;
-		}
+		while ((noAtual != NULL) && (noAtual->cod != cod) && (noAtual->nif != nif)) { // Procura pelo cliente a ser removido
+		noAnterior = noAtual; // avança o ponteiro auxAnt para o próximo nó
+		noAtual = noAtual->next; // avança o ponteiro auxProx para o próximo nó
 	}
-	return inicio;	// Retorna o cabeçalho
+		if ((noAtual == NULL) || (noAnterior->next == NULL) || (noAnterior->cod != cod)) { // Não foi encontrado nenhum veículo com o código e tipo especificados
+		return inicio; 
+		}
+		// Remove o veículo encontrado
+	 	noAnterior->next = noAtual->next; // auxAnt campo next passa a conter o valor de auxProx campo next!
+ 		free(noAtual); // liberta a memória que é removida
+ 		*res = true;
+	}
+	return inicio; // Retorna head
 }
-/* Na minha avaliação, a função RemoveCliente parece estar correta agora. A verificação inicial de inicio ser nulo para garantir que a lista não é vazia e as variáveis auxiliares auxAnt e auxProx estão sendo corretamente inicializadas. A condição para remover o nó da cabeça da lista também parece estar correta.
-
-No loop while, a função verifica se auxProx é nulo antes de acessá-lo e também verifica se o cod e nif correspondem ao nó atual. Além disso, o if que verifica se o nó a ser removido foi encontrado parece estar correto agora.
-
-Na linha problemática, adicionando o if antes da atribuição de auxAnt->next resolve o problema de desreferenciar um ponteiro nulo.
-
-Dito isso, a função RemoveCliente parece estar funcionando corretamente e não vejo nenhuma melhoria adicional a ser feita.*/
 
 #pragma endregion

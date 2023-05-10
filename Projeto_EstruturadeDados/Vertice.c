@@ -64,7 +64,7 @@ Vertice* InserePontoRecolha(Vertice* g, Vertice* novo, bool* res) {
 void ExibeGrafo(Vertice* g) {
 	if (g == NULL) return;
 	printf("Vertice: %d - %s\n", g->cod, g->cidade);
-	ExibeAdjacencias(g->adjacentes);
+	MostraLigacoes(g->adjacentes);
 	ExibeGrafo(g->next);
 }
 

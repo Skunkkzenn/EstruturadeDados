@@ -2,3 +2,4 @@
 // por exemplo, nomes de funções e macros.
 // Para obter mais informações, consulte https://go.microsoft.com/fwlink/?linkid=865984
 #define bool
+#define false
