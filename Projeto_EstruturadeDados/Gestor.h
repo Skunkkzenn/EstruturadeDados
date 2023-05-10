@@ -12,7 +12,6 @@
 #include <stdlib.h>
 #pragma warning( disable : 4996 ) //evita MSG ERROS: _CRT_SECURE_NO_WARNINGS
 #define N 200
-#define MAX 40 // Maximo de Gestores, utilizar mais a frente*
 
 #pragma region Struct Gestor
 
@@ -26,16 +25,25 @@ typedef struct Gestor {
 
 }Gestor;
 
+typedef struct GestoresLista {
+	Gestor* gestores;
+	struct GestoresLista* next;
+}GestoresLista;
+
 #pragma endregion
 
 #pragma region Funcoes que Tratam dos Gestores
 
-Gestor* CriaGestor(int cod, char* nome, float saldo, long int nif, char* morada);
-Gestor* InsertGestorInicio(Gestor* novo, Gestor* inicio);
-Gestor* InsertGestorFim(Gestor* novo, Gestor* inicio);
-Gestor* VerificaGestorDuplicado(int cod, int long nif, Gestor* inicio);
-Gestor* InsertGestorLista(Gestor* novo, Gestor* inicio);
-Gestor* AlteraCampoGestor(int cod, char* nome, float saldo, long int nif, char* morada, Gestor* novo, Gestor* inicio);
-Gestor* RemoveGestor(int cod, long int nif, Gestor* inicio);
+Gestor* CriaGestor(int cod, char* nome, float saldo, long int nif, char* morada, bool* res);
+Gestor* InsertGestorInicio(Gestor* novo, Gestor* inicio, bool* res);
+Gestor* InsertGestorFim(Gestor* novo, Gestor* inicio, bool* res);
+Gestor* VerificaGestorDuplicado(int cod, int long nif, Gestor* inicio, bool* duplicado);
+Gestor* InsertGestorLista(Gestor* novo, Gestor* inicio, bool* res);
+Gestor* AlteraCampoGestor(int cod, char* nome, float saldo, long int nif, char* morada, Gestor* novo, Gestor* inicio, bool* res);
+Gestor* RemoveGestor(int cod, long int nif, Gestor* inicio, bool* res);
+bool LerDadosGestor(char fileName[]);
+bool GravarGestorBin(char* nomeFicheiro, Gestor* inicio, bool* res);
+GestoresLista* LerGestorBin(char* nomeFicheiro, bool* res);
+
 
 #pragma endregion

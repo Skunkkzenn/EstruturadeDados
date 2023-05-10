@@ -35,11 +35,14 @@ typedef struct ClientesLista {
 #pragma region Funcoes para Tratar Clientes
 
 Cliente* CriaCliente(int cod, char* nome, float saldo, long int nif, char* morada, bool* res);
-Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio);
-Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char* morada, Cliente* novo, Cliente* inicio);
-Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio);
-Cliente* InsertClienteInicio(Cliente* novo, Cliente* inicio);
-Cliente* InsertClienteFim(Cliente* novo, Cliente* inicio);
-Cliente* VerificaClienteDuplicado(int cod, int long nif, Cliente* inicio);
+Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio, bool* res);
+Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char* morada, Cliente* novo, Cliente* inicio, bool* res);
+Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio, bool* res);
+Cliente* InsertClienteInicio(Cliente* novo, Cliente* inicio, bool* res);
+Cliente* InsertClienteFim(Cliente* novo, Cliente* inicio, bool* res);
+Cliente* VerificaClienteDuplicado(int cod, long int nif, Cliente* inicio, bool* duplicado);
+bool LerDadosCliente(char fileName[]);
+bool GravarClienteBin(char* nomeFicheiro, Cliente* inicio);
+ClientesLista* LerClienteBin(char* nomeFicheiro, bool* res);
 
 #pragma endregion
