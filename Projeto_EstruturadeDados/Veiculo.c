@@ -361,7 +361,7 @@ bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
  * @return 
  */
 
-VeiculosLista* LerVeiculosBin(char* nomeFicheiro, bool* res) {
+VeiculosLista* LerVeiculoBin(char* nomeFicheiro, bool* res) {
 		FILE* fp;
 		VeiculosLista* inicio = NULL;
 		Veiculo* aux;
