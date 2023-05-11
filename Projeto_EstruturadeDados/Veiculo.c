@@ -344,11 +344,7 @@ bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	//grava 1 registo de cada vez no ficheiro
 	VeiculosLista* aux = inicio;
 	Veiculo* auxVeiculo;
-	while (aux) {
-		auxVeiculo = aux->veiculo;
-		fwrite(auxVeiculo, sizeof(Veiculo), 1, fp);
-		Veiculo* auxVeiculo;
-		while (aux) {		//while(aux!=NULL)
+	while (aux) {		
 			auxVeiculo = aux->veiculo;
 			fwrite(&auxVeiculo, sizeof(Veiculo), 1, fp);
 			aux = aux->next;
@@ -356,7 +352,6 @@ bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 		fclose(fp);
 		return true;
 	}
-}
 
 /**
  * @brief Lê dados do ficheiro binário criado.

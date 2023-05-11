@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include "Cliente.h"
 #pragma warning( disable : 4996 )
+#define MAXCHAR 500
 
 #pragma region Métodos Clientes
 /**
@@ -280,5 +281,95 @@ Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio, bool* res ) {
 	}
 	return inicio; // Retorna head
 }
+
+/**
+ * @brief Ler ficheiro clientes.txt.
+ *
+ * \param fileName
+ * \return
+ */
+bool LerDadosCliente(char fileName[]) {
+	char row[MAXCHAR];
+	FILE* fp = fopen(fileName, "r");
+	if (fp == NULL) {
+		perror("Erro ao abrir o arquivo para leitura");
+		return false;
+	}
+
+	while (fgets(row, MAXCHAR, fp) != NULL) {
+		printf("Clientes: %s", row);
+	}
+
+	fclose(fp);
+	return true;
+}
+
+
+/**
+ * @brief Grava clientes em ficheiro binario.
+ *
+ * \param nomeFicheiro
+ * \param inicio
+ * \return
+ */
+bool GravarClienteBin(char* nomeFicheiro, Cliente* inicio) {
+	FILE* fp;
+
+	if (inicio == NULL) {
+		return false;
+	}
+
+	if ((fp = fopen(nomeFicheiro, "wb")) == NULL) {
+		perror("Erro ao abrir arquivo para escrita");
+		return false;
+	}
+
+	//grava 1 registo de cada vez no ficheiro
+	ClientesLista* aux = inicio;
+	Cliente* auxCliente;
+	while (aux) {
+		auxCliente = aux->cliente;
+		fwrite(auxCliente, sizeof(Cliente), 1, fp);
+		aux = aux->next;
+	}
+
+	fclose(fp);
+	return true;
+}
+
+/**
+ * @brief Grava cliente em binario.
+ *
+ * \param nomeFicheiro
+ * \param
+ * \return
+ */
+ClientesLista* LerClienteBin(char* nomeFicheiro, bool* res) {
+	FILE* fp;
+	ClientesLista* inicio = NULL;
+	Cliente* aux;
+	*res = false;
+
+	if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
+
+	//Vai ler o numero de registro no ficheiro
+	aux = (Cliente*)malloc(sizeof(Cliente));
+	while (fread(aux, sizeof(Cliente), 1, fp)) {
+		if (aux != NULL)
+		{
+			inicio = InsertClienteInicio(inicio, aux, res);
+			aux = (Cliente*)malloc(sizeof(Cliente));
+			*res = true;
+
+		}
+		else {
+			*res = false;
+		}
+	}
+	free(aux);
+	fclose(fp);
+	return inicio;
+}
+
 
 #pragma endregion
