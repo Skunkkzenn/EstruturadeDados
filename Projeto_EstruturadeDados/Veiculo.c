@@ -332,7 +332,6 @@ bool LerDadosVeiculo(char fileName[])
 bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	FILE* fp;
 
-
 	if (inicio == NULL) {
 		return false;
 	}
@@ -342,16 +341,21 @@ bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	}
 
 	//grava 1 registo de cada vez no ficheiro
-	VeiculosLista* aux = inicio;
-	Veiculo* auxVeiculo;
-	while (aux) {		
-			auxVeiculo = aux->veiculo;
-			fwrite(&auxVeiculo, sizeof(Veiculo), 1, fp);
-			aux = aux->next;
-		}
-		fclose(fp);
-		return true;
+ 	VeiculosFicheiro aux;
+	Veiculo* auxVeiculo = inicio;
+ 	while (auxVeiculo) {
+		aux.cod = auxVeiculo->cod;
+		strcpy(aux.tipo, auxVeiculo->tipo);
+		aux.bateria = auxVeiculo->bateria;
+		aux.custo = auxVeiculo->custo;
+		strcpy(aux.local, auxVeiculo->local);
+
+		fwrite(&aux, sizeof(VeiculosFicheiro), 1, fp);
+ 		auxVeiculo = auxVeiculo->next;
 	}
+ 	fclose(fp);
+	return true;
+}
 
 /**
  * @brief Lê dados do ficheiro binário criado.
@@ -361,9 +365,9 @@ bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
  * @return 
  */
 
-VeiculosLista* LerVeiculoBin(char* nomeFicheiro, bool* res) {
+VeiculosFicheiro* LerVeiculoBin(char* nomeFicheiro, bool* res) {
 		FILE* fp;
-		VeiculosLista* inicio = NULL;
+		VeiculosFicheiro* inicio = NULL;
 		Veiculo* aux;
 
 		*res = false;

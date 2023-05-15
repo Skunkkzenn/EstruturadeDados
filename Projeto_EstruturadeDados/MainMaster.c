@@ -75,7 +75,7 @@ int main()  {
     bool  saveGestor = GravarGestorBin(fileGestor, inicioGestores, &res);
 
     //Lê arquivo binario
-    VeiculosLista* listVeiculos = LerVeiculoBin("veiculos.bin", &res);
+    VeiculosFicheiro* listVeiculos = LerVeiculoBin("veiculos.bin", &res);
     ClientesLista* listClientes = LerClienteBin("clientes.bin", &res);
     GestoresLista* listGestores = LerGestorBin("gestores.bin", &res);
 
