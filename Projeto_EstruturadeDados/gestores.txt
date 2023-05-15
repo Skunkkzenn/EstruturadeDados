@@ -1,0 +1,3 @@
+cod;nome;saldo;nif;morada
+1001;Messi Naldo;212258632;Rua da Bombonera
+1002;Cristiano Robo;169536212;Rua do Robozao

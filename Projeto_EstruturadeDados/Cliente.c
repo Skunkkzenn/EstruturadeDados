@@ -18,7 +18,7 @@
 #pragma region Métodos Clientes
 /**
  * @brief Cria Cliente.
- * 
+ * @author Victor Destefani
  * @param cod
  * @param nome
  * @param saldo
@@ -48,7 +48,7 @@ Cliente* CriaCliente(int cod, char* nome, float saldo, long int nif, char* morad
 
 /**
  * @brief Insere Cliente Inicio.
- * 
+ * @author Victor Destefani
  * @param novo
  * @param inicio
  * @return 
@@ -75,7 +75,7 @@ Cliente* InsertClienteInicio(Cliente* novo, Cliente* inicio, bool* res) {
 
 /**
  * @brief Insere Cliente fim.
- * 
+ * @author Victor Destefani
  * @param novo
  * @param inicio
  * @param 
@@ -103,7 +103,7 @@ Cliente* InsertClienteFim(Cliente* novo, Cliente* inicio, bool* res) {
 
 /**
  * @brief Insere Cliente na Lista.
- * 
+ * @author Victor Destefani
  * @param novo
  * @param inicio
  * @return 
@@ -160,7 +160,7 @@ Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio, bool* res) {
 
 /**
  * @brief Verifica Cliente Duplicado.
- * 
+ * @author Victor Destefani
  * @param cod
  * @param nif
  * @param inicio
@@ -189,7 +189,7 @@ Cliente* VerificaClienteDuplicado(int cod, long int nif, Cliente* inicio, bool* 
 
 /**
  * @brief Altera dados Cliente.
- * 
+ * @author Victor Destefani
  * @param cod
  * @param nome
  * @param saldo
@@ -242,7 +242,7 @@ Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char
 
 /**
  * @brief Remove Cliente.
- * 
+ * @author Victor Destefani
  * @param cod
  * @param nif
  * @param inicio
@@ -284,9 +284,9 @@ Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio, bool* res ) {
 
 /**
  * @brief Ler ficheiro clientes.txt.
- *
- * \param fileName
- * \return
+ * @author Victor Destefani
+ * @param fileName
+ * @return
  */
 bool LerDadosCliente(char fileName[]) {
 	char row[MAXCHAR];
@@ -308,9 +308,9 @@ bool LerDadosCliente(char fileName[]) {
 /**
  * @brief Grava clientes em ficheiro binario.
  *
- * \param nomeFicheiro
- * \param inicio
- * \return
+ * @param nomeFicheiro
+ * @param inicio
+ * @return
  */
 bool GravarClienteBin(char* nomeFicheiro, Cliente* inicio) {
 	FILE* fp;
@@ -325,28 +325,32 @@ bool GravarClienteBin(char* nomeFicheiro, Cliente* inicio) {
 	}
 
 	//grava 1 registo de cada vez no ficheiro
-	ClientesLista* aux = inicio;
-	Cliente* auxCliente;
-	while (aux) {
-		auxCliente = aux->cliente;
-		fwrite(auxCliente, sizeof(Cliente), 1, fp);
-		aux = aux->next;
-	}
+	ClientesFicheiro aux;
+	Cliente* auxCliente = inicio;
+	while (auxCliente) {
+		aux.cod = auxCliente->cod;
+		strcpy(aux.nome, auxCliente->nome);
+		aux.saldo = auxCliente->saldo;
+		aux.nif = auxCliente->nif;
+		strcpy(aux.morada, auxCliente->morada);
 
+		fwrite(auxCliente, sizeof(ClientesFicheiro), 1, fp);
+		auxCliente = auxCliente->next;
+	}
 	fclose(fp);
 	return true;
 }
 
 /**
  * @brief Grava cliente em binario.
- *
+ * @author Victor Destefani
  * \param nomeFicheiro
  * \param
  * \return
  */
-ClientesLista* LerClienteBin(char* nomeFicheiro, bool* res) {
+ClientesFicheiro* LerClienteBin(char* nomeFicheiro, bool* res) {
 	FILE* fp;
-	ClientesLista* inicio = NULL;
+	ClientesFicheiro* inicio = NULL;
 	Cliente* aux;
 	*res = false;
 

@@ -25,11 +25,11 @@ typedef struct Vertice {
 #pragma region Métodos/Assinaturas para Grafos
 
 Vertice* CriarGrafo();
-Vertice* CriaPontoRecolha(char* cidade, int cod);
+Vertice* CriaPontoRecolha(char* cidade, int cod, bool* res);
 Vertice* InserePontoRecolha(Vertice* g, Vertice* novo, bool* res);
-void ExibeGrafo(Vertice* g);
-int ProcuraCodPontoRecolha(Vertice* g, char* cidade);
-Vertice* ProcuraPontoRecolha(Vertice* g, char* cidade);
+void ExibeGrafo(Vertice* g, bool* res);
+int ProcuraCodPontoRecolha(Vertice* g, char* cidade, bool* res);
+Vertice* ProcuraPontoRecolha(Vertice* g, char* cidade, bool* res);
 Vertice* InsLigPontoRecolha(Vertice* g, char* origem, char* dest, float peso, bool* res);
 
 #pragma endregion

@@ -18,7 +18,7 @@
 
 /**
  * @brief Criar e inicializa veiculo com dados fornecidos.
- * 
+ * @author Victor Destefani
  * @param cod
  * @param tipo
  * @param bateria
@@ -53,7 +53,7 @@ Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* loca
 
 /**
  * @brief Insere Veiculo no Inicio
- * 
+ * @author Victor Destefani
  * @param novo
  * @param inicio
  * @param 
@@ -81,8 +81,8 @@ Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio, bool* res) {
 }
 
 /**
- * Insere Veiculo no Fim.
- * 
+ * @brief Insere Veiculo no Fim.
+ * @author Victor Destefani
  * @param novo
  * @param inicio
  * @param 
@@ -111,7 +111,7 @@ Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio, bool* res) {
 
 /**
  * @brief Insere Veiculo Lista.
- * 
+ * @author Victor Destefani
  * @param novo
  * @param inicio
  * @param 
@@ -170,7 +170,7 @@ Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio, bool* res) {
 
 /**
  * @brief Verifica Veiculo em duplicado.
- * 
+ * @author Victor Destefani
  * @param cod
  * @param tipo
  * @param inicio
@@ -200,7 +200,7 @@ Veiculo* VerificaVeiculoDuplicado(int cod,char* tipo , Veiculo* inicio, bool* du
 
 /**
  * @brief Altera Dados do Veiculo.
- * 
+ * @author Victor Destefani
  * @param cod
  * @param tipo
  * @param bateria
@@ -251,7 +251,7 @@ Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, cha
 
 /**
  * @brief Remove Veiculo da Lista.
- * 
+ * @author Victor Destefani
  * @param cod
  * @param tipo
  * @param inicio
@@ -323,7 +323,7 @@ bool LerDadosVeiculo(char fileName[])
 
 /**
  * @brief Grava dados do Veiculo em Binário.
- * 
+ * @author Victor Destefani
  * @param nomeFicheiro
  * @param inicio
  * @return 
@@ -331,7 +331,6 @@ bool LerDadosVeiculo(char fileName[])
 
 bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	FILE* fp;
-
 
 	if (inicio == NULL) {
 		return false;
@@ -342,28 +341,33 @@ bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	}
 
 	//grava 1 registo de cada vez no ficheiro
-	VeiculosLista* aux = inicio;
-	Veiculo* auxVeiculo;
-	while (aux) {		
-			auxVeiculo = aux->veiculo;
-			fwrite(&auxVeiculo, sizeof(Veiculo), 1, fp);
-			aux = aux->next;
-		}
-		fclose(fp);
-		return true;
+ 	VeiculosFicheiro aux;
+	Veiculo* auxVeiculo = inicio;
+ 	while (auxVeiculo) {
+		aux.cod = auxVeiculo->cod;
+		strcpy(aux.tipo, auxVeiculo->tipo);
+		aux.bateria = auxVeiculo->bateria;
+		aux.custo = auxVeiculo->custo;
+		strcpy(aux.local, auxVeiculo->local);
+
+		fwrite(&aux, sizeof(VeiculosFicheiro), 1, fp);
+ 		auxVeiculo = auxVeiculo->next;
 	}
+ 	fclose(fp);
+	return true;
+}
 
 /**
  * @brief Lê dados do ficheiro binário criado.
- * 
+ * @author Victor Destefani
  * @param nomeFicheiro
  * @param 
  * @return 
  */
 
-VeiculosLista* LerVeiculoBin(char* nomeFicheiro, bool* res) {
+VeiculosFicheiro* LerVeiculoBin(char* nomeFicheiro, bool* res) {
 		FILE* fp;
-		VeiculosLista* inicio = NULL;
+		VeiculosFicheiro* inicio = NULL;
 		Veiculo* aux;
 
 		*res = false;
@@ -386,7 +390,6 @@ VeiculosLista* LerVeiculoBin(char* nomeFicheiro, bool* res) {
 		}
 		free(aux);
 		fclose(fp);
-
 		return inicio;
 }
 #pragma endregion

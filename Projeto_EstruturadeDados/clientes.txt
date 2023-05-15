@@ -1,0 +1,3 @@
+cod;nome;saldo;nif;morada
+01;Confuso Sobrinho;254167898;Rua da Confusao
+02;Marcos Paulo;149632643;Rua do Marco
