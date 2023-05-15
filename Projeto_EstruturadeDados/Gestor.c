@@ -328,7 +328,13 @@ bool GravarGestorBin(char* nomeFicheiro, Gestor* inicio, bool* res) {
 	return true;
 }
 
-
+/**
+ * @brief Ler ficheiro bin.
+ * 
+ * @param nomeFicheiro
+ * @param 
+ * @return 
+ */
 GestoresLista* LerGestorBin(char* nomeFicheiro, bool* res) {
 	FILE* fp;
 	GestoresLista* inicio = NULL;

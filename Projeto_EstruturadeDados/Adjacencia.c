@@ -13,7 +13,13 @@
 
 #pragma region
 
-/* Cria nodo de adjacencia */
+ /**
+  * @brief Cria novo nó de ligações.
+  * @author Victor Destefani
+  * @param cod
+  * @param peso
+  * @return
+  */
 Adj* CriaLigacao(int cod, float peso) {
 	Adj* novo = (Adj*)calloc(1, sizeof(Adj));
 	if (novo == NULL) return NULL;
@@ -23,7 +29,14 @@ Adj* CriaLigacao(int cod, float peso) {
 	return novo;
 }
 
-/* Verifica se X ligação sem utilizar recursao */
+
+/**
+ * @brief Verifica se X ligação Existe.
+ * @author Victor Destefani
+ * @param head
+ * @param cod
+ * @return
+ */
 bool ExisteLigacao(Adj* head, int cod) {
 	while (head != NULL)
 	{
@@ -33,6 +46,14 @@ bool ExisteLigacao(Adj* head, int cod) {
 	return false;
 }
 
+/**
+ * @brief
+ * @author Victor Destefani
+ * @param head
+ * @param novo
+ * @param
+ * @return
+ */
 Adj* InsereLigacao(Adj* head, Adj* novo, bool* res) {
 	if (novo == NULL) /* Se o novo nó for nulo, retorna lista original,
 						 definindo res como falso, indicando que a
@@ -63,6 +84,12 @@ Adj* InsereLigacao(Adj* head, Adj* novo, bool* res) {
 	return head;
 }
 
+
+/**
+ * @brief
+ * @author Victor Destefani
+ * @param head
+ */
 void MostraLigacoes(Adj* head) { /* Verifica se o ponteiro para lista é diferente de NULL, se for,
 									devolve as informações impressas do nó atual e em seguida chama novamente a propria função,
 									passando como parãmetro o proximo no da lista, o processo se repete ate que o ponteiro para o nó seja NULL,
