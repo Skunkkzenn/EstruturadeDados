@@ -9,13 +9,11 @@
 * Mobilidade Elétrica - Estrutura Veiculos
 */
 
-
-
 #include <stdio.h>
 #include <string.h> 
 #include <stdbool.h>
 #include <stdlib.h>
-#pragma warning( disable : 4996 ) //evita MSG ERROS: _CRT_SECURE_NO_WARNINGS
+#pragma warning( disable : 4996 ) 
 #define N 200
 
 #pragma region	Struct Veículo
@@ -28,8 +26,6 @@ typedef struct Veiculo {
 	char local[N];
 	struct Veiculo* next;
 }Veiculo;
-
-
 
 typedef struct VeiculosFicheiro {
 	int cod;

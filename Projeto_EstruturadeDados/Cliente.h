@@ -25,10 +25,13 @@ typedef struct Cliente {
 	struct Cliente* next;
 }Cliente;
 
-typedef struct ClientesLista {
-	Cliente* cliente;
-	struct ClientesLista* next;
-}ClientesLista;
+typedef struct ClientesFicheiro {
+	int cod;
+	char nome[N];
+	float saldo;
+	long int nif;
+	char morada[N];
+}ClientesFicheiro;
 
 #pragma endregion
 
@@ -43,6 +46,6 @@ Cliente* InsertClienteFim(Cliente* novo, Cliente* inicio, bool* res);
 Cliente* VerificaClienteDuplicado(int cod, long int nif, Cliente* inicio, bool* duplicado);
 bool LerDadosCliente(char fileName[]);
 bool GravarClienteBin(char* nomeFicheiro, Cliente* inicio);
-ClientesLista* LerClienteBin(char* nomeFicheiro, bool* res);
+ClientesFicheiro* LerClienteBin(char* nomeFicheiro, bool* res);
 
 #pragma endregion

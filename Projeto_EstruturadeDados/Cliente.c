@@ -325,14 +325,18 @@ bool GravarClienteBin(char* nomeFicheiro, Cliente* inicio) {
 	}
 
 	//grava 1 registo de cada vez no ficheiro
-	ClientesLista* aux = inicio;
-	Cliente* auxCliente;
-	while (aux) {
-		auxCliente = aux->cliente;
-		fwrite(auxCliente, sizeof(Cliente), 1, fp);
-		aux = aux->next;
-	}
+	ClientesFicheiro aux;
+	Cliente* auxCliente = inicio;
+	while (auxCliente) {
+		aux.cod = auxCliente->cod;
+		strcpy(aux.nome, auxCliente->nome);
+		aux.saldo = auxCliente->saldo;
+		aux.nif = auxCliente->nif;
+		strcpy(aux.morada, auxCliente->morada);
 
+		fwrite(auxCliente, sizeof(ClientesFicheiro), 1, fp);
+		auxCliente = auxCliente->next;
+	}
 	fclose(fp);
 	return true;
 }
@@ -344,9 +348,9 @@ bool GravarClienteBin(char* nomeFicheiro, Cliente* inicio) {
  * \param
  * \return
  */
-ClientesLista* LerClienteBin(char* nomeFicheiro, bool* res) {
+ClientesFicheiro* LerClienteBin(char* nomeFicheiro, bool* res) {
 	FILE* fp;
-	ClientesLista* inicio = NULL;
+	ClientesFicheiro* inicio = NULL;
 	Cliente* aux;
 	*res = false;
 

@@ -17,7 +17,7 @@
 #pragma region Métodos Gestores
  /**
   * @brief Cria Gestor.
-  *
+  * @author Victor Destefani
   * @param cod
   * @param nome
   * @param saldo
@@ -47,7 +47,7 @@ Gestor* CriaGestor(int cod, char* nome, float saldo, long int nif, char* morada,
 
 /**
  * @brief Insere Gestor no Inicio.
- *
+ * @author Victor Destefani
  * @param novo
  * @param inicio
  * @return
@@ -75,7 +75,7 @@ Gestor* InsertGestorInicio(Gestor* novo, Gestor* inicio, bool* res) {
 
 /**
  * @brief Insere Gestor no Fim.
- *
+ * @author Victor Destefani
  * @param novo
  * @param inicio
  * @return
@@ -102,7 +102,7 @@ Gestor* InsertGestorFim(Gestor* novo, Gestor* inicio, bool* res) {
 
 /**
  * @brief Verifica Gestor Duplicado.
- *
+ * @author Victor Destefani
  * @param cod
  * @param nif
  * @param inicio
@@ -131,7 +131,7 @@ Gestor* VerificaGestorDuplicado(int cod, int long nif, Gestor* inicio, bool* dup
 
 /**
  * @brief Insere Gestor na Lista.
- *
+ * @author Victor Destefani
  * @param novo
  * @param inicio
  * @param
@@ -183,7 +183,7 @@ Gestor* InsertGestorLista(Gestor* novo, Gestor* inicio, bool* res) {
 
 /**
  * @brief Altera dados Gestor.
- *
+ * @author Victor Destefani
  * @param cod
  * @param nome
  * @param saldo
@@ -234,7 +234,7 @@ Gestor* AlteraCampoGestor(int cod, char* nome, float saldo, long int nif, char* 
 
 /**
  * @brief Remove Gestor.
- *
+ * @author Victor Destefani
  * @param cod
  * @param nif
  * @param inicio
@@ -277,7 +277,7 @@ Gestor* RemoveGestor(int cod, long int nif, Gestor* inicio, bool* res) {
 
 /**
  * @brief Lê ficheiro gestores.txt.
- *
+ * @author Victor Destefani
  * @param fileName
  * @return
  */
@@ -299,7 +299,7 @@ bool LerDadosGestor(char fileName[]) {
 
 /**
  * @brief Grava ficheiro em binário.
- *
+ * @author Victor Destefani
  * @param nomeFicheiro
  * @param inicio
  * @return
@@ -317,12 +317,17 @@ bool GravarGestorBin(char* nomeFicheiro, Gestor* inicio, bool* res) {
 	}
 
 	//grava 1 registo de cada vez no ficheiro
-	GestoresLista* aux = inicio;
-	Gestor* auxGestores;
-	while (aux) {
-		auxGestores = aux->gestores;
-		fwrite(auxGestores, sizeof(Gestor), 1, fp);
-		aux = aux->next;
+	GestoresFicheiro aux;
+	Gestor* auxGestor = inicio;
+	while (auxGestor) {
+		aux.cod = auxGestor->cod;
+		strcpy(aux.nome, auxGestor->nome);
+		aux.saldo = auxGestor->saldo;
+		aux.nif = auxGestor->nif;
+		strcpy(aux.morada, auxGestor->morada);
+
+		fwrite(auxGestor, sizeof(GestoresFicheiro), 1, fp);
+		auxGestor = auxGestor->next;
 	}
 	fclose(fp);
 	return true;
@@ -330,14 +335,14 @@ bool GravarGestorBin(char* nomeFicheiro, Gestor* inicio, bool* res) {
 
 /**
  * @brief Ler ficheiro bin.
- * 
+ * @author Victor Destefani
  * @param nomeFicheiro
  * @param 
  * @return 
  */
-GestoresLista* LerGestorBin(char* nomeFicheiro, bool* res) {
+GestoresFicheiro* LerGestorBin(char* nomeFicheiro, bool* res) {
 	FILE* fp;
-	GestoresLista* inicio = NULL;
+	GestoresFicheiro* inicio = NULL;
 	Gestor* aux;
 	*res = false;
 

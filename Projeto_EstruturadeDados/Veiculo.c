@@ -390,7 +390,6 @@ VeiculosFicheiro* LerVeiculoBin(char* nomeFicheiro, bool* res) {
 		}
 		free(aux);
 		fclose(fp);
-
 		return inicio;
 }
 #pragma endregion

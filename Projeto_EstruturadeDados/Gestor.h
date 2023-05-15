@@ -10,7 +10,7 @@
 #include <string.h> 
 #include <stdbool.h>
 #include <stdlib.h>
-#pragma warning( disable : 4996 ) //evita MSG ERROS: _CRT_SECURE_NO_WARNINGS
+#pragma warning( disable : 4996 ) 
 #define N 200
 
 #pragma region Struct Gestor
@@ -21,14 +21,16 @@ typedef struct Gestor {
 	float saldo;
 	long int nif;
 	char morada[N];
-	struct Gestor* next; // temos uma variavel a apontar para o proximo gestor
-
+	struct Gestor* next; 
 }Gestor;
 
-typedef struct GestoresLista {
-	Gestor* gestores;
-	struct GestoresLista* next;
-}GestoresLista;
+typedef struct GestoresFicheiro {
+	int cod;
+	char nome[N];
+	float saldo;
+	long int nif;
+	char morada[N];
+}GestoresFicheiro;
 
 #pragma endregion
 
@@ -43,7 +45,7 @@ Gestor* AlteraCampoGestor(int cod, char* nome, float saldo, long int nif, char* 
 Gestor* RemoveGestor(int cod, long int nif, Gestor* inicio, bool* res);
 bool LerDadosGestor(char fileName[]);
 bool GravarGestorBin(char* nomeFicheiro, Gestor* inicio, bool* res);
-GestoresLista* LerGestorBin(char* nomeFicheiro, bool* res);
+GestoresFicheiro* LerGestorBin(char* nomeFicheiro, bool* res);
 
 
 #pragma endregion
