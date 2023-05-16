@@ -46,6 +46,6 @@ Cliente* InsertClienteFim(Cliente* novo, Cliente* inicio, bool* res);
 Cliente* VerificaClienteDuplicado(int cod, long int nif, Cliente* inicio, bool* duplicado);
 bool LerDadosCliente(char fileName[]);
 bool GravarClienteBin(char* nomeFicheiro, Cliente* inicio);
-ClientesFicheiro* LerClienteBin(char* nomeFicheiro, bool* res);
+Cliente* LerClienteBin(char* nomeFicheiro, bool* res);
 
 #pragma endregion

@@ -326,7 +326,7 @@ bool GravarClienteBin(char* nomeFicheiro, Cliente* inicio) {
 
 	//grava 1 registo de cada vez no ficheiro
 	ClientesFicheiro aux;
-	Cliente* auxCliente = inicio;
+ 	Cliente* auxCliente = inicio;
 	while (auxCliente) {
 		aux.cod = auxCliente->cod;
 		strcpy(aux.nome, auxCliente->nome);
@@ -348,30 +348,48 @@ bool GravarClienteBin(char* nomeFicheiro, Cliente* inicio) {
  * \param
  * \return
  */
-ClientesFicheiro* LerClienteBin(char* nomeFicheiro, bool* res) {
+Cliente* LerClienteBin(char* nomeFicheiro, bool* res) {
 	FILE* fp;
-	ClientesFicheiro* inicio = NULL;
-	Cliente* aux;
+	Cliente* inicio = NULL;
+	ClientesFicheiro aux;
 	*res = false;
 
 	if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
 
-	//Vai ler o numero de registro no ficheiro
-	aux = (Cliente*)malloc(sizeof(Cliente));
-	while (fread(aux, sizeof(Cliente), 1, fp)) {
-		if (aux != NULL)
-		{
-			inicio = InsertClienteInicio(inicio, aux, res);
-			aux = (Cliente*)malloc(sizeof(Cliente));
-			*res = true;
+	while (fread(&aux, sizeof(ClientesFicheiro), 1, fp)) {
+		Cliente* novo = (Cliente*)malloc(sizeof(Cliente));
+ 		if (novo == NULL) {
+			*res = false;
+			break;
+		}
 
+	 	novo->cod = aux.cod;
+		strcpy(novo->nome, aux.nome);
+		novo->saldo = aux.saldo;
+		novo->nif = aux.nif;
+		strcpy(novo->morada, aux.morada);
+		novo->next = NULL;
+
+		if (inicio == NULL) {
+			inicio = novo;
 		}
 		else {
-			*res = false;
+			Cliente* temp = inicio;
+			while (temp->next != NULL) {
+				temp = temp->next;
+			}
+			temp->next = novo;
 		}
+
+		// Imprime os dados do registro lido
+		printf("Registro lido: cod=%d, nome=%s, saldo=%.2f, nif=%d, local=%s\n",
+			novo->cod, novo->nome, novo->saldo, novo->nif, novo->morada);
+
+		*res = true;
 	}
-	free(aux);
+
 	fclose(fp);
+
 	return inicio;
 }
 
