@@ -14,7 +14,7 @@
 #include "Veiculo.h"
 #include "Cliente.h"
 #include "Gestor.h"
-#include "Grafo.h"
+#include "Vertice.h"
 #include "Adjacencia.h"
 #pragma warning( disable : 4996 )
 
@@ -83,40 +83,40 @@ int main()  {
     bool  saveGestor = GravarGestorBin(fileGestor, inicioGestores, &res);
 
     //Lê arquivo binario
-    VeiculosFicheiro* listVeiculos = LerVeiculoBin("veiculos.bin", &res);
-    ClientesFicheiro* listClientes = LerClienteBin("clientes.bin", &res);
-    GestoresFicheiro* listGestores = LerGestorBin("gestores.bin", &res);
+    Veiculo* listVeiculos = LerVeiculoBin("veiculos.bin", &res);
+    Cliente* listClientes = LerClienteBin("clientes.bin", &res);
+    Gestor* listGestores = LerGestorBin("gestores.bin", &res);
 
 #pragma region Grafos (Vertices e Adj)
-    /*
+    
     //Vertices
     Vertice* graf = CriarGrafo();
 
-    Vertice* novoVertice = CriaPontoRecolha("Sao Victor", tot);
+    Vertice* novoVertice = CriaPontoRecolha("Sao Victor", tot, &res);
     if (novoVertice != NULL) {
         graf = InserePontoRecolha(graf, novoVertice, &res);
         tot++;
     }
 
-    novoVertice = CriaPontoRecolha("Lamacaes", tot);
+    novoVertice = CriaPontoRecolha("Lamacaes", tot, &res);
     if (novoVertice != NULL) {
         graf = InserePontoRecolha(graf, novoVertice, &res);
         tot++;
     }
 
-    novoVertice = CriaPontoRecolha("Santa Tecla", tot);
+    novoVertice = CriaPontoRecolha("Santa Tecla", tot, &res);
     if (novoVertice != NULL) {
         graf = InserePontoRecolha(graf, novoVertice, &res);
         tot++;
     }
 
-    novoVertice = CriaPontoRecolha("Vila Velha", tot);
+    novoVertice = CriaPontoRecolha("Vila Velha", tot, &res);
     if (novoVertice != NULL) {
         graf = InserePontoRecolha(graf, novoVertice, &res);
         tot++;
     }
 
-    ExibeGrafo(graf); // Recursividade
+    ExibeGrafo(graf, &res); // Recursividade
 
     //Ligações
     graf = InsLigPontoRecolha(graf, "Sao Vitor", "Lamacaes", 22, &res);
@@ -124,10 +124,9 @@ int main()  {
     graf = InsLigPontoRecolha(graf, "Santa Tecla", "Lamacaes", 17, &res);
     graf = InsLigPontoRecolha(graf, "Lamacaes", "Vila Velha", 17, &res);
 
-    ExibeGrafo(graf); // Recursividade
+    ExibeGrafo(graf, &res); // Recursividade
 
-#pragma endregion 
-*/
     return true;
 }
 
+#pragma endregion 
