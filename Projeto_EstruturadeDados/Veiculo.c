@@ -332,28 +332,24 @@ bool LerDadosVeiculo(char fileName[])
 bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	FILE* fp;
 
-	if (inicio == NULL) {
-		return false;
-	}
-
-	if ((fp = fopen(nomeFicheiro, "wb")) == NULL) {
-		return false;
-	}
+	if (inicio == NULL) return false;
+	if ((fp = fopen(nomeFicheiro, "wb")) == NULL) return false;
 
 	//grava 1 registo de cada vez no ficheiro
- 	VeiculosFicheiro aux;
-	Veiculo* auxVeiculo = inicio;
- 	while (auxVeiculo) {
-		aux.cod = auxVeiculo->cod;
-		strcpy(aux.tipo, auxVeiculo->tipo);
-		aux.bateria = auxVeiculo->bateria;
-		aux.custo = auxVeiculo->custo;
-		strcpy(aux.local, auxVeiculo->local);
+	Veiculo* aux = inicio;
+	VeiculosFicheiro auxVeiculo;
+	while (aux) {
+		auxVeiculo.cod = aux->cod;
+		strcpy(auxVeiculo.tipo, aux->tipo);
+		auxVeiculo.bateria = aux->bateria;
+		auxVeiculo.custo = aux->custo;
+		strcpy(&auxVeiculo.local, aux->local);
 
 		fwrite(&aux, sizeof(VeiculosFicheiro), 1, fp);
- 		auxVeiculo = auxVeiculo->next;
+
+		aux = aux->next;
 	}
- 	fclose(fp);
+	fclose(fp);
 	return true;
 }
 

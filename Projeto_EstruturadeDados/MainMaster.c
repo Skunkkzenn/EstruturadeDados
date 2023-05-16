@@ -43,11 +43,13 @@ int main()  {
     Cliente* novoCliente = CriaCliente(01, "Michael Jackson", 200.45, 284152362, "Rua de Lameichas", &res);
     Gestor* novoGestor = CriaGestor(01, "Lebron James", 596.78, 299655456, "Rua Sebastiao", &res);
 
+    /**/
     // Inserir o novo Veiculo, Cliente e Gestor no início da lista
     inicioVeiculos = InsertVeiculoInicio(novoVeiculo, inicioVeiculos, &res);
     inicioClientes = InsertClienteInicio(novoCliente, inicioClientes, &res);
     inicioGestores = InsertGestorInicio(novoGestor, inicioGestores, &res);
-
+    
+    
     // Insere Veiculo, Cliente e Gestor no Fim
     inicioVeiculos = InsertVeiculoFim(novoVeiculo, inicioVeiculos, &res);
     inicioClientes = InsertClienteFim(novoCliente, inicioClientes, &res);
@@ -63,10 +65,12 @@ int main()  {
     inicioClientes = AlteraCampoCliente(05, "Mohamedi Ali", 100.52, 322954125, "Rua de Marechal", novoCliente, inicioClientes, &res);
     inicioGestores = AlteraCampoGestor(25, "Bob Marley", 400.20, 420240420, "Rua da Jamaica", novoGestor, inicioGestores, &res);
 
+    /*
     // Remove o Veiculo, Cliente e Gestor com o código e tipo especificados
     inicioVeiculos = RemoveVeiculo(144, "carro", inicioVeiculos, &res);
     inicioClientes = RemoveCliente(05, 322954125, inicioClientes, &res);
     inicioGestores = RemoveGestor(25, 420240420, novoGestor, inicioGestores, &res);
+    */
 
     //Grava Veiculo, Cliente e Gestor em arquivo binário
     char* fileVeiculo = "veiculos.bin";
@@ -84,7 +88,7 @@ int main()  {
     GestoresFicheiro* listGestores = LerGestorBin("gestores.bin", &res);
 
 #pragma region Grafos (Vertices e Adj)
-
+    /*
     //Vertices
     Vertice* graf = CriarGrafo();
 
@@ -123,7 +127,7 @@ int main()  {
     ExibeGrafo(graf); // Recursividade
 
 #pragma endregion 
-
+*/
     return true;
 }
 
