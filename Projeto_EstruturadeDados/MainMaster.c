@@ -87,6 +87,15 @@ int main()  {
     Cliente* listClientes = LerClienteBin("clientes.bin", &res);
     Gestor* listGestores = LerGestorBin("gestores.bin", &res);
 
+    //Verifica Veiculo Duplicado
+    Veiculo* aux = inicioVeiculos; // Ponteiro para percorrer a lista encadeada
+    while (aux != NULL) {
+        // Chama a função VerificaVeiculoDuplicado para cada veículo da lista
+        VerificaVeiculoDuplicado(aux->cod, aux->tipo, inicioVeiculos, &res);
+        aux = aux->next;
+    }
+
+
 #pragma region Grafos (Vertices e Adj)
     
     //Vertices

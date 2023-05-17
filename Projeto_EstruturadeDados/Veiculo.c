@@ -195,6 +195,10 @@ Veiculo* VerificaVeiculoDuplicado(int cod,char* tipo , Veiculo* inicio, bool* du
 	 	*duplicado = true;
 	}
 
+	if (*duplicado) {
+		printf("Erro: Veículo duplicado encontrado. Código: %d, Tipo: %s\n", aux->cod, aux->tipo);
+	}
+	
 	return aux;
 }
 
