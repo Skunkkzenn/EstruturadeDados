@@ -44,8 +44,8 @@ Gestor* InsertGestorLista(Gestor* novo, Gestor* inicio, bool* res);
 Gestor* AlteraCampoGestor(int cod, char* nome, float saldo, long int nif, char* morada, Gestor* novo, Gestor* inicio, bool* res);
 Gestor* RemoveGestor(int cod, long int nif, Gestor* inicio, bool* res);
 bool LerDadosGestor(char fileName[]);
-bool GravarGestorBin(char* nomeFicheiro, Gestor* inicio, bool* res);
-GestoresFicheiro* LerGestorBin(char* nomeFicheiro, bool* res);
+bool GravarGestorBin(char* nomeFicheiro, Gestor* inicio);
+Gestor* LerGestorBin(char* nomeFicheiro, bool* res);
 
 
 #pragma endregion

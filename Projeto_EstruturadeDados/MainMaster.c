@@ -14,7 +14,7 @@
 #include "Veiculo.h"
 #include "Cliente.h"
 #include "Gestor.h"
-#include "Grafo.h"
+#include "Vertice.h"
 #include "Adjacencia.h"
 #pragma warning( disable : 4996 )
 
@@ -43,11 +43,13 @@ int main()  {
     Cliente* novoCliente = CriaCliente(01, "Michael Jackson", 200.45, 284152362, "Rua de Lameichas", &res);
     Gestor* novoGestor = CriaGestor(01, "Lebron James", 596.78, 299655456, "Rua Sebastiao", &res);
 
+    /**/
     // Inserir o novo Veiculo, Cliente e Gestor no início da lista
     inicioVeiculos = InsertVeiculoInicio(novoVeiculo, inicioVeiculos, &res);
     inicioClientes = InsertClienteInicio(novoCliente, inicioClientes, &res);
     inicioGestores = InsertGestorInicio(novoGestor, inicioGestores, &res);
-
+    
+    
     // Insere Veiculo, Cliente e Gestor no Fim
     inicioVeiculos = InsertVeiculoFim(novoVeiculo, inicioVeiculos, &res);
     inicioClientes = InsertClienteFim(novoCliente, inicioClientes, &res);
@@ -63,10 +65,12 @@ int main()  {
     inicioClientes = AlteraCampoCliente(05, "Mohamedi Ali", 100.52, 322954125, "Rua de Marechal", novoCliente, inicioClientes, &res);
     inicioGestores = AlteraCampoGestor(25, "Bob Marley", 400.20, 420240420, "Rua da Jamaica", novoGestor, inicioGestores, &res);
 
+    /*
     // Remove o Veiculo, Cliente e Gestor com o código e tipo especificados
     inicioVeiculos = RemoveVeiculo(144, "carro", inicioVeiculos, &res);
     inicioClientes = RemoveCliente(05, 322954125, inicioClientes, &res);
     inicioGestores = RemoveGestor(25, 420240420, novoGestor, inicioGestores, &res);
+    */
 
     //Grava Veiculo, Cliente e Gestor em arquivo binário
     char* fileVeiculo = "veiculos.bin";
@@ -79,40 +83,49 @@ int main()  {
     bool  saveGestor = GravarGestorBin(fileGestor, inicioGestores, &res);
 
     //Lê arquivo binario
-    VeiculosFicheiro* listVeiculos = LerVeiculoBin("veiculos.bin", &res);
-    ClientesFicheiro* listClientes = LerClienteBin("clientes.bin", &res);
-    GestoresFicheiro* listGestores = LerGestorBin("gestores.bin", &res);
+    Veiculo* listVeiculos = LerVeiculoBin("veiculos.bin", &res);
+    Cliente* listClientes = LerClienteBin("clientes.bin", &res);
+    Gestor* listGestores = LerGestorBin("gestores.bin", &res);
+
+    //Verifica Veiculo Duplicado
+    Veiculo* aux = inicioVeiculos; // Ponteiro para percorrer a lista encadeada
+    while (aux != NULL) {
+        // Chama a função VerificaVeiculoDuplicado para cada veículo da lista
+        VerificaVeiculoDuplicado(aux->cod, aux->tipo, inicioVeiculos, &res);
+        aux = aux->next;
+    }
+
 
 #pragma region Grafos (Vertices e Adj)
-
+    
     //Vertices
     Vertice* graf = CriarGrafo();
 
-    Vertice* novoVertice = CriaPontoRecolha("Sao Victor", tot);
+    Vertice* novoVertice = CriaPontoRecolha("Sao Victor", tot, &res);
     if (novoVertice != NULL) {
         graf = InserePontoRecolha(graf, novoVertice, &res);
         tot++;
     }
 
-    novoVertice = CriaPontoRecolha("Lamacaes", tot);
+    novoVertice = CriaPontoRecolha("Lamacaes", tot, &res);
     if (novoVertice != NULL) {
         graf = InserePontoRecolha(graf, novoVertice, &res);
         tot++;
     }
 
-    novoVertice = CriaPontoRecolha("Santa Tecla", tot);
+    novoVertice = CriaPontoRecolha("Santa Tecla", tot, &res);
     if (novoVertice != NULL) {
         graf = InserePontoRecolha(graf, novoVertice, &res);
         tot++;
     }
 
-    novoVertice = CriaPontoRecolha("Vila Velha", tot);
+    novoVertice = CriaPontoRecolha("Vila Velha", tot, &res);
     if (novoVertice != NULL) {
         graf = InserePontoRecolha(graf, novoVertice, &res);
         tot++;
     }
 
-    ExibeGrafo(graf); // Recursividade
+    ExibeGrafo(graf, &res); // Recursividade
 
     //Ligações
     graf = InsLigPontoRecolha(graf, "Sao Vitor", "Lamacaes", 22, &res);
@@ -120,10 +133,9 @@ int main()  {
     graf = InsLigPontoRecolha(graf, "Santa Tecla", "Lamacaes", 17, &res);
     graf = InsLigPontoRecolha(graf, "Lamacaes", "Vila Velha", 17, &res);
 
-    ExibeGrafo(graf); // Recursividade
-
-#pragma endregion 
+    ExibeGrafo(graf, &res); // Recursividade
 
     return true;
 }
 
+#pragma endregion 

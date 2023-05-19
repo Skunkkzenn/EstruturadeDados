@@ -50,7 +50,7 @@ Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio, bool* res);
 Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, char* local, Veiculo* novo, Veiculo* inicio, bool* res);
 bool LerDadosVeiculo(char fileName[]);
 bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio);
-VeiculosFicheiro* LerVeiculoBin(char* nomeFicheiro, bool* res);
+Veiculo* LerVeiculoBin(char* nomeFicheiro, bool* res);
 #pragma endregion
 
 

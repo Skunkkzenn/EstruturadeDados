@@ -304,7 +304,7 @@ bool LerDadosGestor(char fileName[]) {
  * @param inicio
  * @return
  */
-bool GravarGestorBin(char* nomeFicheiro, Gestor* inicio, bool* res) {
+bool GravarGestorBin(char* nomeFicheiro, Gestor* inicio) {
 	FILE* fp;
 
 	if (inicio == NULL) {
@@ -340,30 +340,49 @@ bool GravarGestorBin(char* nomeFicheiro, Gestor* inicio, bool* res) {
  * @param 
  * @return 
  */
-GestoresFicheiro* LerGestorBin(char* nomeFicheiro, bool* res) {
+Gestor* LerGestorBin(char* nomeFicheiro, bool* res) {
 	FILE* fp;
-	GestoresFicheiro* inicio = NULL;
-	Gestor* aux;
+	Gestor* inicio = NULL;
+	GestoresFicheiro aux;
 	*res = false;
 
 	if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
 
-	// garante - se que o ponteiro "aux" já tem um espaço de memória alocado e pode ser utilizado para armazenar os dados
-	aux = (Gestor*)malloc(sizeof(Gestor));
-
-	while (fread(aux, sizeof(Gestor), 1, fp)) {
-		if (aux != NULL) {
-			inicio = InsertGestorInicio(inicio, aux, res);
-			aux = (Gestor*)malloc(sizeof(Gestor));
-			*res = true;
+	while (fread(&aux, sizeof(GestoresFicheiro), 1, fp)) {
+		Gestor* novo = (Gestor*)malloc(sizeof(Gestor));
+		if (novo == NULL) {
+			*res = false;
+			break;
+		}
+		
+		novo->cod = aux.cod;
+		strcpy(novo->nome, aux.nome);
+		novo->saldo = aux.saldo;
+		novo->nif = aux.nif;
+		strcpy(novo->morada, aux.morada);
+		novo->next = NULL;
+		if (inicio == NULL) {
+			inicio = novo;
 		}
 		else {
-			*res = false;
+			Gestor* temp = inicio;
+			while (temp->next != NULL) {
+				temp = temp->next;
+			}
+			temp->next = novo;
 		}
+
+		// Imprime os dados do registro lido
+		printf("Registro lido: cod=%d, nome=%s, saldo=%.2f, nif=%d, local=%s\n",
+			novo->cod, novo->nome, novo->saldo, novo->nif, novo->morada);
+
+		*res = true;
 	}
-	free(aux);
+
 	fclose(fp);
+
 	return inicio;
 }
+
 
 #pragma endregion

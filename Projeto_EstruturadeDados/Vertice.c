@@ -57,7 +57,7 @@ Vertice* InserePontoRecolha(Vertice* g, Vertice* novo, bool* res) {
 
 	// Verifica se o ponto de recolha já existe na lista
 	bool existe = false;
-	Vertice* pontoExistente = ProcuraPontoRecolha(g, novo->cod, &existe);
+	Vertice* pontoExistente = ProcuraPontoRecolha(g, novo->cidade, &existe);
 	if (existe)
 	{
 		free(novo); // Libera a memória alocada para o novo ponto de recolha

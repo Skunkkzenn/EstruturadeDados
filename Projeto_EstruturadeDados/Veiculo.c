@@ -195,6 +195,10 @@ Veiculo* VerificaVeiculoDuplicado(int cod,char* tipo , Veiculo* inicio, bool* du
 	 	*duplicado = true;
 	}
 
+	if (*duplicado) {
+		printf("Erro: Veículo duplicado encontrado. Código: %d, Tipo: %s\n", aux->cod, aux->tipo);
+	}
+	
 	return aux;
 }
 
@@ -337,6 +341,7 @@ bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	}
 
 	if ((fp = fopen(nomeFicheiro, "wb")) == NULL) {
+		perror("Erro ao abrir arquivo para escrita");
 		return false;
 	}
 
@@ -364,32 +369,49 @@ bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
  * @param 
  * @return 
  */
+Veiculo* LerVeiculoBin(char* nomeFicheiro, bool* res) {
+	FILE* fp;
+	Veiculo* inicio = NULL;
+	VeiculosFicheiro aux;
+	*res = false;
 
-VeiculosFicheiro* LerVeiculoBin(char* nomeFicheiro, bool* res) {
-		FILE* fp;
-		VeiculosFicheiro* inicio = NULL;
-		Veiculo* aux;
-
-		*res = false;
-
-		if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
-
-		//Vai ler o numero de registro no ficheiro
-		aux = (Veiculo*)malloc(sizeof(Veiculo));
-		while (fread(aux, sizeof(Veiculo), 1, fp)) {
-			if (aux != NULL)
-			{
-				inicio = InsertVeiculoInicio(inicio, aux, res);
-				aux = (Veiculo*)malloc(sizeof(Veiculo));
-				*res = true;
-
-			}
-			else {
-				*res = false;
-			}
+	if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
+	
+	while (fread(&aux, sizeof(VeiculosFicheiro), 1, fp)) {
+		Veiculo* novo = (Veiculo*)malloc(sizeof(Veiculo));
+		if (novo == NULL) {
+			*res = false;
+			break;
 		}
-		free(aux);
-		fclose(fp);
-		return inicio;
+
+		novo->cod = aux.cod;
+		strcpy(novo->tipo, aux.tipo);
+		novo->bateria = aux.bateria;
+		novo->custo = aux.custo;
+		strcpy(novo->local, aux.local);
+		novo->next = NULL;
+
+		if (inicio == NULL) {
+			inicio = novo;
+		}
+		else {
+			Veiculo* temp = inicio;
+			while (temp->next != NULL) {
+				temp = temp->next;
+			}
+			temp->next = novo;
+		}
+
+		// Imprime os dados do registro lido
+		printf("Registro lido: cod=%d, tipo=%s, bateria=%.2f, custo=%.2f, local=%s\n",
+			novo->cod, novo->tipo, novo->bateria, novo->custo, novo->local);
+
+		*res = true;
+	}
+
+	fclose(fp);
+
+	return inicio;
 }
+
 #pragma endregion

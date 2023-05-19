@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Adjacencia.c" />
+    <ClCompile Include="Algoritmos.c" />
     <ClCompile Include="Cliente.c" />
     <ClCompile Include="Gestor.c" />
     <ClCompile Include="MainMaster.c" />
