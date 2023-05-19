@@ -18,6 +18,7 @@
 typedef struct Vertice {
 	int cod;
 	char cidade[N];
+	bool visitado;
 	struct Vertice* next;
 	struct Adj* adjacentes;
 }Vertice;
