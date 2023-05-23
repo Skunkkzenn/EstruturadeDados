@@ -32,6 +32,8 @@ int main() {
 
     bool res = false;
 
+    //Ficheiros de Texto
+    /*
     char fileNameVeiculos[] = "veiculos.txt";
     char fileNameClientes[] = "clientes.txt";
     char fileNameGestores[] = "gestores.txt";
@@ -39,6 +41,9 @@ int main() {
     bool sucessoV = LerDadosVeiculo(fileNameVeiculos);
     bool sucessoC = LerDadosCliente(fileNameClientes);
     bool sucessoG = LerDadosGestor(fileNameGestores);
+    */
+
+
 
     /**
      * @brief Cria Veiculos.
@@ -129,6 +134,7 @@ int main() {
     Cliente* listClientes = LerClienteBin("clientes.bin", &res);
     Gestor* listGestores = LerGestorBin("gestores.bin", &res);
 
+
     /*
     * Verifica Veiculo Duplicado Manualmente
 
@@ -144,7 +150,7 @@ int main() {
 
     //Vertices
     Vertice* graf = CriarGrafo();
-
+    
     Vertice* novoVertice = CriaPontoRecolha("Sao Victor", tot, &res);
     if (novoVertice != NULL) {
         graf = InserePontoRecolha(graf, novoVertice, &res);
@@ -205,7 +211,7 @@ int main() {
 #pragma endregion
 
 
-#pragma region  
+#pragma region Ficheiros Gravos e Adj
 
     int res1 = GravarGrafo(graf, "Vertices.bin");
     if (res1 > 0) puts("\nGrafo gravado em ficheiro");
@@ -220,13 +226,6 @@ int main() {
     puts("\nLer Adjacencias do grafo de ficheiro\n");
     graf = LerAdjBin(graf, &res);
     ExibeGrafo(graf, &res);
-
-
-
-#pragma endregion
-
-
-
 
     return true;
 }
