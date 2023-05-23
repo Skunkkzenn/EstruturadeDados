@@ -7,24 +7,32 @@
  *********************************************************************/
 
 #pragma once
-
 #include <stdio.h>
 #include <stdbool.h>
 #pragma warning (disable: 4996)
 
 
-/* Estrutura de Adjacência */
 typedef struct Adj {
-	int cod;	/* Cod. de Adjacência */
-	float peso; /* Peso */
+	int cod;	
+	float peso; 
 	struct Adj* next;
 }Adj;
+
+
+typedef struct AdjFicheiro {
+	int codOrigem;
+	int codDestino;
+	float peso;
+}AdjFicheiro;
 
 #pragma region Funções/Métodos Ligações de Vertices
 
 Adj* CriaLigacao(int cod, float peso);
-bool ExisteLigacao(Adj* head, int cod);
-Adj* InsereLigacao(Adj* head, Adj* novo, bool* res);
+bool ExisteLigacao(Adj* inicio, int cod);
+Adj* InsereLigacao(Adj* inicio, Adj* novo, bool* res);
 void MostraLigacoes(Adj* head);
+int GravaAdjBin(Adj* inicio, char* fileName, int codVerticeOrigem);
+Adj* LerAdjBin(Adj* inicio, bool* res);
 
 #pragma endregion
+

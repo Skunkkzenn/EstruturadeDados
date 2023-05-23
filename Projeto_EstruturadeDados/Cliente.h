@@ -10,12 +10,12 @@
 #include <string.h> 
 #include <stdbool.h>
 #include <stdlib.h>
+
 #pragma warning( disable : 4996 ) //evita MSG ERROS: _CRT_SECURE_NO_WARNINGS
 #define N 200
-#define MAX 40 // Maximo de Clientes, utilizar mais a frente*
-
 
 #pragma region Struct Cliente
+
 typedef struct Cliente {
 	int cod;
 	char nome[N];
@@ -47,5 +47,6 @@ Cliente* VerificaClienteDuplicado(int cod, long int nif, Cliente* inicio, bool* 
 bool LerDadosCliente(char fileName[]);
 bool GravarClienteBin(char* nomeFicheiro, Cliente* inicio);
 Cliente* LerClienteBin(char* nomeFicheiro, bool* res);
+
 
 #pragma endregion

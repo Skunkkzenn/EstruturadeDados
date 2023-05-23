@@ -7,6 +7,7 @@
  *********************************************************************/
 
 #include "Adjacencia.h"
+#include "Vertice.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -29,7 +30,6 @@ Adj* CriaLigacao(int cod, float peso) {
 	return novo;
 }
 
-
 /**
  * @brief Verifica se X ligação Existe.
  * @author Victor Destefani
@@ -37,56 +37,55 @@ Adj* CriaLigacao(int cod, float peso) {
  * @param cod
  * @return
  */
-bool ExisteLigacao(Adj* head, int cod) {
-	while (head != NULL)
+bool ExisteLigacao(Adj* inicio, int cod) {
+	while (inicio != NULL)
 	{
-		if (head->cod == cod) return true;
-		head = head->next;
+		if (inicio->cod == cod) return true;
+		inicio = inicio->next;
 	}
 	return false;
 }
 
 /**
- * @brief
+ * @brief Insere Ligação
  * @author Victor Destefani
- * @param head
+ * @param inicio
  * @param novo
  * @param
  * @return
  */
-Adj* InsereLigacao(Adj* head, Adj* novo, bool* res) {
+Adj* InsereLigacao(Adj* inicio, Adj* novo, bool* res) {
 	if (novo == NULL) /* Se o novo nó for nulo, retorna lista original,
 						 definindo res como falso, indicando que a
 						 inserção não foi realizada com sucesso */
 	{
 		*res = false;
-		return head;
+		return inicio;
 	}
-	if (head == NULL || head->cod > novo->cod)/* Verifica se a lista esta vazia OU se o novo no deve ser inserido antes da cabeça da lista.
+	if (inicio == NULL || inicio->cod > novo->cod)/* Verifica se a lista esta vazia OU se o novo no deve ser inserido antes da cabeça da lista.
 												 O novo nó será inserido na primeira posição, res é definido como true confirmando a execução
 												 da tarefa e a função retorna o ponteiro para o novo no. 	*/
 
 	{
-		novo->next = head;
+		novo->next = inicio;
 		*res = true;
 		return novo;
 	}
-	if (head->cod == novo->cod) /* Verifica se o nó que vai ser inserido já existe na lista.
+	if (inicio->cod == novo->cod) /* Verifica se o nó que vai ser inserido já existe na lista.
 								   Se sim, a função retorna a lista original e marca res como falso */
 	{
 		*res = false;
-		return head;
+		return inicio;
 	}
-	head->next = InsereLigacao(head->next, novo, res); /* Utilizando a recursividade, a função InsereLigacao percorre a lista até encontrar
+	inicio->next = InsereLigacao(inicio->next, novo, res); /* Utilizando a recursividade, a função InsereLigacao percorre a lista até encontrar
 														o local correto para inserção. Quando encntrar, insere o novo nó e retorna o ponteiro
 														para a cabeça da lista. */
 	*res = true;
-	return head;
+	return inicio;
 }
 
-
 /**
- * @brief
+ * @brief Exibe Ligações
  * @author Victor Destefani
  * @param head
  */
@@ -95,9 +94,57 @@ void MostraLigacoes(Adj* head) { /* Verifica se o ponteiro para lista é diferent
 									passando como parãmetro o proximo no da lista, o processo se repete ate que o ponteiro para o nó seja NULL,
 									demostrando o final da lista. */
 	if (head != NULL) {
-		printf("\tAdj: %d - (%.0f)\n", head->cod, head->peso);
+		printf("\tAdj: %d - %.0f km\n", head->cod, head->peso);
 		MostraLigacoes(head->next);
 	}
+}
+
+/**
+ * @brief Grava Adjacência em bin.
+ * @author Victor Destefani
+ * @param inicio
+ * @param fileName
+ * @param codVerticeOrigem
+ * @return
+ */
+int GravaAdjBin(Adj* inicio, char* fileName, int codVerticeOrigem) {
+	FILE* fp;
+
+	if (inicio == NULL) return -2; // falha na abertura do arquivo
+	fp = fopen(fileName, "ab");
+	if (fp == NULL) return -1; // ausência de vértices no grafo
+	Adj* auxAdj = inicio;
+	AdjFicheiro auxFileAdj;
+
+	while (auxAdj != NULL) {
+		auxFileAdj.codDestino = auxAdj->cod;
+		auxFileAdj.codOrigem = codVerticeOrigem;
+		auxFileAdj.peso = auxAdj->peso;
+		fwrite(&auxFileAdj, 1, sizeof(AdjFicheiro), fp);
+		auxAdj = auxAdj->next;
+	}
+	fclose(fp);
+	return 1;
+}
+
+Adj* LerAdjBin(Adj* inicio, bool* res) {
+	*res = false;
+	FILE* fp;
+
+	AdjFicheiro auxFicheiro;
+	Vertice* auxVertice = inicio;
+
+	while (auxVertice) {
+		fp = fopen(auxVertice->cidade, "rb");
+		if (fp != NULL) {
+			while (fread(&auxFicheiro, 1, sizeof(AdjFicheiro), fp)) {
+				inicio = InsLigPontoRecolha(inicio, auxFicheiro.codDestino, auxFicheiro.codDestino, auxFicheiro.peso, res);
+			}
+			fclose(fp);
+		}
+		auxVertice = auxVertice->next;
+	}
+	return inicio;
 }
 
 #pragma endregion
