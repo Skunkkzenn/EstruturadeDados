@@ -32,4 +32,6 @@ typedef struct AluguelFicheiro {
 int AlugaVeiculo(Veiculo* veiculo, Cliente* cliente);
 Aluguel* ProcuraAluguel(Aluguel* lista, int cod);
 
+int AlugaVeiculo(Veiculo* veiculo, Cliente* cliente);
+
 #pragma once

@@ -8,6 +8,7 @@
 
 #include "AlugaVeiculos.h"
 
+
 /**
  * @brief Associa Cliente ao Veiculo
  * @author Victor Destefani
@@ -22,18 +23,17 @@ int AlugaVeiculo(Veiculo* veiculo, Cliente* cliente) {
 	}
 
 	if (strcmp(veiculo->local, "Reservado") == 0) {
-		printf("ERROR: Veiculo já foi reservado.\n");
-		return -1; // Indica que a reserva falhou devido ao veículo já estar reservado
+		printf("ERROR: Veiculo jÃ¡ foi reservado.\n");
+		return -1; // Indica que a reserva falhou devido ao veÃ­culo jÃ¡ estar reservado
 	}
 
 	//Abate o valor do custo no valor do saldo
 	cliente->saldo -= veiculo->custo;
 
-	// Atualizar o local do veículo para "Reservado"
+	// Atualizar o local do veÃ­culo para "Reservado"
 	strcpy(veiculo->local, "Reservado");
 
-
-	return 1;
+return 1;
 
 }
 
@@ -54,7 +54,7 @@ Aluguel* ProcuraAluguel(Aluguel* lista, int cod) {
 		aluguel = aluguel->next;
 	}
 
-	return NULL; // Aluguel não encontrado
+	return NULL; // Aluguel nÃ£o encontrado
 }
 
 /**
@@ -91,7 +91,7 @@ bool GravarAluguelBin(char* nomeFicheiro, Aluguel* inicio) {
 }
 
 /**
- * Lê arquivo bin dos Aluguéis.
+ * LÃª arquivo bin dos AluguÃ©is.
  * 
  * @param nomeFicheiro
  * @param 
@@ -150,16 +150,16 @@ Aluguel* LerAluguelBin(char* nomeFicheiro, bool* res) {
  */
 Aluguel* RemoveAluguel(Aluguel* inicio, int cod, long int nif, bool* res) {
 	*res = false;
-	// Verifica se o início é nulo (lista vazia)
+	// Verifica se o inÃ­cio Ã© nulo (lista vazia)
 	if (inicio == NULL) {
-		return NULL; // Não há nenhum veículo para ser removido
+		return NULL; // NÃ£o hÃ¡ nenhum veÃ­culo para ser removido
 	}
 
 	// Inicializa ponteiros auxiliares
 	Aluguel* noAnterior = inicio;
 	Aluguel* noAtual = inicio;
 
-	// Verifica se o nó a ser removido é a cabeça da lista
+	// Verifica se o nÃ³ a ser removido Ã© a cabeÃ§a da lista
 	if ((inicio != NULL) && (inicio->cod == cod)) {
 		noAnterior = noAnterior->next;
 		free(inicio);
@@ -168,16 +168,19 @@ Aluguel* RemoveAluguel(Aluguel* inicio, int cod, long int nif, bool* res) {
 	else
 	{
 		while ((noAtual != NULL) && (noAtual->cod != cod)) { // Procura pelo aluguel a ser removido
-			noAnterior = noAtual; // avança o ponteiro auxAnt para o próximo nó
-			noAtual = noAtual->next; // avança o ponteiro auxProx para o próximo nó
+			noAnterior = noAtual; // avanÃ§a o ponteiro auxAnt para o prÃ³ximo nÃ³
+			noAtual = noAtual->next; // avanÃ§a o ponteiro auxProx para o prÃ³ximo nÃ³
 		}
-		if ((noAtual == NULL) || (noAnterior->next == NULL) || (noAnterior->cod != cod)) { // Não foi encontrado nenhum aluguel com o código e tipo especificados
+		if ((noAtual == NULL) || (noAnterior->next == NULL) || (noAnterior->cod != cod)) { // NÃ£o foi encontrado nenhum aluguel com o cÃ³digo e tipo especificados
 			return inicio;
 		}
 		// Remove o aluguel encontrado
 		noAnterior->next = noAtual->next; // auxAnt campo next passa a conter o valor de auxProx campo next!
-		free(noAtual); // liberta a memória que é removida
+		free(noAtual); // liberta a memÃ³ria que Ã© removida
 		*res = true;
 	}
 	return inicio; // Retorna head
+
+	return 1;
+
 }
