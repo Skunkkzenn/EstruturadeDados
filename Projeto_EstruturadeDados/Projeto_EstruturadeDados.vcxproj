@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Adjacencia.c" />
+    <ClCompile Include="AlugaVeiculos.c" />
     <ClCompile Include="Cliente.c" />
     <ClCompile Include="DFT.c" />
     <ClCompile Include="Gestor.c" />
@@ -138,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adjacencia.h" />
+    <ClInclude Include="AlugaVeiculos.h" />
     <ClInclude Include="Cliente.h" />
     <ClInclude Include="DFT.h" />
     <ClInclude Include="Gestor.h" />
