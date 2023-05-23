@@ -33,9 +33,6 @@
     <ClCompile Include="Vertice.c">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="Algoritmos.c">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Veiculo.h">
