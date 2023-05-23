@@ -127,6 +127,14 @@ int GravaAdjBin(Adj* inicio, char* fileName, int codVerticeOrigem) {
 	return 1;
 }
 
+
+/**
+ * @brief Lê binário de Adjacências.
+ * @author Victor Destefani
+ * @param inicio
+ * @param 
+ * @return 
+ */
 Adj* LerAdjBin(Adj* inicio, bool* res) {
 	*res = false;
 	FILE* fp;

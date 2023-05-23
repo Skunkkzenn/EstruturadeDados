@@ -38,6 +38,7 @@ typedef struct ClientesFicheiro {
 #pragma region Funcoes para Tratar Clientes
 
 Cliente* CriaCliente(int cod, char* nome, float saldo, long int nif, char* morada, bool* res);
+Cliente* ProcuraGestor(Cliente* inicio, int cod, long int nif);
 Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio, bool* res);
 Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char* morada, Cliente* novo, Cliente* inicio, bool* res);
 Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio, bool* res);

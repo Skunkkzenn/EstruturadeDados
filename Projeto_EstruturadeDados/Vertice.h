@@ -33,7 +33,7 @@ Vertice* CriarGrafo();
 Vertice* CriaPontoRecolha(char* cidade, int cod, bool* res);
 Vertice* InserePontoRecolha(Vertice* inicio, Vertice* novo, bool* res);
 Vertice* InsLigPontoRecolha(Vertice* inicio, char* origem, char* dest, float peso, bool* res);
-void ExibeGrafo(Vertice* g, bool* res);
+void ExibeGrafo(Vertice* inicio, bool* res);
 int ProcuraCodPontoRecolha(Vertice* inicio, char* cidade);
 Vertice* ProcuraPontoRecolha(Vertice* inicio, char* cidade);
 Vertice* ProcuraRecolhaCod(Vertice* inicio, int cod);

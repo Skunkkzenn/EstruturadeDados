@@ -11,9 +11,9 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "Veiculo.h"
-
+#include "Cliente.h"
 #pragma warning( disable : 4996 )
-#define MAXCHAR 500
+
 
 #pragma region Metodos Veículos.
 
@@ -49,6 +49,27 @@ Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* loca
 
 	*res = true;
 	return novoVeiculo; //Retorna o o ponteiro para o novo veiculo criado
+}
+
+/**
+ * @brief Procura Veiculo pelo Cod. e Tipo.
+ * @author Victor Destefani
+ * @param inicio
+ * @param cod
+ * @param tipo
+ * @return 
+ */
+Veiculo* ProcuraVeiculo(Veiculo* inicio, int cod, const char* tipo) {
+	Veiculo* veiculo = inicio;
+
+	while (veiculo != NULL) {
+		if (veiculo->cod == cod && strcmp(veiculo->tipo, tipo) == 0) {
+			return veiculo; // Encontrou o veículo
+		}
+		veiculo = veiculo->next;
+	}
+
+	return NULL; // Veículo não encontrado
 }
 
 
@@ -302,10 +323,9 @@ Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio, bool* res) {
 	return inicio; // Retorna head
 }
 
-
 /**
  * @brief Ler dados ficheiro veiculos.txt.
- * 
+ * @author Victor Destefani
  * @param fileName
  * @return 
  */
@@ -334,7 +354,6 @@ bool LerDadosVeiculo(char fileName[])
  * @param inicio
  * @return 
  */
-
 bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio) {
 	FILE* fp;
 
@@ -416,32 +435,4 @@ Veiculo* LerVeiculoBin(char* nomeFicheiro, bool* res) {
 	return inicio;
 }
 
-
-
-/**
- * @brief Associa Cliente ao Veiculo
- *
- * @param veiculo
- * @param cliente
- * @return
- */
-int AlugaVeiculo(Veiculo* veiculo, Cliente* cliente) {
-	//Verifica se o cliente tem saldo suficiente
-	if (veiculo->custo > cliente->saldo) {
-		return 0; // Indica que a reserva falhou devido a saldo insuficiente
-	}
-
-	if (strcmp(veiculo->local, "Reservado") == 0) {
-		return -1; // Indica que a reserva falhou devido ao veículo já estar reservado
-	}
-
-	//Abate o valor do custo no valor do saldo
-	cliente->saldo -= veiculo->custo;
-
-	// Atualizar o local do veículo para "Reservado"
-	strcpy(veiculo->local, "Reservado");
-
-	return 1;
-
-}
 #pragma endregion

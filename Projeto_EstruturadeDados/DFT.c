@@ -15,8 +15,8 @@ int ContaCaminho(Vertice* inicio, int ori, int dest, int contaCaminho) {
 	if (ori == dest) return (++contaCaminho);
 
 	else {
-		Vertice* hVertice = ProcuraRecolhaCod(inicio, ori);
-		Adj* hAdj = hVertice->adjacentes;
+		Vertice* headV = ProcuraRecolhaCod(inicio, ori);
+		Adj* hAdj = headV->adjacentes;
 		while (hAdj) {
 			Vertice* a = ProcuraRecolhaCod(inicio, hAdj->cod);
 			contaCaminho = ContaCaminho(inicio, a->cod, dest, contaCaminho);
