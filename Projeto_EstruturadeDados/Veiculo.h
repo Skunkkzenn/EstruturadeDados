@@ -42,6 +42,7 @@ typedef struct VeiculosFicheiro {
 #pragma region Funcoes que Tratam dos Veiculos
 
 Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* local, bool* res);
+Veiculo* ProcuraVeiculo(Veiculo* inicio, int cod, const char* tipo);
 Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio, bool* res);
 Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio, bool* res);
 Veiculo* VerificaVeiculoDuplicado(int cod, char* tipo, Veiculo* inicio, bool* duplicado);

@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include "Cliente.h"
 #pragma warning( disable : 4996 )
-#define MAXCHAR 500
+
 
 #pragma region Métodos Clientes
 /**
@@ -44,6 +44,27 @@ Cliente* CriaCliente(int cod, char* nome, float saldo, long int nif, char* morad
 	novoCliente->next = NULL;
 	*res = true;
 	return novoCliente;
+}
+
+/**
+ * @brief Procura Cliente pelo Cod. e NIF.
+ * @author Victor Destefani
+ * @param inicio
+ * @param cod
+ * @param tipo
+ * @return
+ */
+Cliente* ProcuraGestor(Cliente* inicio, int cod, long int nif) {
+	Cliente* cliente = inicio;
+
+	while (cliente != NULL) {
+		if (cliente->cod == cod && cliente->nif == nif) {
+			return cliente; // Encontrou o cliente
+		}
+		cliente = cliente->next;
+	}
+
+	return NULL; // Cliente não encontrado
 }
 
 /**

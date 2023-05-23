@@ -119,7 +119,6 @@ Vertice* InsLigPontoRecolha(Vertice* inicio, char* origem, char* dest, float pes
 	return inicio;
 }
 
-
 /**
  * @brief Exibe o Grafo
  * @author Victor Destefani
@@ -161,12 +160,25 @@ Vertice* ProcuraPontoRecolha(Vertice* inicio, char* cidade) {
 	return(ProcuraPontoRecolha(inicio->next, cidade));
 }
 
+/**
+ * @brief
+ * @author Victor Destefani
+ * @param inicio
+ * @param cod
+ * @return 
+ */
 Vertice* ProcuraRecolhaCod(Vertice* inicio, int cod) {
 	if (inicio == NULL) return NULL;
 	if (inicio->cod == cod) return inicio;
 	return(ProcuraRecolhaCod(inicio->next, cod));
 }
 
+/**
+ * @brief
+ * @author Victor Destefani
+ * @param inicio
+ * @return 
+ */
 Vertice* LimpaVertices(Vertice* inicio) {
 	Vertice* aux = inicio;
 	while (aux) {
@@ -210,6 +222,14 @@ int GravarGrafo(Vertice* inicio, char* nomeFicheiro) {
 	return 1;
 }
 
+/**
+ * Lê Grafo Bin.
+ * 
+ * @param inicio
+ * @param fileName
+ * @param 
+ * @return 
+ */
 Vertice* LerGrafoBin(Vertice* inicio, char* fileName, bool* res) {
 	*res = false;
 	FILE* fp = fopen(fileName, "rb");
