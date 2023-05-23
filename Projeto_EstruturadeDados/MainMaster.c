@@ -151,7 +151,7 @@ int main() {
     //Vertices
     Vertice* graf = CriarGrafo();
     
-    Vertice* novoVertice = CriaPontoRecolha("Sao Victor", tot, &res);
+    Vertice* novoVertice = CriaPontoRecolha("São Vitor", tot, &res);
     if (novoVertice != NULL) {
         graf = InserePontoRecolha(graf, novoVertice, &res);
         tot++;
@@ -177,7 +177,7 @@ int main() {
 
     ExibeGrafo(graf, &res); // Recursividade
 
-    //Ligações
+    ////Ligações
     graf = InsLigPontoRecolha(graf, "Sao Vitor", "Lamacaes", 22, &res);
     graf = InsLigPontoRecolha(graf, "Sao Vitor", "Santa Tecla", 30, &res);
     graf = InsLigPontoRecolha(graf, "Santa Tecla", "Lamacaes", 17, &res);
