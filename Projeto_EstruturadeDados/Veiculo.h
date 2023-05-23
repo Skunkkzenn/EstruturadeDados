@@ -9,8 +9,6 @@
 * Mobilidade Elétrica - Estrutura Veiculos
 */
 
-
-#include "Cliente.h"
 #include <stdio.h>
 #include <string.h> 
 #include <stdbool.h>
@@ -53,7 +51,7 @@ Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, cha
 bool LerDadosVeiculo(char fileName[]);
 bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio);
 Veiculo* LerVeiculoBin(char* nomeFicheiro, bool* res);
-int AlugaVeiculo(Veiculo* veiculo, Cliente* cliente);
+
 #pragma endregion
 
 
