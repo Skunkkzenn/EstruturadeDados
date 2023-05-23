@@ -40,47 +40,46 @@ Vertice* CriaPontoRecolha(char* cidade, int cod, bool* res) {
 	return novo;
 }
 
-
 /**
  * @brief Insere ponto de recolha no grafo
  * @author Victor Destefani
- * @param g
+ * @param inicio
  * @param novo
  * @param
  * @return
  */
-Vertice* InserePontoRecolha(Vertice* g, Vertice* novo, bool* res) {
+Vertice* InserePontoRecolha(Vertice* inicio, Vertice* novo, bool* res) {
 	*res = false;
 	if (novo == NULL) {
-		return g;
+		return inicio;
 	}
 
 	// Verifica se o ponto de recolha já existe na lista
 	bool existe = false;
-	Vertice* pontoExistente = ProcuraPontoRecolha(g, novo->cidade, &existe);
+	Vertice* pontoExistente = ProcuraPontoRecolha(inicio, novo->cidade, &existe);
 	if (existe)
 	{
 		free(novo); // Libera a memória alocada para o novo ponto de recolha
-		return g;
+		return inicio;
 	}
 
 	// Insere o novo ponto de recolha na lista
-	if (g == NULL) {
-		g = novo;
+	if (inicio == NULL) {
+		inicio = novo;
 		*res = true;
 	}
 	else
 	{
-		Vertice* aux = g;
+		Vertice* aux = inicio;
 		Vertice* ant = aux;
 		while (aux && strcmp(aux->cidade, novo->cidade) < 0) {
 			ant = aux;
 			aux = aux->next;
 		}
-		if (aux == g)
+		if (aux == inicio)
 		{
-			novo->next = g;
-			g = novo;
+			novo->next = inicio;
+			inicio = novo;
 		}
 		else
 		{
@@ -89,42 +88,65 @@ Vertice* InserePontoRecolha(Vertice* g, Vertice* novo, bool* res) {
 		}
 		*res = true;
 	}
-	return g;
+	return inicio;
+}
+
+/**
+ * @brief Insere ligação entre pontos de recolha.
+ * @author Victor Destefani
+ * @param inicio
+ * @param origem
+ * @param dest
+ * @param peso
+ * @return
+ */
+Vertice* InsLigPontoRecolha(Vertice* inicio, char* origem, char* dest, float peso, bool* res) {
+	*res = false; //inicia sempre como falso
+	if (inicio == NULL) return inicio;
+
+	Vertice* aux = ProcuraPontoRecolha(inicio, origem, res); // busca vertice de origem
+	int cod = ProcuraCodPontoRecolha(inicio, dest, res);  // busca vertice de destino
+
+	if (aux == NULL || cod < 0) return inicio; // Se não foi encontrado o vertice origem e destino, ignora operação
+
+	if (ExisteLigacao(aux->adjacentes, cod)) return inicio; //Se já foi registrado a ligacação entre os pontos, ignora a operação
+
+	//Insere nova ligacao ao vertice de origem
+	Adj* novoAdj = CriaLigacao(cod, peso);
+	aux->adjacentes = InsereLigacao(aux->adjacentes, novoAdj, res);
+
+	*res = true; // indica que a operação foi concluída com sucesso
+	return inicio;
 }
 
 
 /**
  * @brief Exibe o Grafo
  * @author Victor Destefani
- * @param g
+ * @param inicio
  */
-void ExibeGrafo(Vertice* g, bool* res) {
+void ExibeGrafo(Vertice* inicio, bool* res) {
 	*res = false;
-	if (g == NULL) return;
-	printf("Vertice: %d - %s\n", g->cod, g->cidade);
-	MostraLigacoes(g->adjacentes);
-	ExibeGrafo(g->next, res);
+	if (inicio == NULL) return;
+	printf("Vertice: %d - %s\n", inicio->cod, inicio->cidade);
+	MostraLigacoes(inicio->adjacentes);
+	ExibeGrafo(inicio->next, res);
 	*res = true;
 }
 
-
 /**
- * @brief Verifica se existe ponto de recolha pela cidade
+ * @brief Verifica o cod. do Vértice de X cidade
  * @author Victor Destefani
- * @param g
+ * @param inicio
  * @param cidade
  * @return Cod. da cidade
  */
-int ProcuraCodPontoRecolha(Vertice* g, char* cidade, bool* res) {
-	*res = false;
-	if (g == NULL) return -1;
-	if (strcmp(g->cidade, cidade) == 0) {
-		*res = true;
-		return g->cod;
-	}
-	return(ProcuraCodPontoRecolha(g->next, cidade, res));
+int ProcuraCodPontoRecolha(Vertice* inicio, char* cidade) {
+	if (inicio == NULL) return -1;
+	if (strcmp(inicio->cidade, cidade) > 0) return -2;
+	if (strcmp(inicio->cidade, cidade) == 0) return inicio->cod;
+	return(ProcuraCodPontoRecolha(inicio->next, cidade));
 }
-
 
 /**
  * @brief Verifica se existe ponto de recolha pela cidade
@@ -133,41 +155,72 @@ int ProcuraCodPontoRecolha(Vertice* g, char* cidade, bool* res) {
  * @param cidade
  * @return Retorna o ponteiro para o nó que contém o ponto de recolha
  */
-Vertice* ProcuraPontoRecolha(Vertice* g, char* cidade, bool* res) {
-	*res = false;
-	if (g == NULL) return NULL;
-	if (strcmp(g->cidade, cidade) == 0) {
-		*res = true;
-		return g;
+Vertice* ProcuraPontoRecolha(Vertice* inicio, char* cidade) {
+	if (inicio == NULL) return NULL;
+	if (strcmp(inicio->cidade, cidade) == 0) return inicio;
+	return(ProcuraPontoRecolha(inicio->next, cidade));
+}
+
+Vertice* ProcuraRecolhaCod(Vertice* inicio, int cod) {
+	if (inicio == NULL) return NULL;
+	if (inicio->cod == cod) return inicio;
+	return(ProcuraRecolhaCod(inicio->next, cod));
+}
+
+Vertice* LimpaVertices(Vertice* inicio) {
+	Vertice* aux = inicio;
+	while (aux) {
+		aux->visitado = false;
+		aux = aux->next;
 	}
-	return(ProcuraPontoRecolha(g->next, cidade, res));
+	return inicio;
 }
 
 /**
- * @brief Insere ligação entre pontos de recolha.
+ * @brief Grava Grafo em ficheiro bin.
  * @author Victor Destefani
- * @param g
- * @param origem
- * @param dest
- * @param peso
+ * @param inicio
+ * @param nomeFicheiro
  * @return
  */
-Vertice* InsLigPontoRecolha(Vertice* g, char* origem, char* dest, float peso, bool* res) {
-	*res = false; //inicia sempre como falso
-	if (g == NULL) return g;
+int GravarGrafo(Vertice* inicio, char* nomeFicheiro) {
+	if (inicio == NULL) return -1;
+	FILE* fp;
+	int res;
 
-	Vertice* aux = ProcuraPontoRecolha(g, origem, res); // busca vertice de origem
-	int cod = ProcuraCodPontoRecolha(g, dest, res);  // busca vertice de destino
+	fp = fopen(nomeFicheiro, "wb");
+	if (fp == NULL) return -2;
 
-	if (aux == NULL || cod < 0) return g; // Se não foi encontrado o vertice origem e destino, ignora operação
+	//grava 1 registo de cada vez no ficheiro
+	VerticesFicheiro auxFile;
+	Vertice* auxVertice = inicio;
+	while (auxVertice != NULL) {
+		auxFile.cod = auxVertice->cod;
+		strcpy(auxFile.cidade, auxVertice->cidade);
+		fwrite(&auxFile, sizeof(VerticesFicheiro), 1, fp); // Grava vértices
 
-	if (ExisteLigacao(aux->adjacentes, cod)) return g; //Se já foi registrado a ligacação entre os pontos, ignora a operação
+		//grava adj em conjunto
+		if (auxVertice->adjacentes) {
+			res = GravaAdjBin(auxVertice->adjacentes, auxVertice->cidade, auxVertice->cod);
+			if (res < 0) break;
+		}
+		auxVertice = auxVertice->next;
+	}
+	fclose(fp);
+	return 1;
+}
 
-	//Insere nova ligacao ao vertice de origem
-	Adj* novoAdj = CriaLigacao(cod, peso);
-	aux->adjacentes = InsereLigacao(aux->adjacentes, novoAdj, res);
-
-	*res = true; // indica que a operação foi concluída com sucesso
-	return g;
+Vertice* LerGrafoBin(Vertice* inicio, char* fileName, bool* res) {
+	*res = false;
+	FILE* fp = fopen(fileName, "rb");
+	if (fp == NULL) return NULL;
+	VerticesFicheiro auxFicheiro;
+	Vertice* novo;
+	while (fread(&auxFicheiro, 1, sizeof(VerticesFicheiro), fp)) {
+		novo = CriaPontoRecolha(auxFicheiro.cidade, auxFicheiro.cod, res);
+		inicio = InserePontoRecolha(inicio, novo, res);
+	}
+	fclose(fp);
+	return inicio;
 }
 #pragma endregion
