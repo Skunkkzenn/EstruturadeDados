@@ -6,13 +6,13 @@
  * @param inicio
  * @param ori
  * @param dst
- * @param contaCaminho
+ * @param contaCaminho -> Armazena o nº de caminhos encontrados
  * @param
  * @return
  */
 int ContaCaminho(Vertice* inicio, int ori, int dest, int contaCaminho) {
-	if (inicio == NULL) return 0;
-	if (ori == dest) return (++contaCaminho);
+	if (inicio == NULL) return 0; //Se for NULL retorna 0 indicando que não existe caminho
+	if (ori == dest) return (++contaCaminho); // Se = caminho foi encontrado, incrementa contaCaminho antes de retornar o seu valor
 
 	else {
 		Vertice* headV = ProcuraRecolhaCod(inicio, ori);
@@ -37,8 +37,8 @@ int ContaCaminho(Vertice* inicio, int ori, int dest, int contaCaminho) {
  * @return
  */
 int ContaCaminhoVerticesNome(Vertice* inicio, char* ori, char* dest, int contaCaminho) {
-	int origem = ProcuraCodPontoRecolha(inicio, ori);
-	int destino = ProcuraCodPontoRecolha(inicio, dest);
+	int origem = ProcuraPontoRecolha(inicio, ori);
+	int destino = ProcuraPontoRecolha(inicio, dest);
 	return ContaCaminho(inicio, origem, destino, 0);
 }
 
@@ -74,7 +74,7 @@ bool CaminhoDiretoCodRecolha(Vertice* inicio, int ori, int dest)
 }
 
 bool CaminhoDiretoNomeRecolha(Vertice* inicio, char* ori, char* dest) {
-	int o = ProcuraCodPontoRecolha(inicio, ori);
-	int d = ProcuraCodPontoRecolha(inicio, dest);
+	int o = ProcuraPontoRecolha(inicio, ori);
+	int d = ProcuraPontoRecolha(inicio, dest);
 	return CaminhoDiretoCodRecolha(inicio, o, d);
 }

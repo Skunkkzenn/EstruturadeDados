@@ -13,6 +13,7 @@
 #include "Veiculo.h"
 #include "Cliente.h"
 #pragma warning( disable : 4996 )
+#define MAXCHAR 500
 
 
 #pragma region Metodos Veículos.

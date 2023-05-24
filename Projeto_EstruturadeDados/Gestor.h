@@ -37,7 +37,7 @@ typedef struct GestoresFicheiro {
 #pragma region Funcoes que Tratam dos Gestores
 
 Gestor* CriaGestor(int cod, char* nome, float saldo, long int nif, char* morada, bool* res);
-Gestor* ProcuraGestor(Gestor* inicio, int cod, long int nif);
+//Gestor* ProcuraGestor(Gestor* inicio, int cod, long int nif);
 Gestor* InsertGestorInicio(Gestor* novo, Gestor* inicio, bool* res);
 Gestor* InsertGestorFim(Gestor* novo, Gestor* inicio, bool* res);
 Gestor* VerificaGestorDuplicado(int cod, int long nif, Gestor* inicio, bool* duplicado);

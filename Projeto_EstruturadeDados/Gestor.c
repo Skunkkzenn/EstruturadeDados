@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include "Gestor.h"
 #pragma warning( disable : 4996 )
+#define MAXCHAR 500
 
 #pragma region Métodos Gestores
  /**
@@ -52,18 +53,18 @@ Gestor* CriaGestor(int cod, char* nome, float saldo, long int nif, char* morada,
  * @param tipo
  * @return
  */
-Gestor* ProcuraGestor(Gestor* inicio, int cod, long int nif) {
-	Gestor* gestor = inicio;
-
-	while (gestor != NULL) {
-		if (gestor->cod == cod && gestor->nif == nif) {
-			return gestor; // Encontrou o gestor
-		}
-		gestor = gestor->next;
-	}
-
-	return NULL; // gestor não encontrado
-}
+//Gestor* ProcuraGestor(Gestor* inicio, int cod, long int nif) {
+//	Gestor* gestor = inicio;
+//
+//	while (gestor != NULL) {
+//		if (gestor->cod == cod && gestor->nif == nif) {
+//			return gestor; // Encontrou o gestor
+//		}
+//		gestor = gestor->next;
+//	}
+//
+//	return NULL; // gestor não encontrado
+//}
 
 
 
