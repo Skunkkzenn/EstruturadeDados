@@ -129,9 +129,8 @@ int main() {
     Cliente* listClientes = LerClienteBin("clientes.bin", &res);
     Gestor* listGestores = LerGestorBin("gestores.bin", &res);
 
+    // Verifica Veiculo Duplicado Manualmente
     /*
-    * Verifica Veiculo Duplicado Manualmente
-
     Veiculo* aux = inicioVeiculos; // Ponteiro para percorrer a lista encadeada
     while (aux != NULL) {
         // Chama a função VerificaVeiculoDuplicado para cada veículo da lista
@@ -205,7 +204,7 @@ int main() {
 #pragma endregion
 
 
-#pragma region  
+#pragma region  Ficheiros
 
     int res1 = GravarGrafo(graf, "Vertices.bin");
     if (res1 > 0) puts("\nGrafo gravado em ficheiro");
@@ -221,11 +220,7 @@ int main() {
     graf = LerAdjBin(graf, &res);
     ExibeGrafo(graf, &res);
 
-
-
 #pragma endregion
-
-
 
 
     return true;

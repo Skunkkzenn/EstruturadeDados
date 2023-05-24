@@ -12,7 +12,7 @@
 #include <string.h>
 
 
-#pragma region
+#pragma region Funções Adjacências
 
  /**
   * @brief Cria novo nó de ligações.

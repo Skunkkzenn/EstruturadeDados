@@ -92,6 +92,14 @@ Vertice* InserePontoRecolha(Vertice* inicio, Vertice* novo, bool* res) {
 }
 
 
+/**
+ * @brief Insere ponto de recolha no grafo com o cod
+ * @author Victor Destefani
+ * @param codOrigem
+ * @param codDestino
+ * @param peso
+ * @return
+ */
 Vertice* InsereLigacaoRecolhaCod(Vertice* g, int codOrigem, int codDestino, float peso, bool* res) {
 	*res = false;
 	if (g == NULL) return g; //se o grafo for vazio, ignora operação
@@ -261,4 +269,5 @@ Vertice* LerGrafoBin(Vertice* inicio, char* fileName, bool* res) {
 	fclose(fp);
 	return inicio;
 }
+
 #pragma endregion
