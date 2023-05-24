@@ -91,6 +91,24 @@ Vertice* InserePontoRecolha(Vertice* inicio, Vertice* novo, bool* res) {
 	return inicio;
 }
 
+
+Vertice* InsereLigacaoRecolhaCod(Vertice* g, int codOrigem, int codDestino, float peso, bool* res) {
+	*res = false;
+	if (g == NULL) return g; //se o grafo for vazio, ignora operação
+
+	Vertice* o = ProcuraRecolhaCod(g, codOrigem); //Procura vertice origem
+	Vertice* d = ProcuraRecolhaCod(g, codDestino); //Procura vertice destino
+
+	if (o == NULL || d == NULL) return g; // Se não encontrar origem e destino retorna inicio
+	if (ExisteLigacao(o->adjacentes, codDestino) == true) return g; //Se já foi registado esta adjacencia, ignorar a operação
+
+	//Insere nova adjacencia no vertice "Origem"
+	Adj* novoAdj = CriaLigacao(codDestino, peso);
+	o->adjacentes = InsereLigacao(o->adjacentes, novoAdj, res);
+	return g;
+
+}
+
 /**
  * @brief Insere ligação entre pontos de recolha.
  * @author Victor Destefani
