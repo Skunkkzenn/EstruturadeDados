@@ -8,6 +8,7 @@
 
 #include "AlugaVeiculos.h"
 
+#pragma region Funcoes para Alugar Veiculo
 
 /**
  * @brief Associa Cliente ao Veiculo
@@ -64,6 +65,8 @@ Aluguel* ProcuraAluguel(Aluguel* lista, int cod) {
  * @param inicio
  * @return
  */
+
+
 //bool GravarAluguelBin(char* nomeFicheiro, Aluguel* inicio) {
 //	FILE* fp;
 //
@@ -96,48 +99,48 @@ Aluguel* ProcuraAluguel(Aluguel* lista, int cod) {
  * @param nomeFicheiro
  * @param 
  * @return 
- */
-Aluguel* LerAluguelBin(char* nomeFicheiro, bool* res) {
-	FILE* fp;
-	Aluguel* inicio = NULL;
-	AluguelFicheiro aux;
-	*res = false;
-
-	if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
-
-	while (fread(&aux, sizeof(AluguelFicheiro), 1, fp)) {
-		Aluguel* novo = (Aluguel*)malloc(sizeof(Aluguel));
-		if (novo == NULL) {
-			*res = false;
-			break;
-		}
-
-		novo->cod = aux.cod;
-		strcpy(novo->cidade, aux.cidade);
-	
-		novo->next = NULL;
-
-		if (inicio == NULL) {
-			inicio = novo;
-		}
-		else {
-	 		Aluguel* temp = inicio;
-			while (temp->next != NULL) {
-				temp = temp->next;
-			}
-			temp->next = novo;
-		}
-
-		// Imprime os dados do registro lido
-		printf("Aluguel registrado: cod=%d, tipo=%s\n", novo->cod, novo->cidade);
-
-		*res = true;
-	}
-
-	fclose(fp);
-
-	return inicio;
-}
+// */
+//Aluguel* LerAluguelBin(char* nomeFicheiro, bool* res) {
+//	FILE* fp;
+//	Aluguel* inicio = NULL;
+//	AluguelFicheiro aux;
+//	*res = false;
+//
+//	if ((fp = fopen(nomeFicheiro, "rb")) == NULL) return NULL;
+//
+//	while (fread(&aux, sizeof(AluguelFicheiro), 1, fp)) {
+//		Aluguel* novo = (Aluguel*)malloc(sizeof(Aluguel));
+//		if (novo == NULL) {
+//			*res = false;
+//			break;
+//		}
+//
+//		novo->cod = aux.cod;
+//		strcpy(novo->cidade, aux.cidade);
+//	
+//		novo->next = NULL;
+//
+//		if (inicio == NULL) {
+//			inicio = novo;
+//		}
+//		else {
+//	 		Aluguel* temp = inicio;
+//			while (temp->next != NULL) {
+//				temp = temp->next;
+//			}
+//			temp->next = novo;
+//		}
+//
+//		// Imprime os dados do registro lido
+//		printf("Aluguel registrado: cod=%d, tipo=%s\n", novo->cod, novo->cidade);
+//
+//		*res = true;
+//	}
+//
+//	fclose(fp);
+//
+//	return inicio;
+//}
 
 /**
  * @brief Remove os alugueis.
@@ -184,3 +187,6 @@ Aluguel* RemoveAluguel(Aluguel* inicio, int cod, long int nif, bool* res) {
 	return 1;
 
 }
+
+
+#pragma endregion

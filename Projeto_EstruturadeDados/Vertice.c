@@ -31,7 +31,9 @@ Vertice* CriarGrafo() {
  */
 Vertice* CriaPontoRecolha(char* cidade, int cod, bool* res) {
 	*res = false;
-	Vertice* novo = (Vertice*)calloc(1, sizeof(Vertice));
+
+	// Aloca memória para novo objeto do tipo Vertice, calloc serve para alocar memória e inicia-la com zeros
+	Vertice* novo = (Vertice*)calloc(1, sizeof(Vertice)); 			
 	if (novo == NULL) return NULL;
 	novo->cod = cod;
 	strcpy(novo->cidade, cidade);
@@ -41,7 +43,7 @@ Vertice* CriaPontoRecolha(char* cidade, int cod, bool* res) {
 }
 
 /**
- * @brief Insere ponto de recolha no grafo
+ * @brief Insere ponto de recolha no grafo, verificando se o mesmo já existe na lista
  * @author Victor Destefani
  * @param inicio
  * @param novo
@@ -56,7 +58,11 @@ Vertice* InserePontoRecolha(Vertice* inicio, Vertice* novo, bool* res) {
 
 	// Verifica se o ponto de recolha já existe na lista
 	bool existe = false;
+
+	//Retorna um ponteiro para o ponto de recolha existente encontrado, caso exista, ou NULL se não for encontrado.
 	Vertice* pontoExistente = ProcuraPontoRecolha(inicio, novo->cidade, &existe);
+
+	//Se a condição 'existe' for verdadeira
 	if (existe)
 	{
 		free(novo); // Libera a memória alocada para o novo ponto de recolha
@@ -65,26 +71,39 @@ Vertice* InserePontoRecolha(Vertice* inicio, Vertice* novo, bool* res) {
 
 	// Insere o novo ponto de recolha na lista
 	if (inicio == NULL) {
-		inicio = novo;
+		inicio = novo; // Se a lista for vazia, o novo ponto de recolha será o primeiro elemento da lista
 		*res = true;
 	}
-	else
+
+	//Se a lista não estiver vazia
+	else 
 	{
 		Vertice* aux = inicio;
+
+		// 'ant' toma o valor de 'aux', que irá rastrear o elemento anterior à posição onde o novo ponto de recolha será inserido.
 		Vertice* ant = aux;
+
+		/* Percorre a lista enquanto o ponteiro aux não for nulo e o nome da cidade do vértice atual(aux->cidade)
+		   for menor que o nome da cidade do novo ponto de recolha (novo->cidade). 
+		   O strcmp é usado para comparar as strings alfabeticamente. */
 		while (aux && strcmp(aux->cidade, novo->cidade) < 0) {
 			ant = aux;
 			aux = aux->next;
 		}
+
+		//Verifica se o novo ponto de recolha deve ser inserido no inicio da lista 
 		if (aux == inicio)
-		{
-			novo->next = inicio;
-			inicio = novo;
+		{   //Se for inserido no inicio, o ponteiro next é atualizado para apontar para o primeiro vertice da lista.
+			novo->next = inicio; 
+			inicio = novo; //Inicio é atualizado para apontar para o novo vertice, que será o primeiro da lista
 		}
+
+		//Se não for inserido no inicio
 		else
 		{
-			novo->next = aux;
-			ant->next = novo;
+			//O ponteiro next do novo vertice, aponta para o próximo elemento da lista onde o novo ponto de recolha será inserido
+			novo->next = aux; 
+			ant->next = novo; //Ponteiro next do 'ant' atualiza para apontar para o novo ponto de recolha, inserindo na posição correta.
 		}
 		*res = true;
 	}
@@ -92,6 +111,14 @@ Vertice* InserePontoRecolha(Vertice* inicio, Vertice* novo, bool* res) {
 }
 
 
+/**
+ * @brief Insere ponto de recolha no grafo com o cod
+ * @author Victor Destefani
+ * @param codOrigem
+ * @param codDestino
+ * @param peso
+ * @return
+ */
 Vertice* InsereLigacaoRecolhaCod(Vertice* g, int codOrigem, int codDestino, float peso, bool* res) {
 	*res = false;
 	if (g == NULL) return g; //se o grafo for vazio, ignora operação
@@ -261,4 +288,5 @@ Vertice* LerGrafoBin(Vertice* inicio, char* fileName, bool* res) {
 	fclose(fp);
 	return inicio;
 }
+
 #pragma endregion

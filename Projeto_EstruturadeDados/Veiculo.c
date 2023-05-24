@@ -133,7 +133,7 @@ Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio, bool* res) {
 }
 
 /**
- * @brief Insere Veiculo Lista.
+ * @brief Insere Veiculo Lista por ordem de cod.
  * @author Victor Destefani
  * @param novo
  * @param inicio

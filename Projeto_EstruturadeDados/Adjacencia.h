@@ -12,6 +12,8 @@
 #pragma warning (disable: 4996)
 
 
+#pragma region Struct Adjacentes
+
 typedef struct Adj {
 	int cod;	
 	float peso; 
@@ -25,7 +27,10 @@ typedef struct AdjFicheiro {
 	float peso;
 }AdjFicheiro;
 
-#pragma region Funções/Métodos Ligações de Vertices
+#pragma endregion
+
+
+#pragma region Funções/Métodos Ligações aos Vertices
 
 Adj* CriaLigacao(int cod, float peso);
 bool ExisteLigacao(Adj* inicio, int cod);
