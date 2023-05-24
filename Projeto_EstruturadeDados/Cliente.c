@@ -124,7 +124,7 @@ Cliente* InsertClienteFim(Cliente* novo, Cliente* inicio, bool* res) {
 }
 
 /**
- * @brief Insere Cliente na Lista.
+ * @brief Insere Cliente na lista por ordem de cód.
  * @author Victor Destefani
  * @param novo
  * @param inicio

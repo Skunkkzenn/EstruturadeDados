@@ -67,7 +67,6 @@ Gestor* CriaGestor(int cod, char* nome, float saldo, long int nif, char* morada,
 //}
 
 
-
 /**
  * @brief Insere Gestor no Inicio.
  * @author Victor Destefani
@@ -153,7 +152,7 @@ Gestor* VerificaGestorDuplicado(int cod, int long nif, Gestor* inicio, bool* dup
 }
 
 /**
- * @brief Insere Gestor na Lista.
+ * @brief Insere Gestor na Lista, por ordem de cod.
  * @author Victor Destefani
  * @param novo
  * @param inicio
