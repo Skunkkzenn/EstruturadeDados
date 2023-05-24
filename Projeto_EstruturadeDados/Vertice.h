@@ -40,5 +40,6 @@ Vertice* ProcuraRecolhaCod(Vertice* inicio, int cod);
 Vertice* LimpaVertices(Vertice* inicio);
 int GravarGrafo(Vertice* inicio, char* nomeFicheiro);
 Vertice* LerGrafoBin(Vertice* inicio, char* fileName, bool* res);
+Vertice* InsereLigacaoRecolhaCod(Vertice* g, int codOrigem, int codDestino, float peso, bool* res);
 
 #pragma endregion

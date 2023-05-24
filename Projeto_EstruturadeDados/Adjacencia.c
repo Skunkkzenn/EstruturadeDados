@@ -146,7 +146,7 @@ Adj* LerAdjBin(Adj* inicio, bool* res) {
 		fp = fopen(auxVertice->cidade, "rb");
 		if (fp != NULL) {
 			while (fread(&auxFicheiro, 1, sizeof(AdjFicheiro), fp)) {
-				inicio = InsLigPontoRecolha(inicio, auxFicheiro.codDestino, auxFicheiro.codDestino, auxFicheiro.peso, res);
+				inicio = InsereLigacaoRecolhaCod(inicio, auxFicheiro.codDestino, auxFicheiro.codDestino, auxFicheiro.peso, res);
 			}
 			fclose(fp);
 		}

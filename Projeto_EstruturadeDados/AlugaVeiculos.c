@@ -64,31 +64,31 @@ Aluguel* ProcuraAluguel(Aluguel* lista, int cod) {
  * @param inicio
  * @return
  */
-bool GravarAluguelBin(char* nomeFicheiro, Aluguel* inicio) {
-	FILE* fp;
-
-	if (inicio == NULL) {
-		return false;
-	}
-
-	if ((fp = fopen(nomeFicheiro, "wb")) == NULL) {
-		perror("Erro ao abrir arquivo para escrita");
-		return false;
-	}
-
-	//grava 1 registo de cada vez no ficheiro
-	AluguelFicheiro aux;
-	Aluguel* auxAluguel = inicio;
-	while (auxAluguel) {
-		aux.cod = auxAluguel->cod;
-		strcpy(aux.cidade, auxAluguel->cidade);
-		
-		fwrite(auxAluguel, sizeof(AluguelFicheiro), 1, fp);
-		auxAluguel = auxAluguel->next;
-	}
-	fclose(fp);
-	return true;
-}
+//bool GravarAluguelBin(char* nomeFicheiro, Aluguel* inicio) {
+//	FILE* fp;
+//
+//	if (inicio == NULL) {
+//		return false;
+//	}
+//
+//	if ((fp = fopen(nomeFicheiro, "wb")) == NULL) {
+//		perror("Erro ao abrir arquivo para escrita");
+//		return false;
+//	}
+//
+//	//grava 1 registo de cada vez no ficheiro
+//	AluguelFicheiro aux;
+//	Aluguel* auxAluguel = inicio;
+//	while (auxAluguel) {
+//		aux.cod = auxAluguel->cod;
+//		strcpy(aux.cidade, auxAluguel->cidade);
+//		
+//		fwrite(auxAluguel, sizeof(AluguelFicheiro), 1, fp);
+//		auxAluguel = auxAluguel->next;
+//	}
+//	fclose(fp);
+//	return true;
+//}
 
 /**
  * Lê arquivo bin dos Aluguéis.
