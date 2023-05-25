@@ -49,8 +49,7 @@ int main() {
     Veiculo* novoVeiculo2 = CriaVeiculo(301, "Bicicleta", 84.23, 3.42, "Lamacaes", &res);
     Veiculo* novoVeiculo3 = CriaVeiculo(302, "Bicicleta", 32.23, 3.42, "Santa Tecla", &res);
     Veiculo* novoVeiculo4 = CriaVeiculo(201, "Scooter", 55.56, 11.67, "Vila Velha", &res);
-    Veiculo* novoVeiculo5 = CriaVeiculo(201, "Scooter", 55.56, 11.67, "Vila Velha", &res);
-
+    
 
     /**
      * @brief Cria Clientes.
@@ -81,40 +80,40 @@ int main() {
     //*/
 
 
-    // Insere Cliente no fim da Lista
-    inicioVeiculos = InsertVeiculoFim(novoVeiculo1, inicioVeiculos, &res);
-    inicioVeiculos = InsertVeiculoFim(novoVeiculo2, inicioVeiculos, &res);
-    inicioVeiculos = InsertVeiculoFim(novoVeiculo3, inicioVeiculos, &res);
-    inicioVeiculos = InsertVeiculoFim(novoVeiculo4, inicioVeiculos, &res);
-    inicioGestores = InsertVeiculoFim(novoVeiculo5, inicioGestores, &res);
+    //// Insere Cliente no fim da Lista
+    //inicioVeiculos = InsertVeiculoFim(novoVeiculo1, inicioVeiculos, &res);
+    //inicioVeiculos = InsertVeiculoFim(novoVeiculo2, inicioVeiculos, &res);
+    //inicioVeiculos = InsertVeiculoFim(novoVeiculo3, inicioVeiculos, &res);
+    //inicioVeiculos = InsertVeiculoFim(novoVeiculo4, inicioVeiculos, &res);
+    //inicioGestores = InsertVeiculoFim(novoVeiculo5, inicioGestores, &res);
 
 
-    // Insere Gestor no fim da Lista
-    inicioGestores = InsertGestorFim(novoGestor1, inicioGestores, &res);
+    //// Insere Gestor no fim da Lista
+    //inicioGestores = InsertGestorFim(novoGestor1, inicioGestores, &res);
+    //
+    //inicioGestores = InsertGestorFim(novoGestor2, inicioGestores, &res);
+    //inicioGestores = InsertGestorFim(novoGestor3, inicioGestores, &res);
+
+    ////Insere Cliente no fim da Lista
+    //inicioClientes = InsertClienteFim(novoCliente1, inicioClientes, &res);
+    //inicioClientes = InsertClienteFim(novoCliente2, inicioClientes, &res);
+    //inicioClientes = InsertClienteFim(novoCliente3, inicioClientes, &res);
+    //inicioClientes = InsertClienteFim(novoCliente4, inicioClientes, &res);
+
     
-    inicioGestores = InsertGestorFim(novoGestor2, inicioGestores, &res);
-    inicioGestores = InsertGestorFim(novoGestor3, inicioGestores, &res);
+    // Insere o novo Veiculo, Cliente e Gestor na lista ordenadamente 
+    inicioVeiculos = InsertVeiculoLista(inicioVeiculos, novoVeiculo1, &res);
+    inicioVeiculos = InsertVeiculoLista(inicioVeiculos, novoVeiculo2, &res);
+    inicioVeiculos = InsertVeiculoLista(inicioVeiculos, novoVeiculo3, &res);
+    inicioVeiculos = InsertVeiculoLista(inicioVeiculos, novoVeiculo4, &res);
 
-    //Insere Cliente no fim da Lista
-    inicioClientes = InsertClienteFim(novoCliente1, inicioClientes, &res);
-    inicioClientes = InsertClienteFim(novoCliente2, inicioClientes, &res);
-    inicioClientes = InsertClienteFim(novoCliente3, inicioClientes, &res);
-    inicioClientes = InsertClienteFim(novoCliente4, inicioClientes, &res);
+    /*inicioClientes = InsertClienteLista(novoCliente1, inicioClientes, &res);
+    inicioClientes = InsertClienteLista(novoCliente2, inicioClientes, &res);
+    inicioClientes = InsertClienteLista(novoCliente3, inicioClientes, &res);
+    inicioClientes = InsertClienteLista(novoCliente4, inicioClientes, &res);
 
-    
-    //// Insere o novo Veiculo, Cliente e Gestor na lista ordenadamente 
-    //inicioVeiculos = InsertVeiculoLista(novoVeiculo1, inicioVeiculos, &res);
-    //inicioVeiculos = InsertVeiculoLista(novoVeiculo2, inicioVeiculos, &res);
-    //inicioVeiculos = InsertVeiculoLista(novoVeiculo3, inicioVeiculos, &res);
-    //inicioVeiculos = InsertVeiculoLista(novoVeiculo4, inicioVeiculos, &res);
-
-    //inicioClientes = InsertClienteLista(novoCliente1, inicioClientes, &res);
-    //inicioClientes = InsertClienteLista(novoCliente2, inicioClientes, &res);
-    //inicioClientes = InsertClienteLista(novoCliente3, inicioClientes, &res);
-    //inicioClientes = InsertClienteLista(novoCliente4, inicioClientes, &res);
-
-    //inicioGestores = InsertGestorLista(novoGestor1, inicioGestores, &res);
-    //inicioGestores = InsertGestorLista(novoGestor2, inicioGestores, &res);
+    inicioGestores = InsertGestorLista(novoGestor1, inicioGestores, &res);
+    inicioGestores = InsertGestorLista(novoGestor2, inicioGestores, &res);*/
 
     //// Chama a função para alterar o veículo com o código e tipo especificados, cliente e gestor com cod e nif
    /* novoVeiculo1->bateria = 80.5;
