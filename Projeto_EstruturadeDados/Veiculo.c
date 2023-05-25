@@ -226,6 +226,33 @@ Veiculo* VerificaVeiculoDuplicado(int cod,char* tipo , Veiculo* inicio, bool* du
 }
 
 /**
+ * @brief Verifica veiculo duplicado em Bool.
+ * 
+ * @param inicio
+ * @return 
+ */
+bool VerificaVeiculoDuplicadoBool(Veiculo* inicio) {
+	if (inicio == NULL) {
+		return false; // Lista vazia, não há veículos duplicados
+	}
+
+	Veiculo* aux1 = inicio;
+	while (aux1 != NULL) {
+		Veiculo* aux2 = aux1->next;
+		while (aux2 != NULL) {
+			if (aux1->cod == aux2->cod && strcmp(aux1->tipo, aux2->tipo) == 0) {
+				printf("Erro: Veículo duplicado encontrado. Código: %d, Tipo: %s\n", aux2->cod, aux2->tipo);
+				return true; // Veículo duplicado encontrado
+			}
+			aux2 = aux2->next;
+		}
+		aux1 = aux1->next;
+	}
+
+	return false; // Não foram encontrados veículos duplicados
+}
+
+/**
  * @brief Altera Dados do Veiculo.
  * @author Victor Destefani
  * @param cod
@@ -272,6 +299,7 @@ Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, cha
 	free(novo);
 
  	*res = true;
+	printf("Erro: lista vazia\n");
 	// Retorna a lista atualizada
 	return inicio;
 }
