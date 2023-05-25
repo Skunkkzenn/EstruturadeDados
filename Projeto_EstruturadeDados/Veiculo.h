@@ -43,13 +43,12 @@ typedef struct VeiculosFicheiro {
 
 Veiculo* CriaVeiculo(int cod, char* tipo, float bateria, float custo, char* local, bool* res);
 Veiculo* ProcuraVeiculo(Veiculo* inicio, int cod, const char* tipo);
-Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio, bool* res);
-Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio, bool* res);
-Veiculo* VerificaVeiculoDuplicado(int cod, char* tipo, Veiculo* inicio, bool* duplicado);
-Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio, bool* res);
-bool VerificaVeiculoDuplicadoBool(Veiculo* inicio);
-Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio, bool* res);
-Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, char* local, Veiculo* novo, Veiculo* inicio, bool* res);
+Veiculo* InsertVeiculoInicio(Veiculo* inicio, Veiculo* novo, bool* res);
+Veiculo* InsertVeiculoFim(Veiculo* inicio, Veiculo* novo, bool* res);
+Veiculo* VerificaVeiculoDuplicado(Veiculo* inicio, int cod, char* tipo, bool* res);
+Veiculo* InsertVeiculoLista(Veiculo* inicio, Veiculo* novo, bool* res);
+Veiculo* RemoveVeiculo(Veiculo* inicio, int cod, char* tipo,bool* res);
+Veiculo* AlteraCampoVeiculo(Veiculo* inicio, Veiculo* novo, int cod, char* tipo, float bateria, float custo, char* local, bool* res);
 bool LerDadosVeiculo(char fileName[]);
 bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio);
 Veiculo* LerVeiculoBin(char* nomeFicheiro, bool* res);

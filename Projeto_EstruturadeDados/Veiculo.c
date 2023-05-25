@@ -82,7 +82,7 @@ Veiculo* ProcuraVeiculo(Veiculo* inicio, int cod, const char* tipo) {
  * @param 
  * @return 
  */
-Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio, bool* res) {
+Veiculo* InsertVeiculoInicio(Veiculo* inicio, Veiculo* novo, bool* res) {
 	*res = false;
 	if (novo == NULL) { /* Se o ponteiro "novo" apontar para NULL, a função terá um erro e
 						   retornará o ponteiro "inicio" original sem modificar a lista.
@@ -111,7 +111,7 @@ Veiculo* InsertVeiculoInicio(Veiculo* novo, Veiculo* inicio, bool* res) {
  * @param 
  * @return 
  */
-Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio, bool* res) {
+Veiculo* InsertVeiculoFim(Veiculo* inicio, Veiculo* novo, bool* res) {
 	*res = false;
 	if (inicio == NULL) // Se a lista estiver vazia, o novo nó será a cabeça da lista
 	{
@@ -140,7 +140,7 @@ Veiculo* InsertVeiculoFim(Veiculo* novo, Veiculo* inicio, bool* res) {
  * @param 
  * @return 
  */
-Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio, bool* res) {
+Veiculo* InsertVeiculoLista(Veiculo* inicio, Veiculo* novo, bool* res) {
 	bool veiculoDuplicado = false; // variável bool para armazenar se há veículo duplicado
 	*res = false;
 	
@@ -151,7 +151,9 @@ Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio, bool* res) {
 	}
 	else {
 		//Verificar se já existe repetido
-		if (VerificaVeiculoDuplicado(novo->cod, novo->tipo, inicio, &veiculoDuplicado) != NULL) {
+		if (VerificaVeiculoDuplicado(inicio, novo->cod, novo->tipo, &veiculoDuplicado) != NULL) {
+			*res = true;
+			free(novo);
 			return inicio;
 
 		}
@@ -189,6 +191,7 @@ Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio, bool* res) {
 		}
 		*res = true;
 	}
+	return inicio;
 }
 
 /**
@@ -200,8 +203,8 @@ Veiculo* InsertVeiculoLista(Veiculo* novo, Veiculo* inicio, bool* res) {
  * @param 
  * @return 
  */
-Veiculo* VerificaVeiculoDuplicado(int cod,char* tipo , Veiculo* inicio, bool* duplicado) {
-	*duplicado = false;
+Veiculo* VerificaVeiculoDuplicado(Veiculo* inicio, int cod, char* tipo, bool* res) {
+	*res = false;
 	
 	if (inicio == NULL) // Verifica se a lista encadeada está vazia (inicio == NULL), caso esteja retorna NULL, indicando que não há veículos duplicados.
 	{
@@ -215,41 +218,14 @@ Veiculo* VerificaVeiculoDuplicado(int cod,char* tipo , Veiculo* inicio, bool* du
 	}
 
 	if (aux != NULL && aux->cod == cod && strcmp(aux->tipo, tipo) == 0) { // Verifica se foi encontrado um veículo duplicado
-	 	*duplicado = true;
+	 	*res = true;
 	}
 
-	if (*duplicado) {
+	if (*res) {
 		printf("Erro: Veículo duplicado encontrado. Código: %d, Tipo: %s\n", aux->cod, aux->tipo);
 	}
 	
 	return aux;
-}
-
-/**
- * @brief Verifica veiculo duplicado em Bool.
- * 
- * @param inicio
- * @return 
- */
-bool VerificaVeiculoDuplicadoBool(Veiculo* inicio) {
-	if (inicio == NULL) {
-		return false; // Lista vazia, não há veículos duplicados
-	}
-
-	Veiculo* aux1 = inicio;
-	while (aux1 != NULL) {
-		Veiculo* aux2 = aux1->next;
-		while (aux2 != NULL) {
-			if (aux1->cod == aux2->cod && strcmp(aux1->tipo, aux2->tipo) == 0) {
-				printf("Erro: Veículo duplicado encontrado. Código: %d, Tipo: %s\n", aux2->cod, aux2->tipo);
-				return true; // Veículo duplicado encontrado
-			}
-			aux2 = aux2->next;
-		}
-		aux1 = aux1->next;
-	}
-
-	return false; // Não foram encontrados veículos duplicados
 }
 
 /**
@@ -265,7 +241,7 @@ bool VerificaVeiculoDuplicadoBool(Veiculo* inicio) {
  * @param 
  * @return 
  */
-Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, char* local, Veiculo* novo, Veiculo* inicio, bool* res) {
+Veiculo* AlteraCampoVeiculo(Veiculo* inicio, Veiculo* novo, int cod, char* tipo, float bateria, float custo, char* local, bool* res) {
 	*res = false;
 	
 	// Verifica se a lista está vazia
@@ -313,7 +289,7 @@ Veiculo* AlteraCampoVeiculo(int cod, char* tipo, float bateria, float custo, cha
  * @param 
  * @return 
  */
-Veiculo* RemoveVeiculo(int cod, char* tipo, Veiculo* inicio, bool* res) {
+Veiculo* RemoveVeiculo(Veiculo* inicio, int cod, char* tipo, bool* res) {
 	*res = false;
 	
 	// Verifica se o início é nulo (lista vazia)
