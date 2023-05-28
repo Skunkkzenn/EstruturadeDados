@@ -30,7 +30,7 @@ int main() {
     Veiculo* inicioVeiculos = NULL;
     Cliente* inicioClientes = NULL;
     Gestor* inicioGestores = NULL;
-    //Aluguel* inicioAluguel = NULL;
+    Aluguel* inicioAluguel = NULL;
 
     bool res = false;
 
@@ -61,31 +61,31 @@ int main() {
 
     ///*
     //// Inserir o novo Veiculo, Cliente e Gestor no início da lista
-    //inicioVeiculos = InsertVeiculoInicio(novoVeiculo, inicioVeiculos, &res);
-    //inicioClientes = InsertClienteInicio(novoCliente, inicioClientes, &res);
-    //inicioGestores = InsertGestorInicio(novoGestor, inicioGestores, &res);
+    //inicioVeiculos = InsertVeiculoInicio(inicioVeiculos, novoVeiculo, &res);
+    //inicioClientes = InsertClienteInicio(inicioClientes, novoCliente, &res);
+    //inicioGestores = InsertGestorInicio(inicioGestores, novoGestor, &res);
     //*/
 
 
     //// Insere Cliente no fim da Lista
-    //inicioVeiculos = InsertVeiculoFim(novoVeiculo1, inicioVeiculos, &res);
-    //inicioVeiculos = InsertVeiculoFim(novoVeiculo2, inicioVeiculos, &res);
-    //inicioVeiculos = InsertVeiculoFim(novoVeiculo3, inicioVeiculos, &res);
-    //inicioVeiculos = InsertVeiculoFim(novoVeiculo4, inicioVeiculos, &res);
-    //inicioGestores = InsertVeiculoFim(novoVeiculo5, inicioGestores, &res);
+    //inicioVeiculos = InsertVeiculoFim(inicioVeiculos, novoVeiculo1, &res);
+    //inicioVeiculos = InsertVeiculoFim(inicioVeiculos, novoVeiculo2, &res);
+    //inicioVeiculos = InsertVeiculoFim(inicioVeiculos, novoVeiculo3, &res);
+    //inicioVeiculos = InsertVeiculoFim(inicioVeiculos, novoVeiculo4, &res);
+    //inicioGestores = InsertVeiculoFim(inicioGestores, novoVeiculo5, &res);
 
 
     //// Insere Gestor no fim da Lista
-    //inicioGestores = InsertGestorFim(novoGestor1, inicioGestores, &res);
+    //inicioGestores = InsertGestorFim(inicioGestores, novoGestor1, &res);
     //
-    //inicioGestores = InsertGestorFim(novoGestor2, inicioGestores, &res);
-    //inicioGestores = InsertGestorFim(novoGestor3, inicioGestores, &res);
+    //inicioGestores = InsertGestorFim(inicioGestores, novoGestor2, &res);
+    //inicioGestores = InsertGestorFim(inicioGestores, novoGestor3, &res);
 
     ////Insere Cliente no fim da Lista
-    //inicioClientes = InsertClienteFim(novoCliente1, inicioClientes, &res);
-    //inicioClientes = InsertClienteFim(novoCliente2, inicioClientes, &res);
-    //inicioClientes = InsertClienteFim(novoCliente3, inicioClientes, &res);
-    //inicioClientes = InsertClienteFim(novoCliente4, inicioClientes, &res);
+    //inicioClientes = InsertClienteFim(inicioClientes, novoCliente1, &res);
+    //inicioClientes = InsertClienteFim(inicioClientes, novoCliente2, &res);
+    //inicioClientes = InsertClienteFim(inicioClientes, novoCliente3, &res);
+    //inicioClientes = InsertClienteFim(inicioClientes, novoCliente4, &res);
 
     
     // Insere o novo Veiculo, Cliente e Gestor na lista ordenadamente 
@@ -94,26 +94,26 @@ int main() {
     inicioVeiculos = InsertVeiculoLista(inicioVeiculos, novoVeiculo3, &res);
     inicioVeiculos = InsertVeiculoLista(inicioVeiculos, novoVeiculo4, &res);
 
-    /*inicioClientes = InsertClienteLista(novoCliente1, inicioClientes, &res);
-    inicioClientes = InsertClienteLista(novoCliente2, inicioClientes, &res);
-    inicioClientes = InsertClienteLista(novoCliente3, inicioClientes, &res);
-    inicioClientes = InsertClienteLista(novoCliente4, inicioClientes, &res);
+    /*inicioClientes = InsertClienteLista(inicioClientes, novoCliente1, &res);
+    inicioClientes = InsertClienteLista(inicioClientes, novoCliente2,  &res);
+    inicioClientes = InsertClienteLista(inicioClientes, novoCliente3,  &res);
+    inicioClientes = InsertClienteLista(inicioClientes, novoCliente4, &res);
 
-    inicioGestores = InsertGestorLista(novoGestor1, inicioGestores, &res);
-    inicioGestores = InsertGestorLista(novoGestor2, inicioGestores, &res);*/
+    inicioGestores = InsertGestorLista(inicioGestores, novoGestor1,&res);
+    inicioGestores = InsertGestorLista(inicioGestores, novoGestor2, &res);*/
 
     //// Chama a função para alterar o veículo com o código e tipo especificados, cliente e gestor com cod e nif
    /* novoVeiculo1->bateria = 80.5;
     novoVeiculo1->custo = 50.0;
-    inicioVeiculos = AlteraCampoVeiculo(101, "carro", 80.5, 50.0, "Lamacaes", novoVeiculo1, inicioVeiculos, &res);
-    inicioClientes = AlteraCampoCliente(05, "Mohamedi Ali", 100.52, 322954125, "Rua de Marechal", novoCliente1, inicioClientes, &res);
-    inicioGestores = AlteraCampoGestor(25, "Bob Marley", 400.20, 420240420, "Rua da Jamaica", novoGestor1, inicioGestores, &res);*/
+    inicioVeiculos = AlteraCampoVeiculo(inicioVeiculos, novoVeiculo1, 101, "carro", 80.5, 50.0, "Lamacaes", &res);
+    inicioClientes = AlteraCampoCliente(inicioClientes, novoCliente1, 05, "Mohamedi Ali", 100.52, 322954125, "Rua de Marechal", &res);
+    inicioGestores = AlteraCampoGestor(inicioGestores, novoGestor1, 25, "Bob Marley", 400.20, 420240420, "Rua da Jamaica", &res);*/
 
     ///*
-    //// Remove o Veiculo, Cliente e Gestor com o código e tipo especificados
-    //inicioVeiculos = RemoveVeiculo(144, "carro", inicioVeiculos, &res);
-    //inicioClientes = RemoveCliente(05, 322954125, inicioClientes, &res);
-    //inicioGestores = RemoveGestor(25, 420240420, novoGestor, inicioGestores, &res);
+    //// Remove o Veiculo, Cliente e Gestor com o código e tipo/nif especificados
+    //inicioVeiculos = RemoveVeiculo(inicioVeiculos, 144, "carro", &res);
+    //inicioClientes = RemoveCliente(inicioClientes, 05, 322954125, &res);
+    //inicioGestores = RemoveGestor(inicioGestores, 25, 420240420, novoGestor, &res);
     //*/
  
 #pragma endregion 
@@ -121,8 +121,9 @@ int main() {
 
 #pragma region Aluguel de Veículos
 
- /*   Aluguel* novoAluguel1 = AlugaVeiculo(novoVeiculo1, novoCliente1);
-    inicioAluguel = InsertAluguelInicio(inicioAluguel, novoAluguel1, &res);*/
+    Aluguel* novoAluguel1 = AlugaVeiculo(novoVeiculo1, novoCliente1);
+    inicioAluguel = InsereAluguel(inicioAluguel, novoVeiculo1, novoCliente1, 02, "Sao Vitor");
+    //inicioAluguel = ProcuraAluguel(inicioAluguel, 02);
 
 #pragma endregion
 
@@ -139,10 +140,14 @@ int main() {
     char* fileGestor = "gestores.bin";
     bool  saveGestor = GravarGestorBin(fileGestor, inicioGestores, &res);
 
+    char* fileAluguel = "alugueis.bin";
+    bool  saveAluguel = GravarAluguelBin(fileAluguel, inicioAluguel, &res);
+
     //Lê arquivo binario
     Veiculo* listVeiculos = LerVeiculoBin("veiculos.bin", &res);
     Cliente* listClientes = LerClienteBin("clientes.bin", &res);
     Gestor* listGestores = LerGestorBin("gestores.bin", &res);
+    Aluguel* listAlugueis = LerAluguelBin("alugueis.bin", &res);
 
     // Verifica Veiculo Duplicado Manualmente
     //VerificaVeiculoDuplicado(inicioVeiculos, novoVeiculo1->cod, novoVeiculo1->tipo, &res);
@@ -194,22 +199,22 @@ int main() {
 #pragma region DFT
 
     int contaCaminho = 0;
-    int x = ContaCaminho(graf, 0, 2, contaCaminho);
-
+    int x = ContaCaminho(graf, 0, 1, contaCaminho);
+    
     int acrescentaCaminho = 0;
     x = ContaCaminhoVerticesNome(graf, "Sao Vitor", "Lamacaes", acrescentaCaminho);
     x = ContaCaminhoVerticesNome(graf, "Sao Vitor", "Sao Tecla", acrescentaCaminho);
 
-    x = ContaCaminho(graf, 0, 1, 0);
+    x = ContaCaminho(graf, 0, 2, 0);
 
     printf("\nExiste caminho?\n");
-    bool existe = CaminhoDiretoCodRecolha(graf, 0, 3);
-    printf("Existe caminho entre %d e %d: %s\n", 0, 3, (existe == true ? "Sim" : "Não"));
+    bool existe = CaminhoDiretoCodRecolha(graf, 0, 1);
+    printf("Existe caminho entre %d e %d: %s\n", 0, 1, (existe == true ? "Sim" : "Não"));
 
     graf = LimpaVertices(graf);
 
     existe = CaminhoDiretoNomeRecolha(graf, "Sao Vitor", "Lamacaes");
-    printf("Existe caminho emte %s e %s: %s\n", "Sao Victor", "Lamacaes", (existe == true ? "Sim" : "Não"));
+    printf("Existe caminho entre %s e %s: %s\n", "Sao Victor", "Lamacaes", (existe == true ? "Sim" : "Não"));
 
 #pragma endregion
 
@@ -233,7 +238,7 @@ int main() {
 #pragma endregion
 
 
-    return true;
+    return false;
 }
 
 #pragma endregion 

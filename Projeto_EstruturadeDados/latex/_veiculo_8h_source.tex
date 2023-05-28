@@ -1,0 +1,57 @@
+\doxysection{Veiculo.\+h}
+\hypertarget{_veiculo_8h_source}{}\label{_veiculo_8h_source}\mbox{\hyperlink{_veiculo_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*****************************************************************/}}
+\DoxyCodeLine{00008\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*\ Mobilidade\ Elétrica\ -\/\ Estrutura\ Veiculos}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <string.h>}\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#pragma\ warning(\ disable\ :\ 4996\ )\ }}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ N\ 200}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#pragma\ region\ \ Struct\ Veículo}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_veiculo}{Veiculo}}\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ cod;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{char}\ tipo[N];}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{float}\ bateria;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{float}\ custo;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{char}\ local[N];}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ next;}
+\DoxyCodeLine{00028\ \}\mbox{\hyperlink{struct_veiculo}{Veiculo}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_veiculos_ficheiro}{VeiculosFicheiro}}\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ cod;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{char}\ tipo[N];}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{float}\ bateria;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{float}\ custo;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{char}\ local[N];}
+\DoxyCodeLine{00036\ \}\mbox{\hyperlink{struct_veiculos_ficheiro}{VeiculosFicheiro}};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#pragma\ region\ Funcoes\ que\ Tratam\ dos\ Veiculos}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ \mbox{\hyperlink{_veiculo_8h_af2137352c3d773cf0ac0b13f302776ee}{CriaVeiculo}}(\textcolor{keywordtype}{int}\ cod,\ \textcolor{keywordtype}{char}*\ tipo,\ \textcolor{keywordtype}{float}\ bateria,\ \textcolor{keywordtype}{float}\ custo,\ \textcolor{keywordtype}{char}*\ local,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00045\ \mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ \mbox{\hyperlink{_veiculo_8h_ae30c562976f0926017add5f1a310c8fe}{ProcuraVeiculo}}(\mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ inicio,\ \textcolor{keywordtype}{int}\ cod,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ tipo);}
+\DoxyCodeLine{00046\ \mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ \mbox{\hyperlink{_veiculo_8h_aef017fce25433044a11a7b8f1a6ffa9f}{InsertVeiculoInicio}}(\mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ inicio,\ \mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ novo,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00047\ \mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ \mbox{\hyperlink{_veiculo_8h_a52da126108deab9fc261598493779182}{InsertVeiculoFim}}(\mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ inicio,\ \mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ novo,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00048\ \mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ \mbox{\hyperlink{_veiculo_8h_aaa2d652a2b400529b2ebdbb1e843b881}{VerificaVeiculoDuplicado}}(\mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ inicio,\ \textcolor{keywordtype}{int}\ cod,\ \textcolor{keywordtype}{char}*\ tipo,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00049\ \mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ \mbox{\hyperlink{_veiculo_8h_aa396a8635d6f6e73a75d7ef147c6c9dd}{InsertVeiculoLista}}(\mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ inicio,\ \mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ novo,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00050\ \mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ \mbox{\hyperlink{_veiculo_8h_ae13200da760d814d3dda335dca99d9fb}{RemoveVeiculo}}(\mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ inicio,\ \textcolor{keywordtype}{int}\ cod,\ \textcolor{keywordtype}{char}*\ tipo,\textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00051\ \mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ \mbox{\hyperlink{_veiculo_8h_a2ea0c9021538c0f3b735bcc2adaf205e}{AlteraCampoVeiculo}}(\mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ inicio,\ \mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ novo,\ \textcolor{keywordtype}{int}\ cod,\ \textcolor{keywordtype}{char}*\ tipo,\ \textcolor{keywordtype}{float}\ bateria,\ \textcolor{keywordtype}{float}\ custo,\ \textcolor{keywordtype}{char}*\ local,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_veiculo_8h_af705c6388c746ae06e16480fee7cd44d}{LerDadosVeiculo}}(\textcolor{keywordtype}{char}\ fileName[]);}
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_veiculo_8h_ae98c64f0e06d4e4c07b0f198296a900f}{GravarVeiculoBin}}(\textcolor{keywordtype}{char}*\ nomeFicheiro,\ \mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ inicio);}
+\DoxyCodeLine{00054\ \mbox{\hyperlink{struct_veiculo}{Veiculo}}*\ \mbox{\hyperlink{_veiculo_8h_ae8bef40c2b318df53a611694e2b0b0be}{LerVeiculoBin}}(\textcolor{keywordtype}{char}*\ nomeFicheiro,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ }
+
+\end{DoxyCode}

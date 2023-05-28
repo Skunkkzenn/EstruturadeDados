@@ -37,13 +37,13 @@ typedef struct GestoresFicheiro {
 #pragma region Funcoes que Tratam dos Gestores
 
 Gestor* CriaGestor(int cod, char* nome, float saldo, long int nif, char* morada, bool* res);
-//Gestor* ProcuraGestor(Gestor* inicio, int cod, long int nif);
-Gestor* InsertGestorInicio(Gestor* novo, Gestor* inicio, bool* res);
-Gestor* InsertGestorFim(Gestor* novo, Gestor* inicio, bool* res);
-Gestor* VerificaGestorDuplicado(int cod, int long nif, Gestor* inicio, bool* duplicado);
-Gestor* InsertGestorLista(Gestor* novo, Gestor* inicio, bool* res);
-Gestor* AlteraCampoGestor(int cod, char* nome, float saldo, long int nif, char* morada, Gestor* novo, Gestor* inicio, bool* res);
-Gestor* RemoveGestor(int cod, long int nif, Gestor* inicio, bool* res);
+Gestor* ProcuraGestor(Gestor* inicio, int cod, long int nif);
+Gestor* InsertGestorInicio(Gestor* inicio, Gestor* novo, bool* res);
+Gestor* InsertGestorFim(Gestor* inicio, Gestor* novo, bool* res);
+Gestor* VerificaGestorDuplicado(Gestor* inicio, int cod, int long nif, bool* res);
+Gestor* InsertGestorLista(Gestor* inicio, Gestor* novo, bool* res);
+Gestor* AlteraCampoGestor(Gestor* inicio, Gestor* novo, int cod, char* nome, float saldo, long int nif, char* morada, bool* res);
+Gestor* RemoveGestor(Gestor* inicio, int cod, long int nif, bool* res);
 bool LerDadosGestor(char fileName[]);
 bool GravarGestorBin(char* nomeFicheiro, Gestor* inicio);
 Gestor* LerGestorBin(char* nomeFicheiro, bool* res);

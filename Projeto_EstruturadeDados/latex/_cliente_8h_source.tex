@@ -1,0 +1,51 @@
+\doxysection{Cliente.\+h}
+\hypertarget{_cliente_8h_source}{}\label{_cliente_8h_source}\mbox{\hyperlink{_cliente_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*****************************************************************/}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <string.h>}\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#pragma\ warning(\ disable\ :\ 4996\ )\ }\textcolor{comment}{//evita\ MSG\ ERROS:\ \_CRT\_SECURE\_NO\_WARNINGS}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ N\ 200}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#pragma\ region\ Struct\ Cliente}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_cliente}{Cliente}}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ cod;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{char}\ nome[N];}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{float}\ saldo;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ nif;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{char}\ morada[N];}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_cliente}{Cliente}}*\ next;}
+\DoxyCodeLine{00026\ \}\mbox{\hyperlink{struct_cliente}{Cliente}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_clientes_ficheiro}{ClientesFicheiro}}\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ cod;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{char}\ nome[N];}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{float}\ saldo;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ nif;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{char}\ morada[N];}
+\DoxyCodeLine{00034\ \}\mbox{\hyperlink{struct_clientes_ficheiro}{ClientesFicheiro}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#pragma\ region\ Funcoes\ para\ Tratar\ Clientes}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \mbox{\hyperlink{struct_cliente}{Cliente}}*\ \mbox{\hyperlink{_cliente_8h_a008702a830aef85b1c6bbbed30c780e4}{CriaCliente}}(\textcolor{keywordtype}{int}\ cod,\ \textcolor{keywordtype}{char}*\ nome,\ \textcolor{keywordtype}{float}\ saldo,\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ nif,\ \textcolor{keywordtype}{char}*\ morada,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00041\ \mbox{\hyperlink{struct_cliente}{Cliente}}*\ \mbox{\hyperlink{_cliente_8h_ab78620430bf6f22eba388dce2e60ec43}{ProcuraGestor}}(\mbox{\hyperlink{struct_cliente}{Cliente}}*\ inicio,\ \textcolor{keywordtype}{int}\ cod,\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ nif);}
+\DoxyCodeLine{00042\ \mbox{\hyperlink{struct_cliente}{Cliente}}*\ \mbox{\hyperlink{_cliente_8h_ac4e6f145e1510c609cb24180cb5a66d3}{InsertClienteLista}}(\mbox{\hyperlink{struct_cliente}{Cliente}}*\ novo,\ \mbox{\hyperlink{struct_cliente}{Cliente}}*\ inicio,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00043\ \mbox{\hyperlink{struct_cliente}{Cliente}}*\ \mbox{\hyperlink{_cliente_8c_a1cec3130424b78f24781b8f6f4ddce6e}{AlteraCampoCliente}}(\textcolor{keywordtype}{int}\ cod,\ \textcolor{keywordtype}{char}*\ nome,\ \textcolor{keywordtype}{float}\ saldo,\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ nif,\ \textcolor{keywordtype}{char}*\ morada,\ \mbox{\hyperlink{struct_cliente}{Cliente}}*\ novo,\ \mbox{\hyperlink{struct_cliente}{Cliente}}*\ inicio,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00044\ \mbox{\hyperlink{struct_cliente}{Cliente}}*\ \mbox{\hyperlink{_cliente_8c_a3e30c855fedf69dd44be6ac7c50173c3}{RemoveCliente}}(\textcolor{keywordtype}{int}\ cod,\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ nif,\ \mbox{\hyperlink{struct_cliente}{Cliente}}*\ inicio,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00045\ \mbox{\hyperlink{struct_cliente}{Cliente}}*\ \mbox{\hyperlink{_cliente_8h_a2c23e332d315714bac245c62a9aa5b2b}{InsertClienteInicio}}(\mbox{\hyperlink{struct_cliente}{Cliente}}*\ novo,\ \mbox{\hyperlink{struct_cliente}{Cliente}}*\ inicio,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00046\ \mbox{\hyperlink{struct_cliente}{Cliente}}*\ \mbox{\hyperlink{_cliente_8h_a2406e84bcf5bc4d5b2bdafdace56e0a9}{InsertClienteFim}}(\mbox{\hyperlink{struct_cliente}{Cliente}}*\ novo,\ \mbox{\hyperlink{struct_cliente}{Cliente}}*\ inicio,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00047\ \mbox{\hyperlink{struct_cliente}{Cliente}}*\ \mbox{\hyperlink{_cliente_8c_a18c02f6400176ac3ec4e79619dc7cb2e}{VerificaClienteDuplicado}}(\textcolor{keywordtype}{int}\ cod,\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ nif,\ \mbox{\hyperlink{struct_cliente}{Cliente}}*\ inicio,\ \textcolor{keywordtype}{bool}*\ duplicado);}
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_cliente_8h_aba5a306e2cbb3d80d8a0c021951d6195}{LerDadosCliente}}(\textcolor{keywordtype}{char}\ fileName[]);}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_cliente_8h_a680aac121a972bfbbeb8445d0cccaaa3}{GravarClienteBin}}(\textcolor{keywordtype}{char}*\ nomeFicheiro,\ \mbox{\hyperlink{struct_cliente}{Cliente}}*\ inicio);}
+\DoxyCodeLine{00050\ \mbox{\hyperlink{struct_cliente}{Cliente}}*\ \mbox{\hyperlink{_cliente_8h_abb8fe67a79b3b4f92ece431aa0984a7e}{LerClienteBin}}(\textcolor{keywordtype}{char}*\ nomeFicheiro,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#pragma\ endregion}}
+
+\end{DoxyCode}

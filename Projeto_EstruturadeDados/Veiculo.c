@@ -11,7 +11,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "Veiculo.h"
-#include "Cliente.h"
 #pragma warning( disable : 4996 )
 #define MAXCHAR 500
 
@@ -155,7 +154,6 @@ Veiculo* InsertVeiculoLista(Veiculo* inicio, Veiculo* novo, bool* res) {
 			*res = true;
 			free(novo);
 			return inicio;
-
 		}
 
 		if (!veiculoDuplicado) {

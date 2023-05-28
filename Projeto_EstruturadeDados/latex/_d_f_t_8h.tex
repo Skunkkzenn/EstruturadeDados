@@ -1,0 +1,139 @@
+\doxysection{DFT.\+h File Reference}
+\hypertarget{_d_f_t_8h}{}\label{_d_f_t_8h}\index{DFT.h@{DFT.h}}
+
+
+TRABALHO EDA \textbackslash{}number 18586.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \"{}Vertice.\+h\"{}}\newline
+{\ttfamily \#include \"{}Adjacencia.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{_d_f_t_8h_a3a2ee1a64503d9c08735794ee551da15}{Conta\+Caminho}} (\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}inicio, int ori, int dest, int conta\+Caminho)
+\begin{DoxyCompactList}\small\item\em Conta número de caminhos possíveis entre dois Vértices. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_d_f_t_8h_a37afd7f07bc31413c38a0baa2e7a0253}{Conta\+Caminho\+Vertices\+Nome}} (\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}inicio, char \texorpdfstring{$\ast$}{*}ori, char \texorpdfstring{$\ast$}{*}dest, int conta\+Caminho)
+\begin{DoxyCompactList}\small\item\em Conta número de caminhos possíveis entre dois Vértices de forma recursiva, utilizando os nomes dos vértices e convertendo em códigos. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_d_f_t_8h_a15b0f0043df423d257ec75da3cfddbe9}{Caminho\+Direto\+Cod\+Recolha}} (\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}inicio, int ori, int dest)
+\begin{DoxyCompactList}\small\item\em Verifica a Existência de um caminho direto entre Vértices utilizando o cod. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_d_f_t_8h_afb08de566fc380a426b305925ecf79ab}{Caminho\+Direto\+Nome\+Recolha}} (\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}inicio, char \texorpdfstring{$\ast$}{*}ori, char \texorpdfstring{$\ast$}{*}dest)
+\begin{DoxyCompactList}\small\item\em Converte os nomes de Vértices em cód, utilizando Procura\+Ponto\+Recolha; Utiliza Caminho\+Direto\+Cod\+Recolha para realizar a verificação do caminho direto, com base nos códigos dos vértices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+TRABALHO EDA \textbackslash{}number 18586. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+May 2023 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_d_f_t_8h_a15b0f0043df423d257ec75da3cfddbe9}\label{_d_f_t_8h_a15b0f0043df423d257ec75da3cfddbe9} 
+\index{DFT.h@{DFT.h}!CaminhoDiretoCodRecolha@{CaminhoDiretoCodRecolha}}
+\index{CaminhoDiretoCodRecolha@{CaminhoDiretoCodRecolha}!DFT.h@{DFT.h}}
+\doxysubsubsection{\texorpdfstring{CaminhoDiretoCodRecolha()}{CaminhoDiretoCodRecolha()}}
+{\footnotesize\ttfamily bool Caminho\+Direto\+Cod\+Recolha (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{int}]{ori,  }\item[{int}]{dest }\end{DoxyParamCaption})}
+
+
+
+Verifica a Existência de um caminho direto entre Vértices utilizando o cod. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em inicio} & \\
+\hline
+{\em ori} & \\
+\hline
+{\em dest} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_d_f_t_8h_afb08de566fc380a426b305925ecf79ab}\label{_d_f_t_8h_afb08de566fc380a426b305925ecf79ab} 
+\index{DFT.h@{DFT.h}!CaminhoDiretoNomeRecolha@{CaminhoDiretoNomeRecolha}}
+\index{CaminhoDiretoNomeRecolha@{CaminhoDiretoNomeRecolha}!DFT.h@{DFT.h}}
+\doxysubsubsection{\texorpdfstring{CaminhoDiretoNomeRecolha()}{CaminhoDiretoNomeRecolha()}}
+{\footnotesize\ttfamily bool Caminho\+Direto\+Nome\+Recolha (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{char \texorpdfstring{$\ast$}{*}}]{ori,  }\item[{char \texorpdfstring{$\ast$}{*}}]{dest }\end{DoxyParamCaption})}
+
+
+
+Converte os nomes de Vértices em cód, utilizando Procura\+Ponto\+Recolha; Utiliza Caminho\+Direto\+Cod\+Recolha para realizar a verificação do caminho direto, com base nos códigos dos vértices. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em inicio} & \\
+\hline
+{\em ori} & \\
+\hline
+{\em dest} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_d_f_t_8h_a3a2ee1a64503d9c08735794ee551da15}\label{_d_f_t_8h_a3a2ee1a64503d9c08735794ee551da15} 
+\index{DFT.h@{DFT.h}!ContaCaminho@{ContaCaminho}}
+\index{ContaCaminho@{ContaCaminho}!DFT.h@{DFT.h}}
+\doxysubsubsection{\texorpdfstring{ContaCaminho()}{ContaCaminho()}}
+{\footnotesize\ttfamily int Conta\+Caminho (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{int}]{ori,  }\item[{int}]{dest,  }\item[{int}]{conta\+Caminho }\end{DoxyParamCaption})}
+
+
+
+Conta número de caminhos possíveis entre dois Vértices. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em inicio} & \\
+\hline
+{\em ori} & \\
+\hline
+{\em dst} & \\
+\hline
+{\em conta\+Caminho} & -\/\texorpdfstring{$>$}{>} Armazena o nº de caminhos encontrados \\
+\hline
+{\em } & \\
+\hline
+\end{DoxyParams}
+return \Hypertarget{_d_f_t_8h_a37afd7f07bc31413c38a0baa2e7a0253}\label{_d_f_t_8h_a37afd7f07bc31413c38a0baa2e7a0253} 
+\index{DFT.h@{DFT.h}!ContaCaminhoVerticesNome@{ContaCaminhoVerticesNome}}
+\index{ContaCaminhoVerticesNome@{ContaCaminhoVerticesNome}!DFT.h@{DFT.h}}
+\doxysubsubsection{\texorpdfstring{ContaCaminhoVerticesNome()}{ContaCaminhoVerticesNome()}}
+{\footnotesize\ttfamily int Conta\+Caminho\+Vertices\+Nome (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{char \texorpdfstring{$\ast$}{*}}]{ori,  }\item[{char \texorpdfstring{$\ast$}{*}}]{dest,  }\item[{int}]{conta\+Caminho }\end{DoxyParamCaption})}
+
+
+
+Conta número de caminhos possíveis entre dois Vértices de forma recursiva, utilizando os nomes dos vértices e convertendo em códigos. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em inicio} & \\
+\hline
+{\em ori} & \\
+\hline
+{\em dest} & \\
+\hline
+{\em conta\+Caminho} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}

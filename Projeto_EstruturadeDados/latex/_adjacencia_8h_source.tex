@@ -1,0 +1,41 @@
+\doxysection{Adjacencia.\+h}
+\hypertarget{_adjacencia_8h_source}{}\label{_adjacencia_8h_source}\mbox{\hyperlink{_adjacencia_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*****************************************************************/}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#pragma\ warning\ (disable:\ 4996)}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#pragma\ region\ Struct\ Adjacentes}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_adj}{Adj}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ cod;\ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{float}\ peso;\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_adj}{Adj}}*\ next;}
+\DoxyCodeLine{00021\ \}\mbox{\hyperlink{struct_adj}{Adj}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_adj_ficheiro}{AdjFicheiro}}\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ codOrigem;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ codDestino;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{float}\ peso;}
+\DoxyCodeLine{00028\ \}\mbox{\hyperlink{struct_adj_ficheiro}{AdjFicheiro}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#pragma\ region\ Funções/Métodos\ Ligações\ aos\ Vertices}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \mbox{\hyperlink{struct_adj}{Adj}}*\ \mbox{\hyperlink{_adjacencia_8h_afee83447423b64057a8dd11d2523eb6c}{CriaLigacao}}(\textcolor{keywordtype}{int}\ cod,\ \textcolor{keywordtype}{float}\ peso);}
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_adjacencia_8h_a74db11e622e4458a12374f2d78f7e3e2}{ExisteLigacao}}(\mbox{\hyperlink{struct_adj}{Adj}}*\ inicio,\ \textcolor{keywordtype}{int}\ cod);}
+\DoxyCodeLine{00037\ \mbox{\hyperlink{struct_adj}{Adj}}*\ \mbox{\hyperlink{_adjacencia_8h_a588014ce7aab8ef7ccf23ebc390a6dbd}{InsereLigacao}}(\mbox{\hyperlink{struct_adj}{Adj}}*\ inicio,\ \mbox{\hyperlink{struct_adj}{Adj}}*\ novo,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_adjacencia_8h_acac063ca8189e93484f104351d6025eb}{MostraLigacoes}}(\mbox{\hyperlink{struct_adj}{Adj}}*\ head);}
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_adjacencia_8h_a7be610098a1b45f16ff9ddb27851de1f}{GravaAdjBin}}(\mbox{\hyperlink{struct_adj}{Adj}}*\ inicio,\ \textcolor{keywordtype}{char}*\ fileName,\ \textcolor{keywordtype}{int}\ codVerticeOrigem);}
+\DoxyCodeLine{00040\ \mbox{\hyperlink{struct_adj}{Adj}}*\ \mbox{\hyperlink{_adjacencia_8h_ae192333a360563ab14174523328351d4}{LerAdjBin}}(\mbox{\hyperlink{struct_adj}{Adj}}*\ inicio,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{00043\ }
+
+\end{DoxyCode}

@@ -6,6 +6,8 @@
  * \date   March 2023
  *********************************************************************/
 
+#ifndef CLIENTE_H
+#define CLIENTE_H
 #include <stdio.h>
 #include <string.h> 
 #include <stdbool.h>
@@ -38,16 +40,19 @@ typedef struct ClientesFicheiro {
 #pragma region Funcoes para Tratar Clientes
 
 Cliente* CriaCliente(int cod, char* nome, float saldo, long int nif, char* morada, bool* res);
-Cliente* ProcuraGestor(Cliente* inicio, int cod, long int nif);
-Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio, bool* res);
-Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char* morada, Cliente* novo, Cliente* inicio, bool* res);
-Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio, bool* res);
-Cliente* InsertClienteInicio(Cliente* novo, Cliente* inicio, bool* res);
-Cliente* InsertClienteFim(Cliente* novo, Cliente* inicio, bool* res);
-Cliente* VerificaClienteDuplicado(int cod, long int nif, Cliente* inicio, bool* duplicado);
+Cliente* ProcuraCliente(Cliente* inicio, int cod, long int nif);
+Cliente* InsertClienteLista(Cliente* inicio, Cliente* novo, bool* res);
+Cliente* AlteraCampoCliente(Cliente* inicio, Cliente* novo, int cod, char* nome, float saldo, long int nif, char* morada, bool* res);
+Cliente* RemoveCliente(Cliente* inicio, int cod, long int nif, bool* res);
+Cliente* InsertClienteInicio(Cliente* inicio, Cliente* novo, bool* res);
+Cliente* InsertClienteFim(Cliente* inicio, Cliente* novo, bool* res);
+Cliente* VerificaClienteDuplicado(Cliente* inicio, int cod, long int nif, bool* res);
 bool LerDadosCliente(char fileName[]);
 bool GravarClienteBin(char* nomeFicheiro, Cliente* inicio);
 Cliente* LerClienteBin(char* nomeFicheiro, bool* res);
 
 
 #pragma endregion
+#endif // CLIENTE_H
+
+

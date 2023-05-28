@@ -53,18 +53,18 @@ Gestor* CriaGestor(int cod, char* nome, float saldo, long int nif, char* morada,
  * @param tipo
  * @return
  */
-//Gestor* ProcuraGestor(Gestor* inicio, int cod, long int nif) {
-//	Gestor* gestor = inicio;
-//
-//	while (gestor != NULL) {
-//		if (gestor->cod == cod && gestor->nif == nif) {
-//			return gestor; // Encontrou o gestor
-//		}
-//		gestor = gestor->next;
-//	}
-//
-//	return NULL; // gestor não encontrado
-//}
+Gestor* ProcuraGestor(Gestor* inicio, int cod, long int nif) {
+	Gestor* gestor = inicio;
+
+	while (gestor != NULL) {
+		if (gestor->cod == cod && gestor->nif == nif) {
+			return gestor; // Encontrou o gestor
+		}
+		gestor = gestor->next;
+	}
+
+	return NULL; // gestor não encontrado
+}
 
 
 /**
@@ -74,7 +74,7 @@ Gestor* CriaGestor(int cod, char* nome, float saldo, long int nif, char* morada,
  * @param inicio
  * @return
  */
-Gestor* InsertGestorInicio(Gestor* novo, Gestor* inicio, bool* res) {
+Gestor* InsertGestorInicio(Gestor* inicio, Gestor* novo, bool* res) {
 	*res = false;
 	if (novo == NULL) /* Verifica se ponteiro para o novo gestor é nulo, logo como não há nada para ser inserido,
 					   retorna o ponteiro para o inicio da lista */
@@ -102,7 +102,7 @@ Gestor* InsertGestorInicio(Gestor* novo, Gestor* inicio, bool* res) {
  * @param inicio
  * @return
  */
-Gestor* InsertGestorFim(Gestor* novo, Gestor* inicio, bool* res) {
+Gestor* InsertGestorFim(Gestor* inicio, Gestor* novo, bool* res) {
 	*res = false;
 	if (inicio == NULL) // Verifica se a lista está vazia, se estiver, o novo gestor torna-se o primeiro nó da lista
 	{
@@ -131,8 +131,8 @@ Gestor* InsertGestorFim(Gestor* novo, Gestor* inicio, bool* res) {
  * @param
  * @return
  */
-Gestor* VerificaGestorDuplicado(int cod, int long nif, Gestor* inicio, bool* duplicado) {
-	*duplicado = false;
+Gestor* VerificaGestorDuplicado(Gestor* inicio, int cod, int long nif, bool* res) {
+	*res = false;
 
 	if (inicio == NULL) // Verifica se a lista encadeada está vazia (inicio == NULL), caso esteja retorna NULL, indicando que não há clientes duplicados.
 	{
@@ -145,11 +145,17 @@ Gestor* VerificaGestorDuplicado(int cod, int long nif, Gestor* inicio, bool* dup
 		aux = aux->next;
 	}
 
-	if ((aux != NULL) && (aux->cod == cod) && (aux->nif == nif)) {
-		*duplicado = true;
+	if ((aux != NULL) && (aux->cod == cod) && (aux->nif == nif) == 0) {
+		*res = true;
 	}
-	return aux; // Ao fim retorna o valor de aux
+
+	if (*res) {
+		printf("Erro: Cliente duplicado encontrado. Código: %d, NIF: %ld\n", aux->cod, aux->nif);
+	}
+
+	return aux;
 }
+
 
 /**
  * @brief Insere Gestor na Lista, por ordem de cod.
@@ -159,7 +165,7 @@ Gestor* VerificaGestorDuplicado(int cod, int long nif, Gestor* inicio, bool* dup
  * @param
  * @return
  */
-Gestor* InsertGestorLista(Gestor* novo, Gestor* inicio, bool* res) {
+Gestor* InsertGestorLista(Gestor* inicio, Gestor* novo, bool* res) {
 	bool gestorDuplicado = false; // variável bool para armazenar se há gestor duplicado
 	*res = false;
 	if (inicio == NULL)
@@ -169,6 +175,8 @@ Gestor* InsertGestorLista(Gestor* novo, Gestor* inicio, bool* res) {
 	else {
 		//Verificar se já existe repetido
 		if (VerificaGestorDuplicado(novo->cod, novo->nif, inicio, &gestorDuplicado) != NULL) {
+			*res = true;
+			free(novo);
 			return inicio;
 		}
 		if (!gestorDuplicado) {
@@ -196,11 +204,11 @@ Gestor* InsertGestorLista(Gestor* novo, Gestor* inicio, bool* res) {
 					anterior->next = novo;
 					novo->next = atual;
 				}
-				*res = true;
 			}
 		}
-		return inicio;
+		*res = true;
 	}
+	return inicio;
 }
 
 /**
@@ -215,7 +223,7 @@ Gestor* InsertGestorLista(Gestor* novo, Gestor* inicio, bool* res) {
  * @param inicio
  * @return
  */
-Gestor* AlteraCampoGestor(int cod, char* nome, float saldo, long int nif, char* morada, Gestor* novo, Gestor* inicio, bool* res) {
+Gestor* AlteraCampoGestor(Gestor* inicio, Gestor* novo, int cod, char* nome, float saldo, long int nif, char* morada, bool* res) {
 	*res = false;
 
 	// Verifica se a lista está vazia
@@ -250,6 +258,7 @@ Gestor* AlteraCampoGestor(int cod, char* nome, float saldo, long int nif, char* 
 	// Libera a memória alocada para o cliente novo
 	free(novo);
 	*res = true;
+	printf("Erro: lista vazia\n");
 	// Retorna a lista atualizada
 	return inicio;
 }
@@ -263,7 +272,7 @@ Gestor* AlteraCampoGestor(int cod, char* nome, float saldo, long int nif, char* 
  * @param
  * @return
  */
-Gestor* RemoveGestor(int cod, long int nif, Gestor* inicio, bool* res) {
+Gestor* RemoveGestor(Gestor* inicio, int cod, long int nif, bool* res) {
 	*res = false;
 	// Verifica se o início é nulo (lista vazia)
 	if (inicio == NULL) {
