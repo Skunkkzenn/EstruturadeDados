@@ -177,7 +177,7 @@ Aluguel* LerAluguelBin(char* nomeFicheiro, bool* res) {
 		}
 
 		// Imprime os dados do registro lido
-		printf("Aluguel registrado: cod=%d, tipo=%s\n", novo->cod, novo->cidade);
+		printf("Aluguel registrado: cod=%d, local=%s\n", novo->cod, novo->cidade);
 
 		*res = true;
 	}
