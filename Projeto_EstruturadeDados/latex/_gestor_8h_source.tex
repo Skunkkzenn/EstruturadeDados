@@ -1,0 +1,50 @@
+\doxysection{Gestor.\+h}
+\hypertarget{_gestor_8h_source}{}\label{_gestor_8h_source}\mbox{\hyperlink{_gestor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*****************************************************************/}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <string.h>}\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ warning(\ disable\ :\ 4996\ )\ }}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ N\ 200}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#pragma\ region\ Struct\ Gestor}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_gestor}{Gestor}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ cod;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{char}\ nome[N];}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{float}\ saldo;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ nif;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{char}\ morada[N];}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_gestor}{Gestor}}*\ next;\ }
+\DoxyCodeLine{00025\ \}\mbox{\hyperlink{struct_gestor}{Gestor}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_gestores_ficheiro}{GestoresFicheiro}}\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ cod;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{char}\ nome[N];}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{float}\ saldo;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ nif;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{char}\ morada[N];}
+\DoxyCodeLine{00033\ \}\mbox{\hyperlink{struct_gestores_ficheiro}{GestoresFicheiro}};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#pragma\ region\ Funcoes\ que\ Tratam\ dos\ Gestores}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \mbox{\hyperlink{struct_gestor}{Gestor}}*\ \mbox{\hyperlink{_gestor_8h_a280de52ec4e80cfb73fbd7bab679a2a2}{CriaGestor}}(\textcolor{keywordtype}{int}\ cod,\ \textcolor{keywordtype}{char}*\ nome,\ \textcolor{keywordtype}{float}\ saldo,\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ nif,\ \textcolor{keywordtype}{char}*\ morada,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00040\ \textcolor{comment}{//Gestor*\ ProcuraGestor(Gestor*\ inicio,\ int\ cod,\ long\ int\ nif);}}
+\DoxyCodeLine{00041\ \mbox{\hyperlink{struct_gestor}{Gestor}}*\ \mbox{\hyperlink{_gestor_8h_aaee909e47af80cba0131a22ac5195215}{InsertGestorInicio}}(\mbox{\hyperlink{struct_gestor}{Gestor}}*\ novo,\ \mbox{\hyperlink{struct_gestor}{Gestor}}*\ inicio,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00042\ \mbox{\hyperlink{struct_gestor}{Gestor}}*\ \mbox{\hyperlink{_gestor_8h_a4b3a6cc2917acafcbee11d61c2b85860}{InsertGestorFim}}(\mbox{\hyperlink{struct_gestor}{Gestor}}*\ novo,\ \mbox{\hyperlink{struct_gestor}{Gestor}}*\ inicio,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00043\ \mbox{\hyperlink{struct_gestor}{Gestor}}*\ \mbox{\hyperlink{_gestor_8c_a445cdc4441a029f29f53d10bb1527494}{VerificaGestorDuplicado}}(\textcolor{keywordtype}{int}\ cod,\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{long}\ nif,\ \mbox{\hyperlink{struct_gestor}{Gestor}}*\ inicio,\ \textcolor{keywordtype}{bool}*\ duplicado);}
+\DoxyCodeLine{00044\ \mbox{\hyperlink{struct_gestor}{Gestor}}*\ \mbox{\hyperlink{_gestor_8h_a86e08d08468646b2ba21d062f361a07c}{InsertGestorLista}}(\mbox{\hyperlink{struct_gestor}{Gestor}}*\ novo,\ \mbox{\hyperlink{struct_gestor}{Gestor}}*\ inicio,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00045\ \mbox{\hyperlink{struct_gestor}{Gestor}}*\ \mbox{\hyperlink{_gestor_8c_a6501a83e8dbc2e2e361d2f4fc5750d42}{AlteraCampoGestor}}(\textcolor{keywordtype}{int}\ cod,\ \textcolor{keywordtype}{char}*\ nome,\ \textcolor{keywordtype}{float}\ saldo,\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ nif,\ \textcolor{keywordtype}{char}*\ morada,\ \mbox{\hyperlink{struct_gestor}{Gestor}}*\ novo,\ \mbox{\hyperlink{struct_gestor}{Gestor}}*\ inicio,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00046\ \mbox{\hyperlink{struct_gestor}{Gestor}}*\ \mbox{\hyperlink{_gestor_8c_aa2ee49f5325a3437c8005b129b845e07}{RemoveGestor}}(\textcolor{keywordtype}{int}\ cod,\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ nif,\ \mbox{\hyperlink{struct_gestor}{Gestor}}*\ inicio,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_gestor_8h_a638415791fc65dfbf8d39ece3a75cc18}{LerDadosGestor}}(\textcolor{keywordtype}{char}\ fileName[]);}
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_gestor_8h_ad3eaf5b06263e62c2b0cea90f71747c8}{GravarGestorBin}}(\textcolor{keywordtype}{char}*\ nomeFicheiro,\ \mbox{\hyperlink{struct_gestor}{Gestor}}*\ inicio);}
+\DoxyCodeLine{00049\ \mbox{\hyperlink{struct_gestor}{Gestor}}*\ \mbox{\hyperlink{_gestor_8h_a87afb98f0cd54a045691f2c688a3625c}{LerGestorBin}}(\textcolor{keywordtype}{char}*\ nomeFicheiro,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#pragma\ endregion}}
+
+\end{DoxyCode}

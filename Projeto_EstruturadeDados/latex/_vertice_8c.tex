@@ -1,0 +1,304 @@
+\doxysection{Vertice.\+c File Reference}
+\hypertarget{_vertice_8c}{}\label{_vertice_8c}\index{Vertice.c@{Vertice.c}}
+
+
+TRABALHO EDA \textbackslash{}number 18586.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \"{}Vertice.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_vertice_8c_a2f497a6249cd79dd175b12fe72b8b7bf}{Criar\+Grafo}} ()
+\begin{DoxyCompactList}\small\item\em Inicia grafo, sem orientação. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_vertice_8c_af1e839c30d45b7c1ee6183535cd89562}{Cria\+Ponto\+Recolha}} (char \texorpdfstring{$\ast$}{*}cidade, int cod, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Cria um ponto de recolha dentro do grafo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_vertice_8c_ac84e669a0efcc2a1cca43241297c6240}{Insere\+Ponto\+Recolha}} (\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}inicio, \mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}novo, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Insere ponto de recolha no grafo, verificando se o mesmo já existe na lista. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_vertice_8c_a5a1dee3b556c6485abcd682c098d109e}{Insere\+Ligacao\+Recolha\+Cod}} (\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}g, int cod\+Origem, int cod\+Destino, float peso, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Insere ponto de recolha no grafo com o cod. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_vertice_8c_a92bc5800957b108286ced281eb43222b}{Ins\+Lig\+Ponto\+Recolha}} (\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}inicio, char \texorpdfstring{$\ast$}{*}origem, char \texorpdfstring{$\ast$}{*}dest, float peso, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Insere ligação entre pontos de recolha. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_vertice_8c_a40ee1c39c54df2a951e850f73f7f5851}{Exibe\+Grafo}} (\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}inicio, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Exibe o Grafo. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_vertice_8c_a2b765b7b29903edebfdd2c54ff5d2fea}{Procura\+Cod\+Ponto\+Recolha}} (\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}inicio, char \texorpdfstring{$\ast$}{*}cidade)
+\begin{DoxyCompactList}\small\item\em Verifica o cod. do Vértice de X cidade. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_vertice_8c_aa84bb590e61a91b30fae7e4ac2e31a8d}{Procura\+Ponto\+Recolha}} (\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}inicio, char \texorpdfstring{$\ast$}{*}cidade)
+\begin{DoxyCompactList}\small\item\em Verifica se existe ponto de recolha pela cidade. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_vertice_8c_a502a76c604b22885fcca2f15b36aeede}{Procura\+Recolha\+Cod}} (\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}inicio, int cod)
+\item 
+\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_vertice_8c_a96f6e74bafd0c1838cde495df8071383}{Limpa\+Vertices}} (\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}inicio)
+\item 
+int \mbox{\hyperlink{_vertice_8c_a9a4f7665884d8fbffac02ca0a1705005}{Gravar\+Grafo}} (\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}inicio, char \texorpdfstring{$\ast$}{*}nome\+Ficheiro)
+\begin{DoxyCompactList}\small\item\em Grava Grafo em ficheiro bin. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_vertice_8c_a72c5096a1ece553f27121497965f97a1}{Ler\+Grafo\+Bin}} (\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}inicio, char \texorpdfstring{$\ast$}{*}file\+Name, bool \texorpdfstring{$\ast$}{*}res)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+TRABALHO EDA \textbackslash{}number 18586. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+May 2023 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_vertice_8c_af1e839c30d45b7c1ee6183535cd89562}\label{_vertice_8c_af1e839c30d45b7c1ee6183535cd89562} 
+\index{Vertice.c@{Vertice.c}!CriaPontoRecolha@{CriaPontoRecolha}}
+\index{CriaPontoRecolha@{CriaPontoRecolha}!Vertice.c@{Vertice.c}}
+\doxysubsubsection{\texorpdfstring{CriaPontoRecolha()}{CriaPontoRecolha()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*} Cria\+Ponto\+Recolha (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{cidade,  }\item[{int}]{cod,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Cria um ponto de recolha dentro do grafo. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em cidade} & \\
+\hline
+{\em cod} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ponteiro para o novo ponto de recolha criado. 
+\end{DoxyReturn}
+\Hypertarget{_vertice_8c_a2f497a6249cd79dd175b12fe72b8b7bf}\label{_vertice_8c_a2f497a6249cd79dd175b12fe72b8b7bf} 
+\index{Vertice.c@{Vertice.c}!CriarGrafo@{CriarGrafo}}
+\index{CriarGrafo@{CriarGrafo}!Vertice.c@{Vertice.c}}
+\doxysubsubsection{\texorpdfstring{CriarGrafo()}{CriarGrafo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*} Criar\+Grafo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Inicia grafo, sem orientação. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_vertice_8c_a40ee1c39c54df2a951e850f73f7f5851}\label{_vertice_8c_a40ee1c39c54df2a951e850f73f7f5851} 
+\index{Vertice.c@{Vertice.c}!ExibeGrafo@{ExibeGrafo}}
+\index{ExibeGrafo@{ExibeGrafo}!Vertice.c@{Vertice.c}}
+\doxysubsubsection{\texorpdfstring{ExibeGrafo()}{ExibeGrafo()}}
+{\footnotesize\ttfamily void Exibe\+Grafo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Exibe o Grafo. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em inicio} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_vertice_8c_a9a4f7665884d8fbffac02ca0a1705005}\label{_vertice_8c_a9a4f7665884d8fbffac02ca0a1705005} 
+\index{Vertice.c@{Vertice.c}!GravarGrafo@{GravarGrafo}}
+\index{GravarGrafo@{GravarGrafo}!Vertice.c@{Vertice.c}}
+\doxysubsubsection{\texorpdfstring{GravarGrafo()}{GravarGrafo()}}
+{\footnotesize\ttfamily int Gravar\+Grafo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{char \texorpdfstring{$\ast$}{*}}]{nome\+Ficheiro }\end{DoxyParamCaption})}
+
+
+
+Grava Grafo em ficheiro bin. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em inicio} & \\
+\hline
+{\em nome\+Ficheiro} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_vertice_8c_a5a1dee3b556c6485abcd682c098d109e}\label{_vertice_8c_a5a1dee3b556c6485abcd682c098d109e} 
+\index{Vertice.c@{Vertice.c}!InsereLigacaoRecolhaCod@{InsereLigacaoRecolhaCod}}
+\index{InsereLigacaoRecolhaCod@{InsereLigacaoRecolhaCod}!Vertice.c@{Vertice.c}}
+\doxysubsubsection{\texorpdfstring{InsereLigacaoRecolhaCod()}{InsereLigacaoRecolhaCod()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*} Insere\+Ligacao\+Recolha\+Cod (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}}]{g,  }\item[{int}]{cod\+Origem,  }\item[{int}]{cod\+Destino,  }\item[{float}]{peso,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Insere ponto de recolha no grafo com o cod. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em cod\+Origem} & \\
+\hline
+{\em cod\+Destino} & \\
+\hline
+{\em peso} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_vertice_8c_ac84e669a0efcc2a1cca43241297c6240}\label{_vertice_8c_ac84e669a0efcc2a1cca43241297c6240} 
+\index{Vertice.c@{Vertice.c}!InserePontoRecolha@{InserePontoRecolha}}
+\index{InserePontoRecolha@{InserePontoRecolha}!Vertice.c@{Vertice.c}}
+\doxysubsubsection{\texorpdfstring{InserePontoRecolha()}{InserePontoRecolha()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*} Insere\+Ponto\+Recolha (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}}]{novo,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Insere ponto de recolha no grafo, verificando se o mesmo já existe na lista. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em inicio} & \\
+\hline
+{\em novo} & \\
+\hline
+{\em } & \\
+\hline
+\end{DoxyParams}
+return \Hypertarget{_vertice_8c_a92bc5800957b108286ced281eb43222b}\label{_vertice_8c_a92bc5800957b108286ced281eb43222b} 
+\index{Vertice.c@{Vertice.c}!InsLigPontoRecolha@{InsLigPontoRecolha}}
+\index{InsLigPontoRecolha@{InsLigPontoRecolha}!Vertice.c@{Vertice.c}}
+\doxysubsubsection{\texorpdfstring{InsLigPontoRecolha()}{InsLigPontoRecolha()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*} Ins\+Lig\+Ponto\+Recolha (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{char \texorpdfstring{$\ast$}{*}}]{origem,  }\item[{char \texorpdfstring{$\ast$}{*}}]{dest,  }\item[{float}]{peso,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Insere ligação entre pontos de recolha. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em inicio} & \\
+\hline
+{\em origem} & \\
+\hline
+{\em dest} & \\
+\hline
+{\em peso} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_vertice_8c_a72c5096a1ece553f27121497965f97a1}\label{_vertice_8c_a72c5096a1ece553f27121497965f97a1} 
+\index{Vertice.c@{Vertice.c}!LerGrafoBin@{LerGrafoBin}}
+\index{LerGrafoBin@{LerGrafoBin}!Vertice.c@{Vertice.c}}
+\doxysubsubsection{\texorpdfstring{LerGrafoBin()}{LerGrafoBin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*} Ler\+Grafo\+Bin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{char \texorpdfstring{$\ast$}{*}}]{file\+Name,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+Lê Grafo Bin.
+
+
+\begin{DoxyParams}{Parameters}
+{\em inicio} & \\
+\hline
+{\em file\+Name} & \\
+\hline
+{\em } & \\
+\hline
+\end{DoxyParams}
+return \Hypertarget{_vertice_8c_a96f6e74bafd0c1838cde495df8071383}\label{_vertice_8c_a96f6e74bafd0c1838cde495df8071383} 
+\index{Vertice.c@{Vertice.c}!LimpaVertices@{LimpaVertices}}
+\index{LimpaVertices@{LimpaVertices}!Vertice.c@{Vertice.c}}
+\doxysubsubsection{\texorpdfstring{LimpaVertices()}{LimpaVertices()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*} Limpa\+Vertices (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}}]{inicio }\end{DoxyParamCaption})}
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em inicio} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_vertice_8c_a2b765b7b29903edebfdd2c54ff5d2fea}\label{_vertice_8c_a2b765b7b29903edebfdd2c54ff5d2fea} 
+\index{Vertice.c@{Vertice.c}!ProcuraCodPontoRecolha@{ProcuraCodPontoRecolha}}
+\index{ProcuraCodPontoRecolha@{ProcuraCodPontoRecolha}!Vertice.c@{Vertice.c}}
+\doxysubsubsection{\texorpdfstring{ProcuraCodPontoRecolha()}{ProcuraCodPontoRecolha()}}
+{\footnotesize\ttfamily int Procura\+Cod\+Ponto\+Recolha (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{char \texorpdfstring{$\ast$}{*}}]{cidade }\end{DoxyParamCaption})}
+
+
+
+Verifica o cod. do Vértice de X cidade. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em inicio} & \\
+\hline
+{\em cidade} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Cod. da cidade 
+\end{DoxyReturn}
+\Hypertarget{_vertice_8c_aa84bb590e61a91b30fae7e4ac2e31a8d}\label{_vertice_8c_aa84bb590e61a91b30fae7e4ac2e31a8d} 
+\index{Vertice.c@{Vertice.c}!ProcuraPontoRecolha@{ProcuraPontoRecolha}}
+\index{ProcuraPontoRecolha@{ProcuraPontoRecolha}!Vertice.c@{Vertice.c}}
+\doxysubsubsection{\texorpdfstring{ProcuraPontoRecolha()}{ProcuraPontoRecolha()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*} Procura\+Ponto\+Recolha (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{char \texorpdfstring{$\ast$}{*}}]{cidade }\end{DoxyParamCaption})}
+
+
+
+Verifica se existe ponto de recolha pela cidade. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em g} & \\
+\hline
+{\em cidade} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna o ponteiro para o nó que contém o ponto de recolha 
+\end{DoxyReturn}
+\Hypertarget{_vertice_8c_a502a76c604b22885fcca2f15b36aeede}\label{_vertice_8c_a502a76c604b22885fcca2f15b36aeede} 
+\index{Vertice.c@{Vertice.c}!ProcuraRecolhaCod@{ProcuraRecolhaCod}}
+\index{ProcuraRecolhaCod@{ProcuraRecolhaCod}!Vertice.c@{Vertice.c}}
+\doxysubsubsection{\texorpdfstring{ProcuraRecolhaCod()}{ProcuraRecolhaCod()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*} Procura\+Recolha\+Cod (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_vertice}{Vertice}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{int}]{cod }\end{DoxyParamCaption})}
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em inicio} & \\
+\hline
+{\em cod} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}

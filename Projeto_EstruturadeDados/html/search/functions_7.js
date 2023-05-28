@@ -1,0 +1,8 @@
+var searchData=
+[
+  ['procuracodpontorecolha_0',['ProcuraCodPontoRecolha',['../_vertice_8c.html#a2b765b7b29903edebfdd2c54ff5d2fea',1,'ProcuraCodPontoRecolha(Vertice *inicio, char *cidade):&#160;Vertice.c'],['../_vertice_8h.html#a2b765b7b29903edebfdd2c54ff5d2fea',1,'ProcuraCodPontoRecolha(Vertice *inicio, char *cidade):&#160;Vertice.c']]],
+  ['procuragestor_1',['ProcuraGestor',['../_cliente_8c.html#ab78620430bf6f22eba388dce2e60ec43',1,'ProcuraGestor(Cliente *inicio, int cod, long int nif):&#160;Cliente.c'],['../_cliente_8h.html#ab78620430bf6f22eba388dce2e60ec43',1,'ProcuraGestor(Cliente *inicio, int cod, long int nif):&#160;Cliente.c'],['../_gestor_8c.html#a1f1ae1b1f3daff3e1df13bb698620103',1,'ProcuraGestor(Gestor *inicio, int cod, long int nif):&#160;Gestor.c']]],
+  ['procurapontorecolha_2',['ProcuraPontoRecolha',['../_vertice_8c.html#aa84bb590e61a91b30fae7e4ac2e31a8d',1,'ProcuraPontoRecolha(Vertice *inicio, char *cidade):&#160;Vertice.c'],['../_vertice_8h.html#aa84bb590e61a91b30fae7e4ac2e31a8d',1,'ProcuraPontoRecolha(Vertice *inicio, char *cidade):&#160;Vertice.c']]],
+  ['procurarecolhacod_3',['ProcuraRecolhaCod',['../_vertice_8c.html#a502a76c604b22885fcca2f15b36aeede',1,'ProcuraRecolhaCod(Vertice *inicio, int cod):&#160;Vertice.c'],['../_vertice_8h.html#a502a76c604b22885fcca2f15b36aeede',1,'ProcuraRecolhaCod(Vertice *inicio, int cod):&#160;Vertice.c']]],
+  ['procuraveiculo_4',['ProcuraVeiculo',['../_veiculo_8c.html#ae30c562976f0926017add5f1a310c8fe',1,'ProcuraVeiculo(Veiculo *inicio, int cod, const char *tipo):&#160;Veiculo.c'],['../_veiculo_8h.html#ae30c562976f0926017add5f1a310c8fe',1,'ProcuraVeiculo(Veiculo *inicio, int cod, const char *tipo):&#160;Veiculo.c']]]
+];

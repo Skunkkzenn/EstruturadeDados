@@ -1,0 +1,185 @@
+\doxysection{Adjacencia.\+h File Reference}
+\hypertarget{_adjacencia_8h}{}\label{_adjacencia_8h}\index{Adjacencia.h@{Adjacencia.h}}
+
+
+TRABALHO EDA \textbackslash{}number 18586.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_adj}{Adj}}
+\item 
+struct \mbox{\hyperlink{struct_adj_ficheiro}{Adj\+Ficheiro}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_adjacencia_8h_acd9f17cb24ce73dde34e7a6bc62f92fb}\label{_adjacencia_8h_acd9f17cb24ce73dde34e7a6bc62f92fb} 
+typedef struct \mbox{\hyperlink{struct_adj}{Adj}} {\bfseries Adj}
+\item 
+\Hypertarget{_adjacencia_8h_a1e7e9b5435cfe8f6194664697458c3e4}\label{_adjacencia_8h_a1e7e9b5435cfe8f6194664697458c3e4} 
+typedef struct \mbox{\hyperlink{struct_adj_ficheiro}{Adj\+Ficheiro}} {\bfseries Adj\+Ficheiro}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_adj}{Adj}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_adjacencia_8h_afee83447423b64057a8dd11d2523eb6c}{Cria\+Ligacao}} (int cod, float peso)
+\begin{DoxyCompactList}\small\item\em Cria novo nó de ligações. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_adjacencia_8h_a74db11e622e4458a12374f2d78f7e3e2}{Existe\+Ligacao}} (\mbox{\hyperlink{struct_adj}{Adj}} \texorpdfstring{$\ast$}{*}inicio, int cod)
+\begin{DoxyCompactList}\small\item\em Verifica se X ligação Existe. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_adj}{Adj}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_adjacencia_8h_a588014ce7aab8ef7ccf23ebc390a6dbd}{Insere\+Ligacao}} (\mbox{\hyperlink{struct_adj}{Adj}} \texorpdfstring{$\ast$}{*}inicio, \mbox{\hyperlink{struct_adj}{Adj}} \texorpdfstring{$\ast$}{*}novo, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Insere Ligação. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_adjacencia_8h_acac063ca8189e93484f104351d6025eb}{Mostra\+Ligacoes}} (\mbox{\hyperlink{struct_adj}{Adj}} \texorpdfstring{$\ast$}{*}head)
+\begin{DoxyCompactList}\small\item\em Exibe Ligações. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_adjacencia_8h_a7be610098a1b45f16ff9ddb27851de1f}{Grava\+Adj\+Bin}} (\mbox{\hyperlink{struct_adj}{Adj}} \texorpdfstring{$\ast$}{*}inicio, char \texorpdfstring{$\ast$}{*}file\+Name, int cod\+Vertice\+Origem)
+\begin{DoxyCompactList}\small\item\em Grava Adjacência em bin. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_adj}{Adj}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_adjacencia_8h_ae192333a360563ab14174523328351d4}{Ler\+Adj\+Bin}} (\mbox{\hyperlink{struct_adj}{Adj}} \texorpdfstring{$\ast$}{*}inicio, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Lê binário de Adjacências. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+TRABALHO EDA \textbackslash{}number 18586. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+May 2023 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_adjacencia_8h_afee83447423b64057a8dd11d2523eb6c}\label{_adjacencia_8h_afee83447423b64057a8dd11d2523eb6c} 
+\index{Adjacencia.h@{Adjacencia.h}!CriaLigacao@{CriaLigacao}}
+\index{CriaLigacao@{CriaLigacao}!Adjacencia.h@{Adjacencia.h}}
+\doxysubsubsection{\texorpdfstring{CriaLigacao()}{CriaLigacao()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_adj}{Adj}} \texorpdfstring{$\ast$}{*} Cria\+Ligacao (\begin{DoxyParamCaption}\item[{int}]{cod,  }\item[{float}]{peso }\end{DoxyParamCaption})}
+
+
+
+Cria novo nó de ligações. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em cod} & \\
+\hline
+{\em peso} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_adjacencia_8h_a74db11e622e4458a12374f2d78f7e3e2}\label{_adjacencia_8h_a74db11e622e4458a12374f2d78f7e3e2} 
+\index{Adjacencia.h@{Adjacencia.h}!ExisteLigacao@{ExisteLigacao}}
+\index{ExisteLigacao@{ExisteLigacao}!Adjacencia.h@{Adjacencia.h}}
+\doxysubsubsection{\texorpdfstring{ExisteLigacao()}{ExisteLigacao()}}
+{\footnotesize\ttfamily bool Existe\+Ligacao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_adj}{Adj}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{int}]{cod }\end{DoxyParamCaption})}
+
+
+
+Verifica se X ligação Existe. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em head} & \\
+\hline
+{\em cod} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_adjacencia_8h_a7be610098a1b45f16ff9ddb27851de1f}\label{_adjacencia_8h_a7be610098a1b45f16ff9ddb27851de1f} 
+\index{Adjacencia.h@{Adjacencia.h}!GravaAdjBin@{GravaAdjBin}}
+\index{GravaAdjBin@{GravaAdjBin}!Adjacencia.h@{Adjacencia.h}}
+\doxysubsubsection{\texorpdfstring{GravaAdjBin()}{GravaAdjBin()}}
+{\footnotesize\ttfamily int Grava\+Adj\+Bin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_adj}{Adj}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{char \texorpdfstring{$\ast$}{*}}]{file\+Name,  }\item[{int}]{cod\+Vertice\+Origem }\end{DoxyParamCaption})}
+
+
+
+Grava Adjacência em bin. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em inicio} & \\
+\hline
+{\em file\+Name} & \\
+\hline
+{\em cod\+Vertice\+Origem} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_adjacencia_8h_a588014ce7aab8ef7ccf23ebc390a6dbd}\label{_adjacencia_8h_a588014ce7aab8ef7ccf23ebc390a6dbd} 
+\index{Adjacencia.h@{Adjacencia.h}!InsereLigacao@{InsereLigacao}}
+\index{InsereLigacao@{InsereLigacao}!Adjacencia.h@{Adjacencia.h}}
+\doxysubsubsection{\texorpdfstring{InsereLigacao()}{InsereLigacao()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_adj}{Adj}} \texorpdfstring{$\ast$}{*} Insere\+Ligacao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_adj}{Adj}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{\mbox{\hyperlink{struct_adj}{Adj}} \texorpdfstring{$\ast$}{*}}]{novo,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Insere Ligação. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em inicio} & \\
+\hline
+{\em novo} & \\
+\hline
+{\em } & \\
+\hline
+\end{DoxyParams}
+return \Hypertarget{_adjacencia_8h_ae192333a360563ab14174523328351d4}\label{_adjacencia_8h_ae192333a360563ab14174523328351d4} 
+\index{Adjacencia.h@{Adjacencia.h}!LerAdjBin@{LerAdjBin}}
+\index{LerAdjBin@{LerAdjBin}!Adjacencia.h@{Adjacencia.h}}
+\doxysubsubsection{\texorpdfstring{LerAdjBin()}{LerAdjBin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_adj}{Adj}} \texorpdfstring{$\ast$}{*} Ler\+Adj\+Bin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_adj}{Adj}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Lê binário de Adjacências. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em inicio} & \\
+\hline
+{\em } & \\
+\hline
+\end{DoxyParams}
+return \Hypertarget{_adjacencia_8h_acac063ca8189e93484f104351d6025eb}\label{_adjacencia_8h_acac063ca8189e93484f104351d6025eb} 
+\index{Adjacencia.h@{Adjacencia.h}!MostraLigacoes@{MostraLigacoes}}
+\index{MostraLigacoes@{MostraLigacoes}!Adjacencia.h@{Adjacencia.h}}
+\doxysubsubsection{\texorpdfstring{MostraLigacoes()}{MostraLigacoes()}}
+{\footnotesize\ttfamily void Mostra\+Ligacoes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_adj}{Adj}} \texorpdfstring{$\ast$}{*}}]{head }\end{DoxyParamCaption})}
+
+
+
+Exibe Ligações. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em head} & \\
+\hline
+\end{DoxyParams}

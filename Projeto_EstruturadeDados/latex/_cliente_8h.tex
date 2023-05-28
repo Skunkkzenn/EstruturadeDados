@@ -1,0 +1,258 @@
+\doxysection{Cliente.\+h File Reference}
+\hypertarget{_cliente_8h}{}\label{_cliente_8h}\index{Cliente.h@{Cliente.h}}
+
+
+TRABALHO EDA \textbackslash{}number 18586.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_cliente}{Cliente}}
+\item 
+struct \mbox{\hyperlink{struct_clientes_ficheiro}{Clientes\+Ficheiro}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_cliente_8h_a0240ac851181b84ac374872dc5434ee4}\label{_cliente_8h_a0240ac851181b84ac374872dc5434ee4} 
+\#define {\bfseries N}~200
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_cliente_8h_a8187f84894a13fa0989791513cfcdfbb}\label{_cliente_8h_a8187f84894a13fa0989791513cfcdfbb} 
+typedef struct \mbox{\hyperlink{struct_cliente}{Cliente}} {\bfseries Cliente}
+\item 
+\Hypertarget{_cliente_8h_a25748536dd0144e47de0dce799b34c0b}\label{_cliente_8h_a25748536dd0144e47de0dce799b34c0b} 
+typedef struct \mbox{\hyperlink{struct_clientes_ficheiro}{Clientes\+Ficheiro}} {\bfseries Clientes\+Ficheiro}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_cliente_8h_a008702a830aef85b1c6bbbed30c780e4}{Cria\+Cliente}} (int cod, char \texorpdfstring{$\ast$}{*}nome, float saldo, long int nif, char \texorpdfstring{$\ast$}{*}morada, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Cria \doxylink{struct_cliente}{Cliente}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_cliente_8h_ab78620430bf6f22eba388dce2e60ec43}{Procura\+Gestor}} (\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}inicio, int cod, long int nif)
+\begin{DoxyCompactList}\small\item\em Procura \doxylink{struct_cliente}{Cliente} pelo Cod. e NIF. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_cliente_8h_ac4e6f145e1510c609cb24180cb5a66d3}{Insert\+Cliente\+Lista}} (\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}novo, \mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}inicio, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Insere \doxylink{struct_cliente}{Cliente} na lista por ordem de cód. \end{DoxyCompactList}\item 
+\Hypertarget{_cliente_8h_adf48031df63652ef29a00425a7c6d877}\label{_cliente_8h_adf48031df63652ef29a00425a7c6d877} 
+\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*} {\bfseries Altera\+Campo\+Cliente} (int cod, char \texorpdfstring{$\ast$}{*}nome, float saldo, long int nif, char \texorpdfstring{$\ast$}{*}morada, \mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}novo, \mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}inicio, bool \texorpdfstring{$\ast$}{*}res)
+\item 
+\Hypertarget{_cliente_8h_a6fd78fc0f3bb83087322857ec36f4c60}\label{_cliente_8h_a6fd78fc0f3bb83087322857ec36f4c60} 
+\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*} {\bfseries Remove\+Cliente} (int cod, long int nif, \mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}inicio, bool \texorpdfstring{$\ast$}{*}res)
+\item 
+\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_cliente_8h_a2c23e332d315714bac245c62a9aa5b2b}{Insert\+Cliente\+Inicio}} (\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}novo, \mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}inicio, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Insere \doxylink{struct_cliente}{Cliente} Inicio. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_cliente_8h_a2406e84bcf5bc4d5b2bdafdace56e0a9}{Insert\+Cliente\+Fim}} (\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}novo, \mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}inicio, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Insere \doxylink{struct_cliente}{Cliente} fim. \end{DoxyCompactList}\item 
+\Hypertarget{_cliente_8h_acf76746aea248e22ee154e8dae244eca}\label{_cliente_8h_acf76746aea248e22ee154e8dae244eca} 
+\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*} {\bfseries Verifica\+Cliente\+Duplicado} (int cod, long int nif, \mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}inicio, bool \texorpdfstring{$\ast$}{*}duplicado)
+\item 
+bool \mbox{\hyperlink{_cliente_8h_aba5a306e2cbb3d80d8a0c021951d6195}{Ler\+Dados\+Cliente}} (char file\+Name\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Ler ficheiro clientes.\+txt. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_cliente_8h_a680aac121a972bfbbeb8445d0cccaaa3}{Gravar\+Cliente\+Bin}} (char \texorpdfstring{$\ast$}{*}nome\+Ficheiro, \mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}inicio)
+\begin{DoxyCompactList}\small\item\em Grava clientes em ficheiro binario. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_cliente_8h_abb8fe67a79b3b4f92ece431aa0984a7e}{Ler\+Cliente\+Bin}} (char \texorpdfstring{$\ast$}{*}nome\+Ficheiro, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Grava cliente em binario. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+TRABALHO EDA \textbackslash{}number 18586. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+March 2023 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_cliente_8h_a008702a830aef85b1c6bbbed30c780e4}\label{_cliente_8h_a008702a830aef85b1c6bbbed30c780e4} 
+\index{Cliente.h@{Cliente.h}!CriaCliente@{CriaCliente}}
+\index{CriaCliente@{CriaCliente}!Cliente.h@{Cliente.h}}
+\doxysubsubsection{\texorpdfstring{CriaCliente()}{CriaCliente()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*} Cria\+Cliente (\begin{DoxyParamCaption}\item[{int}]{cod,  }\item[{char \texorpdfstring{$\ast$}{*}}]{nome,  }\item[{float}]{saldo,  }\item[{long int}]{nif,  }\item[{char \texorpdfstring{$\ast$}{*}}]{morada,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Cria \doxylink{struct_cliente}{Cliente}. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em cod} & \\
+\hline
+{\em nome} & \\
+\hline
+{\em saldo} & \\
+\hline
+{\em nif} & \\
+\hline
+{\em morada} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_cliente_8h_a680aac121a972bfbbeb8445d0cccaaa3}\label{_cliente_8h_a680aac121a972bfbbeb8445d0cccaaa3} 
+\index{Cliente.h@{Cliente.h}!GravarClienteBin@{GravarClienteBin}}
+\index{GravarClienteBin@{GravarClienteBin}!Cliente.h@{Cliente.h}}
+\doxysubsubsection{\texorpdfstring{GravarClienteBin()}{GravarClienteBin()}}
+{\footnotesize\ttfamily bool Gravar\+Cliente\+Bin (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{nome\+Ficheiro,  }\item[{\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}}]{inicio }\end{DoxyParamCaption})}
+
+
+
+Grava clientes em ficheiro binario. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+Ficheiro} & \\
+\hline
+{\em inicio} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_cliente_8h_a2406e84bcf5bc4d5b2bdafdace56e0a9}\label{_cliente_8h_a2406e84bcf5bc4d5b2bdafdace56e0a9} 
+\index{Cliente.h@{Cliente.h}!InsertClienteFim@{InsertClienteFim}}
+\index{InsertClienteFim@{InsertClienteFim}!Cliente.h@{Cliente.h}}
+\doxysubsubsection{\texorpdfstring{InsertClienteFim()}{InsertClienteFim()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*} Insert\+Cliente\+Fim (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}}]{novo,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Insere \doxylink{struct_cliente}{Cliente} fim. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em novo} & \\
+\hline
+{\em inicio} & \\
+\hline
+{\em } & \\
+\hline
+\end{DoxyParams}
+return \Hypertarget{_cliente_8h_a2c23e332d315714bac245c62a9aa5b2b}\label{_cliente_8h_a2c23e332d315714bac245c62a9aa5b2b} 
+\index{Cliente.h@{Cliente.h}!InsertClienteInicio@{InsertClienteInicio}}
+\index{InsertClienteInicio@{InsertClienteInicio}!Cliente.h@{Cliente.h}}
+\doxysubsubsection{\texorpdfstring{InsertClienteInicio()}{InsertClienteInicio()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*} Insert\+Cliente\+Inicio (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}}]{novo,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Insere \doxylink{struct_cliente}{Cliente} Inicio. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em novo} & \\
+\hline
+{\em inicio} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_cliente_8h_ac4e6f145e1510c609cb24180cb5a66d3}\label{_cliente_8h_ac4e6f145e1510c609cb24180cb5a66d3} 
+\index{Cliente.h@{Cliente.h}!InsertClienteLista@{InsertClienteLista}}
+\index{InsertClienteLista@{InsertClienteLista}!Cliente.h@{Cliente.h}}
+\doxysubsubsection{\texorpdfstring{InsertClienteLista()}{InsertClienteLista()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*} Insert\+Cliente\+Lista (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}}]{novo,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Insere \doxylink{struct_cliente}{Cliente} na lista por ordem de cód. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em novo} & \\
+\hline
+{\em inicio} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_cliente_8h_abb8fe67a79b3b4f92ece431aa0984a7e}\label{_cliente_8h_abb8fe67a79b3b4f92ece431aa0984a7e} 
+\index{Cliente.h@{Cliente.h}!LerClienteBin@{LerClienteBin}}
+\index{LerClienteBin@{LerClienteBin}!Cliente.h@{Cliente.h}}
+\doxysubsubsection{\texorpdfstring{LerClienteBin()}{LerClienteBin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*} Ler\+Cliente\+Bin (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{nome\+Ficheiro,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Grava cliente em binario. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+Ficheiro} & \\
+\hline
+{\em } & \\
+\hline
+\end{DoxyParams}
+return \Hypertarget{_cliente_8h_aba5a306e2cbb3d80d8a0c021951d6195}\label{_cliente_8h_aba5a306e2cbb3d80d8a0c021951d6195} 
+\index{Cliente.h@{Cliente.h}!LerDadosCliente@{LerDadosCliente}}
+\index{LerDadosCliente@{LerDadosCliente}!Cliente.h@{Cliente.h}}
+\doxysubsubsection{\texorpdfstring{LerDadosCliente()}{LerDadosCliente()}}
+{\footnotesize\ttfamily bool Ler\+Dados\+Cliente (\begin{DoxyParamCaption}\item[{char}]{file\+Name\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Ler ficheiro clientes.\+txt. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_cliente_8h_ab78620430bf6f22eba388dce2e60ec43}\label{_cliente_8h_ab78620430bf6f22eba388dce2e60ec43} 
+\index{Cliente.h@{Cliente.h}!ProcuraGestor@{ProcuraGestor}}
+\index{ProcuraGestor@{ProcuraGestor}!Cliente.h@{Cliente.h}}
+\doxysubsubsection{\texorpdfstring{ProcuraGestor()}{ProcuraGestor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*} Procura\+Gestor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_cliente}{Cliente}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{int}]{cod,  }\item[{long int}]{nif }\end{DoxyParamCaption})}
+
+
+
+Procura \doxylink{struct_cliente}{Cliente} pelo Cod. e NIF. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em inicio} & \\
+\hline
+{\em cod} & \\
+\hline
+{\em tipo} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}

@@ -1,0 +1,325 @@
+\doxysection{Gestor.\+c File Reference}
+\hypertarget{_gestor_8c}{}\label{_gestor_8c}\index{Gestor.c@{Gestor.c}}
+
+
+TRABALHO EDA \textbackslash{}number 18586.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \"{}Gestor.\+h\"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_gestor_8c_ac1535592e39e7edf0cafbd5e695ea622}\label{_gestor_8c_ac1535592e39e7edf0cafbd5e695ea622} 
+\#define {\bfseries MAXCHAR}~500
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_gestor_8c_a280de52ec4e80cfb73fbd7bab679a2a2}{Cria\+Gestor}} (int cod, char \texorpdfstring{$\ast$}{*}nome, float saldo, long int nif, char \texorpdfstring{$\ast$}{*}morada, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Cria \doxylink{struct_gestor}{Gestor}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_gestor_8c_a1f1ae1b1f3daff3e1df13bb698620103}{Procura\+Gestor}} (\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}inicio, int cod, long int nif)
+\begin{DoxyCompactList}\small\item\em Procura \doxylink{struct_veiculo}{Veiculo} pelo Cod. e NIF. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_gestor_8c_a07b2f2c375c259d330c6b73d99796aa9}{Insert\+Gestor\+Inicio}} (\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}inicio, \mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}novo, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Insere \doxylink{struct_gestor}{Gestor} no Inicio. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_gestor_8c_acb76cc7879f4f21b3ae79d48530e6e6f}{Insert\+Gestor\+Fim}} (\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}inicio, \mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}novo, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Insere \doxylink{struct_gestor}{Gestor} no Fim. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_gestor_8c_a445cdc4441a029f29f53d10bb1527494}{Verifica\+Gestor\+Duplicado}} (\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}inicio, int cod, int long nif, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Verifica \doxylink{struct_gestor}{Gestor} Duplicado. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_gestor_8c_a9303f24f475b544c20712aa6eec8e628}{Insert\+Gestor\+Lista}} (\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}inicio, \mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}novo, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Insere \doxylink{struct_gestor}{Gestor} na Lista, por ordem de cod. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_gestor_8c_a6501a83e8dbc2e2e361d2f4fc5750d42}{Altera\+Campo\+Gestor}} (\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}inicio, \mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}novo, int cod, char \texorpdfstring{$\ast$}{*}nome, float saldo, long int nif, char \texorpdfstring{$\ast$}{*}morada, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Altera dados \doxylink{struct_gestor}{Gestor}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_gestor_8c_aa2ee49f5325a3437c8005b129b845e07}{Remove\+Gestor}} (\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}inicio, int cod, long int nif, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Remove \doxylink{struct_gestor}{Gestor}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_gestor_8c_a638415791fc65dfbf8d39ece3a75cc18}{Ler\+Dados\+Gestor}} (char file\+Name\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Lê ficheiro gestores.\+txt. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_gestor_8c_ad3eaf5b06263e62c2b0cea90f71747c8}{Gravar\+Gestor\+Bin}} (char \texorpdfstring{$\ast$}{*}nome\+Ficheiro, \mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}inicio)
+\begin{DoxyCompactList}\small\item\em Grava ficheiro em binário. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_gestor_8c_a87afb98f0cd54a045691f2c688a3625c}{Ler\+Gestor\+Bin}} (char \texorpdfstring{$\ast$}{*}nome\+Ficheiro, bool \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Ler ficheiro bin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+TRABALHO EDA \textbackslash{}number 18586. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+March 2023 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_gestor_8c_a6501a83e8dbc2e2e361d2f4fc5750d42}\label{_gestor_8c_a6501a83e8dbc2e2e361d2f4fc5750d42} 
+\index{Gestor.c@{Gestor.c}!AlteraCampoGestor@{AlteraCampoGestor}}
+\index{AlteraCampoGestor@{AlteraCampoGestor}!Gestor.c@{Gestor.c}}
+\doxysubsubsection{\texorpdfstring{AlteraCampoGestor()}{AlteraCampoGestor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*} Altera\+Campo\+Gestor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}}]{novo,  }\item[{int}]{cod,  }\item[{char \texorpdfstring{$\ast$}{*}}]{nome,  }\item[{float}]{saldo,  }\item[{long int}]{nif,  }\item[{char \texorpdfstring{$\ast$}{*}}]{morada,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Altera dados \doxylink{struct_gestor}{Gestor}. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em cod} & \\
+\hline
+{\em nome} & \\
+\hline
+{\em saldo} & \\
+\hline
+{\em nif} & \\
+\hline
+{\em morada} & \\
+\hline
+{\em novo} & \\
+\hline
+{\em inicio} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_gestor_8c_a280de52ec4e80cfb73fbd7bab679a2a2}\label{_gestor_8c_a280de52ec4e80cfb73fbd7bab679a2a2} 
+\index{Gestor.c@{Gestor.c}!CriaGestor@{CriaGestor}}
+\index{CriaGestor@{CriaGestor}!Gestor.c@{Gestor.c}}
+\doxysubsubsection{\texorpdfstring{CriaGestor()}{CriaGestor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*} Cria\+Gestor (\begin{DoxyParamCaption}\item[{int}]{cod,  }\item[{char \texorpdfstring{$\ast$}{*}}]{nome,  }\item[{float}]{saldo,  }\item[{long int}]{nif,  }\item[{char \texorpdfstring{$\ast$}{*}}]{morada,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Cria \doxylink{struct_gestor}{Gestor}. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em cod} & \\
+\hline
+{\em nome} & \\
+\hline
+{\em saldo} & \\
+\hline
+{\em nif} & \\
+\hline
+{\em morada} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_gestor_8c_ad3eaf5b06263e62c2b0cea90f71747c8}\label{_gestor_8c_ad3eaf5b06263e62c2b0cea90f71747c8} 
+\index{Gestor.c@{Gestor.c}!GravarGestorBin@{GravarGestorBin}}
+\index{GravarGestorBin@{GravarGestorBin}!Gestor.c@{Gestor.c}}
+\doxysubsubsection{\texorpdfstring{GravarGestorBin()}{GravarGestorBin()}}
+{\footnotesize\ttfamily bool Gravar\+Gestor\+Bin (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{nome\+Ficheiro,  }\item[{\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}}]{inicio }\end{DoxyParamCaption})}
+
+
+
+Grava ficheiro em binário. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+Ficheiro} & \\
+\hline
+{\em inicio} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_gestor_8c_acb76cc7879f4f21b3ae79d48530e6e6f}\label{_gestor_8c_acb76cc7879f4f21b3ae79d48530e6e6f} 
+\index{Gestor.c@{Gestor.c}!InsertGestorFim@{InsertGestorFim}}
+\index{InsertGestorFim@{InsertGestorFim}!Gestor.c@{Gestor.c}}
+\doxysubsubsection{\texorpdfstring{InsertGestorFim()}{InsertGestorFim()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*} Insert\+Gestor\+Fim (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}}]{novo,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Insere \doxylink{struct_gestor}{Gestor} no Fim. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em novo} & \\
+\hline
+{\em inicio} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_gestor_8c_a07b2f2c375c259d330c6b73d99796aa9}\label{_gestor_8c_a07b2f2c375c259d330c6b73d99796aa9} 
+\index{Gestor.c@{Gestor.c}!InsertGestorInicio@{InsertGestorInicio}}
+\index{InsertGestorInicio@{InsertGestorInicio}!Gestor.c@{Gestor.c}}
+\doxysubsubsection{\texorpdfstring{InsertGestorInicio()}{InsertGestorInicio()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*} Insert\+Gestor\+Inicio (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}}]{novo,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Insere \doxylink{struct_gestor}{Gestor} no Inicio. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em novo} & \\
+\hline
+{\em inicio} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_gestor_8c_a9303f24f475b544c20712aa6eec8e628}\label{_gestor_8c_a9303f24f475b544c20712aa6eec8e628} 
+\index{Gestor.c@{Gestor.c}!InsertGestorLista@{InsertGestorLista}}
+\index{InsertGestorLista@{InsertGestorLista}!Gestor.c@{Gestor.c}}
+\doxysubsubsection{\texorpdfstring{InsertGestorLista()}{InsertGestorLista()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*} Insert\+Gestor\+Lista (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}}]{novo,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Insere \doxylink{struct_gestor}{Gestor} na Lista, por ordem de cod. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em novo} & \\
+\hline
+{\em inicio} & \\
+\hline
+{\em } & \\
+\hline
+\end{DoxyParams}
+return \Hypertarget{_gestor_8c_a638415791fc65dfbf8d39ece3a75cc18}\label{_gestor_8c_a638415791fc65dfbf8d39ece3a75cc18} 
+\index{Gestor.c@{Gestor.c}!LerDadosGestor@{LerDadosGestor}}
+\index{LerDadosGestor@{LerDadosGestor}!Gestor.c@{Gestor.c}}
+\doxysubsubsection{\texorpdfstring{LerDadosGestor()}{LerDadosGestor()}}
+{\footnotesize\ttfamily bool Ler\+Dados\+Gestor (\begin{DoxyParamCaption}\item[{char}]{file\+Name\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Lê ficheiro gestores.\+txt. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_gestor_8c_a87afb98f0cd54a045691f2c688a3625c}\label{_gestor_8c_a87afb98f0cd54a045691f2c688a3625c} 
+\index{Gestor.c@{Gestor.c}!LerGestorBin@{LerGestorBin}}
+\index{LerGestorBin@{LerGestorBin}!Gestor.c@{Gestor.c}}
+\doxysubsubsection{\texorpdfstring{LerGestorBin()}{LerGestorBin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*} Ler\+Gestor\+Bin (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{nome\+Ficheiro,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Ler ficheiro bin. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+Ficheiro} & \\
+\hline
+{\em } & \\
+\hline
+\end{DoxyParams}
+return \Hypertarget{_gestor_8c_a1f1ae1b1f3daff3e1df13bb698620103}\label{_gestor_8c_a1f1ae1b1f3daff3e1df13bb698620103} 
+\index{Gestor.c@{Gestor.c}!ProcuraGestor@{ProcuraGestor}}
+\index{ProcuraGestor@{ProcuraGestor}!Gestor.c@{Gestor.c}}
+\doxysubsubsection{\texorpdfstring{ProcuraGestor()}{ProcuraGestor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*} Procura\+Gestor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{int}]{cod,  }\item[{long int}]{nif }\end{DoxyParamCaption})}
+
+
+
+Procura \doxylink{struct_veiculo}{Veiculo} pelo Cod. e NIF. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em inicio} & \\
+\hline
+{\em cod} & \\
+\hline
+{\em tipo} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{_gestor_8c_aa2ee49f5325a3437c8005b129b845e07}\label{_gestor_8c_aa2ee49f5325a3437c8005b129b845e07} 
+\index{Gestor.c@{Gestor.c}!RemoveGestor@{RemoveGestor}}
+\index{RemoveGestor@{RemoveGestor}!Gestor.c@{Gestor.c}}
+\doxysubsubsection{\texorpdfstring{RemoveGestor()}{RemoveGestor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*} Remove\+Gestor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{int}]{cod,  }\item[{long int}]{nif,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Remove \doxylink{struct_gestor}{Gestor}. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em cod} & \\
+\hline
+{\em nif} & \\
+\hline
+{\em inicio} & \\
+\hline
+{\em } & \\
+\hline
+\end{DoxyParams}
+return \Hypertarget{_gestor_8c_a445cdc4441a029f29f53d10bb1527494}\label{_gestor_8c_a445cdc4441a029f29f53d10bb1527494} 
+\index{Gestor.c@{Gestor.c}!VerificaGestorDuplicado@{VerificaGestorDuplicado}}
+\index{VerificaGestorDuplicado@{VerificaGestorDuplicado}!Gestor.c@{Gestor.c}}
+\doxysubsubsection{\texorpdfstring{VerificaGestorDuplicado()}{VerificaGestorDuplicado()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*} Verifica\+Gestor\+Duplicado (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_gestor}{Gestor}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{int}]{cod,  }\item[{int long}]{nif,  }\item[{bool \texorpdfstring{$\ast$}{*}}]{res }\end{DoxyParamCaption})}
+
+
+
+Verifica \doxylink{struct_gestor}{Gestor} Duplicado. 
+
+\begin{DoxyAuthor}{Author}
+Victor Destefani 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em cod} & \\
+\hline
+{\em nif} & \\
+\hline
+{\em inicio} & \\
+\hline
+{\em } & \\
+\hline
+\end{DoxyParams}
+return 

@@ -1,0 +1,44 @@
+\doxysection{Vertice.\+h}
+\hypertarget{_vertice_8h_source}{}\label{_vertice_8h_source}\mbox{\hyperlink{_vertice_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*****************************************************************/}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_adjacencia_8h}{Adjacencia.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ warning\ (disable:\ 4996)}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ N\ 50}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{/*\ Vertice\ em\ Grafo\ */}}
+\DoxyCodeLine{00017\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_vertice}{Vertice}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ cod;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{char}\ cidade[N];}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{bool}\ visitado;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_vertice}{Vertice}}*\ next;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_adj}{Adj}}*\ adjacentes;}
+\DoxyCodeLine{00023\ \}\mbox{\hyperlink{struct_vertice}{Vertice}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_vertices_ficheiro}{VerticesFicheiro}}\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ cod;}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{char}\ cidade[N];}
+\DoxyCodeLine{00028\ \}\mbox{\hyperlink{struct_vertices_ficheiro}{VerticesFicheiro}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#pragma\ region\ Métodos/Assinaturas\ para\ Grafos}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \mbox{\hyperlink{struct_vertice}{Vertice}}*\ \mbox{\hyperlink{_vertice_8h_a2f497a6249cd79dd175b12fe72b8b7bf}{CriarGrafo}}();}
+\DoxyCodeLine{00033\ \mbox{\hyperlink{struct_vertice}{Vertice}}*\ \mbox{\hyperlink{_vertice_8h_af1e839c30d45b7c1ee6183535cd89562}{CriaPontoRecolha}}(\textcolor{keywordtype}{char}*\ cidade,\ \textcolor{keywordtype}{int}\ cod,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00034\ \mbox{\hyperlink{struct_vertice}{Vertice}}*\ \mbox{\hyperlink{_vertice_8h_ac84e669a0efcc2a1cca43241297c6240}{InserePontoRecolha}}(\mbox{\hyperlink{struct_vertice}{Vertice}}*\ inicio,\ \mbox{\hyperlink{struct_vertice}{Vertice}}*\ novo,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00035\ \mbox{\hyperlink{struct_vertice}{Vertice}}*\ \mbox{\hyperlink{_vertice_8h_a92bc5800957b108286ced281eb43222b}{InsLigPontoRecolha}}(\mbox{\hyperlink{struct_vertice}{Vertice}}*\ inicio,\ \textcolor{keywordtype}{char}*\ origem,\ \textcolor{keywordtype}{char}*\ dest,\ \textcolor{keywordtype}{float}\ peso,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_vertice_8h_a40ee1c39c54df2a951e850f73f7f5851}{ExibeGrafo}}(\mbox{\hyperlink{struct_vertice}{Vertice}}*\ inicio,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_vertice_8h_a2b765b7b29903edebfdd2c54ff5d2fea}{ProcuraCodPontoRecolha}}(\mbox{\hyperlink{struct_vertice}{Vertice}}*\ inicio,\ \textcolor{keywordtype}{char}*\ cidade);}
+\DoxyCodeLine{00038\ \mbox{\hyperlink{struct_vertice}{Vertice}}*\ \mbox{\hyperlink{_vertice_8h_aa84bb590e61a91b30fae7e4ac2e31a8d}{ProcuraPontoRecolha}}(\mbox{\hyperlink{struct_vertice}{Vertice}}*\ inicio,\ \textcolor{keywordtype}{char}*\ cidade);}
+\DoxyCodeLine{00039\ \mbox{\hyperlink{struct_vertice}{Vertice}}*\ \mbox{\hyperlink{_vertice_8h_a502a76c604b22885fcca2f15b36aeede}{ProcuraRecolhaCod}}(\mbox{\hyperlink{struct_vertice}{Vertice}}*\ inicio,\ \textcolor{keywordtype}{int}\ cod);}
+\DoxyCodeLine{00040\ \mbox{\hyperlink{struct_vertice}{Vertice}}*\ \mbox{\hyperlink{_vertice_8h_a96f6e74bafd0c1838cde495df8071383}{LimpaVertices}}(\mbox{\hyperlink{struct_vertice}{Vertice}}*\ inicio);}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_vertice_8h_a9a4f7665884d8fbffac02ca0a1705005}{GravarGrafo}}(\mbox{\hyperlink{struct_vertice}{Vertice}}*\ inicio,\ \textcolor{keywordtype}{char}*\ nomeFicheiro);}
+\DoxyCodeLine{00042\ \mbox{\hyperlink{struct_vertice}{Vertice}}*\ \mbox{\hyperlink{_vertice_8h_a72c5096a1ece553f27121497965f97a1}{LerGrafoBin}}(\mbox{\hyperlink{struct_vertice}{Vertice}}*\ inicio,\ \textcolor{keywordtype}{char}*\ fileName,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00043\ \mbox{\hyperlink{struct_vertice}{Vertice}}*\ \mbox{\hyperlink{_vertice_8h_a5a1dee3b556c6485abcd682c098d109e}{InsereLigacaoRecolhaCod}}(\mbox{\hyperlink{struct_vertice}{Vertice}}*\ g,\ \textcolor{keywordtype}{int}\ codOrigem,\ \textcolor{keywordtype}{int}\ codDestino,\ \textcolor{keywordtype}{float}\ peso,\ \textcolor{keywordtype}{bool}*\ res);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#pragma\ endregion}}
+
+\end{DoxyCode}

@@ -55,7 +55,7 @@ Cliente* CriaCliente(int cod, char* nome, float saldo, long int nif, char* morad
  * @param tipo
  * @return
  */
-Cliente* ProcuraGestor(Cliente* inicio, int cod, long int nif) {
+Cliente* ProcuraCliente(Cliente* inicio, int cod, long int nif) {
 	Cliente* cliente = inicio;
 
 	while (cliente != NULL) {
@@ -75,7 +75,7 @@ Cliente* ProcuraGestor(Cliente* inicio, int cod, long int nif) {
  * @param inicio
  * @return 
  */
-Cliente* InsertClienteInicio(Cliente* novo, Cliente* inicio, bool* res) {
+Cliente* InsertClienteInicio(Cliente* inicio, Cliente* novo, bool* res) {
 	*res = false;
 	if (novo == NULL) // Verifica se ponteiro para o novo cliente é nulo, logo como não há nada para ser inserido, retorna o ponteiro para o inicio da lista original
 	{
@@ -103,7 +103,7 @@ Cliente* InsertClienteInicio(Cliente* novo, Cliente* inicio, bool* res) {
  * @param 
  * @return 
  */
-Cliente* InsertClienteFim(Cliente* novo, Cliente* inicio, bool* res) {
+Cliente* InsertClienteFim(Cliente* inicio, Cliente* novo, bool* res) {
 	*res = false;
 	if (inicio == NULL)
 	{
@@ -130,7 +130,7 @@ Cliente* InsertClienteFim(Cliente* novo, Cliente* inicio, bool* res) {
  * @param inicio
  * @return 
  */
-Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio, bool* res) {
+Cliente* InsertClienteLista(Cliente* inicio, Cliente* novo, bool* res) {
 	bool clienteDuplicado = false; // variável bool para armazenar se há cliente duplicado
 	*res = false;
 	if (inicio == NULL)
@@ -141,8 +141,9 @@ Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio, bool* res) {
 	else {
 		//Verificar se já existe repetido
 	 	if (VerificaClienteDuplicado(novo->cod, novo->nif, inicio, &clienteDuplicado) != NULL) {
+			*res = true;
+			free(novo);
 			return inicio;
-
 		}
 
 		if (!clienteDuplicado) {
@@ -173,11 +174,12 @@ Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio, bool* res) {
 					anterior->next = novo;
 					novo->next = atual;
 				}
-				*res = true;
+				
 			}
 		}
-		return inicio; // Retorna o ponteiro de início atualizado
+		*res = true;
 	}
+	return inicio; // Retorna o ponteiro de início atualizado
 }
 
 /**
@@ -189,8 +191,8 @@ Cliente* InsertClienteLista(Cliente* novo, Cliente* inicio, bool* res) {
  * @param 
  * @return 
  */
-Cliente* VerificaClienteDuplicado(int cod, long int nif, Cliente* inicio, bool* duplicado){
-	*duplicado = false;
+Cliente* VerificaClienteDuplicado(Cliente* inicio, int cod, long int nif, bool* res){
+	*res = false;
 	
 	if (inicio == NULL) // Verifica se a lista encadeada está vazia (inicio == NULL), caso esteja retorna NULL, indicando que não há clientes duplicados.
 	{
@@ -203,9 +205,13 @@ Cliente* VerificaClienteDuplicado(int cod, long int nif, Cliente* inicio, bool* 
 	aux = aux->next;
 	}
 	
-	if ((aux != NULL) && (aux->cod == cod) && (aux->nif == nif)) {
-	 	*duplicado = true;
+	if ((aux != NULL) && (aux->cod == cod) && (aux->nif == nif) == 0) {
+	 	*res = true;
 	}
+	if (*res) {
+		printf("Erro: Cliente duplicado encontrado. Código: %d, NIF: %ld\n", aux->cod, aux->nif);
+	}
+	
 	return aux;
 }
 
@@ -222,7 +228,7 @@ Cliente* VerificaClienteDuplicado(int cod, long int nif, Cliente* inicio, bool* 
  * @param 
  * @return 
  */
-Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char* morada, Cliente* novo, Cliente* inicio, bool* res) {
+Cliente* AlteraCampoCliente(Cliente* inicio, Cliente* novo, int cod, char* nome, float saldo, long int nif, char* morada, bool* res) {
 	*res = false;
 
 	// Verifica se a lista está vazia
@@ -258,6 +264,7 @@ Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char
 	free(novo);
 
 	*res = true;
+	printf("Erro: lista vazia\n");
 	// Retorna a lista atualizada
 	return inicio;
 }
@@ -270,7 +277,7 @@ Cliente* AlteraCampoCliente(int cod, char* nome, float saldo, long int nif, char
  * @param inicio
  * @return 
  */
-Cliente* RemoveCliente(int cod, long int nif, Cliente* inicio, bool* res ) {
+Cliente* RemoveCliente(Cliente* inicio, int cod, long int nif, bool* res ) {
 	*res = false;
 	// Verifica se o início é nulo (lista vazia)
 	if (inicio == NULL) {

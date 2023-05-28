@@ -9,6 +9,8 @@
 * Mobilidade Elétrica - Estrutura Veiculos
 */
 
+#ifndef VEICULO_H
+#define VEICULO_H
 #include <stdio.h>
 #include <string.h> 
 #include <stdbool.h>
@@ -47,7 +49,7 @@ Veiculo* InsertVeiculoInicio(Veiculo* inicio, Veiculo* novo, bool* res);
 Veiculo* InsertVeiculoFim(Veiculo* inicio, Veiculo* novo, bool* res);
 Veiculo* VerificaVeiculoDuplicado(Veiculo* inicio, int cod, char* tipo, bool* res);
 Veiculo* InsertVeiculoLista(Veiculo* inicio, Veiculo* novo, bool* res);
-Veiculo* RemoveVeiculo(Veiculo* inicio, int cod, char* tipo,bool* res);
+Veiculo* RemoveVeiculo(Veiculo* inicio, int cod, char* tipo, bool* res);
 Veiculo* AlteraCampoVeiculo(Veiculo* inicio, Veiculo* novo, int cod, char* tipo, float bateria, float custo, char* local, bool* res);
 bool LerDadosVeiculo(char fileName[]);
 bool GravarVeiculoBin(char* nomeFicheiro, Veiculo* inicio);
@@ -56,3 +58,4 @@ Veiculo* LerVeiculoBin(char* nomeFicheiro, bool* res);
 #pragma endregion
 
 
+#endif // VEICULO_H
