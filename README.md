@@ -15,12 +15,15 @@ Depth First Search: Realiza contagem entre caminhos, verifica a existência de c
 Pré-requisitos:
 
 Projeto desenvolvido 100% em linguagem C.
+
 Software utilizado: Visual Studio 2022.
+
 Sem dependências externas.
 
 Instalação:
 
 Faça a extração do projeto que está em formato zip.
+
 Utilize o Visual Studio 2022 ou Eclipse (Linux) para abrir o projeto.
 
 Contribuição:
