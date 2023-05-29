@@ -1,6 +1,6 @@
 EstruturadeDados Trab_EDA_Final_18586
-
-Descrição
+	
+Descrição	
 O projeto foi desenvolvido no âmbito da disciplina Estrutura de Dados Avançadas, lecionada pelo professor Luís Ferreira, do Instituto Politécnico Cávado e Ave - Barcelos. A proposta do projeto era trabalharmos
 sobre um ambiente de meios de mobilidade e utilizarmos listas ligadas para o seu desenvolvimento, assim trabalhando para melhor gestão de memória em um programa aplicamos os conhecimentos adquiridos ao longo do
 semestre. O projeto faz todo o tipo de manipulação de dados, criação, inserção, alteração, remoção etc... O projeto foi desenvolvido com a utilização de grafos e adjacências, para representar os pontos de recolha
