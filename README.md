@@ -1,3 +1,4 @@
+[readme.md](https://github.com/Skunkkzenn/EstruturadeDados/files/11590292/readme.md)
 EstruturadeDados Trab_EDA_Final_18586
 	
 Descrição: 
