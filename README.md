@@ -7,17 +7,16 @@ semestre. O projeto faz todo o tipo de manipulação de dados, criação, inser�
 e as suas ligações. O algorítimo DFS (Depth First Search) também foi implementado.
 
 Funcionalidades
-Criação de objetos, inserção de objetos, criação de grafos e adjacências com peso, algoritmos depth first search para realizar contagem entre caminhos e menor distância.
+Criação de objetos: Cria objetos;
+Inserção de objetos: Insere objetos criados na lista, possuí 3 algoritmos, um para inserir no inicio, outro para inserir no fim e um que insere ordenadamente;
+Criação de grafos: Cria um grafo e vertices;
+Adjacências: Cria ligações entre pontos de recolhe, com peso;
+Depth First Search: realiza contagem entre caminhos, se existe caminho e menor distância.
 
-Funcionalidade 1: Descrição da funcionalidade 1.
-Funcionalidade 2: Descrição da funcionalidade 2.
-Funcionalidade 3: Descrição da funcionalidade 3.
 Pré-requisitos
-[Informe quais são os pré-requisitos necessários para utilizar ou contribuir com o seu projeto. Isso pode incluir dependências, ferramentas ou configurações específicas.]
+Projeto desenvolvido 100% em linguagem  C.
+Software utilizado: Visual Studio 2022.
+Sem dependências externas.
 
 Instalação
-[Explique como instalar o seu projeto localmente. Inclua todos os passos necessários para configurar e executar o projeto.]
-
-Passo 1: Descreva o primeiro passo para a instalação.
-Passo 2: Descreva o segundo passo para a instalação.
-Passo 3: Descreva o terceiro passo para a instalação.
+Extração do projeto que está em zip, utilizar Visutal Studio 2022 ou Eclipse(Linux).
