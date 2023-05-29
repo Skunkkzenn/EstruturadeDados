@@ -20,3 +20,9 @@ Sem dependências externas.
 
 Instalação
 Extração do projeto que está em zip, utilizar Visutal Studio 2022 ou Eclipse(Linux).
+
+Contribuição
+A base do projeto foi 99% do código fornecido pelo professor da cadeira, o senhor Luís Ferreira. De acordo como íamos avançando no aprendizado, fomos aplicando o conhecimento em prática para a resolução dos desafios propostos.
+
+Créditos
+Repositório do professor Luís Ferreira: https://github.com/luferIPCA/LESI-EDA-2022-2023
